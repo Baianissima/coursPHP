@@ -1,5 +1,13 @@
 /* styles pour le dossier coursPHP */
 
-body {
-    background-color: rgb(0, 225, 255);
+/* Les couleurs en variables */
+
+/* :root {
+    var(--rosepale): #c08789;
+} */
+
+
+bg-vieuxrose {
+    background-color: #c08988;
 }
+

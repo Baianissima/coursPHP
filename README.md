@@ -6,8 +6,11 @@ DOSSIERS :
 
 ## 00_exos
 ## 00_pages
+    ### 01_ma_page_php.php
 ## 01_intro
     ### 01_introduction.php
+        #### 1/ Réaliser un site dynamique
+        #### 2/ PHP
     ### infos.php
 ## 02_variables
     ### 01_variables.php
@@ -35,10 +38,10 @@ DOSSIERS :
     ### 02_employes.php
     ### 03_employes_suite.php
     ### 04_fiche_employe.php
-## inc (inc = includ)
+## inc (inc = include)
     ### functions.php
-    ### tete.inc.php
-    ### corps.inc.php
+    ### head.inc.php
+    ### body.inc.php
     ### nav.inc.php
     ### footer.inc.php
 
