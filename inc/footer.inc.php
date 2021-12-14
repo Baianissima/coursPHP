@@ -1,6 +1,6 @@
 <footer>
     <!-- Ici on demande à PHP d'afficher l'heure au format français -->
-    <div class="container bg-orange">
+    <div class="container bg-warning text-white">
         <p>
         <?php 
             setlocale(LC_ALL, 'fr_FR');
