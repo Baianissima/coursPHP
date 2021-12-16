@@ -24,10 +24,12 @@ function jourSemaine() {
 
 
 // fonction jours passés à l annee
+// 1)
 function joursPasses() {
     echo "<p>Aujourd'hui c'est " . date('d/m/Y, l, z') . "° dia do ano" . " my friend ! </p>";
 }
 
+// 2) code d'Imram
 function whatDays(){
     echo "<p>We are on<span class=\"fw-bold\"> ". date('d/m/Y, l, h:m')."</span> and we have already passed : <span class=\" bg-dark fw-bold\">" .date('z'). "</span> days of 2021</p>";
   }
