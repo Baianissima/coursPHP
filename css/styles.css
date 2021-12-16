@@ -3,11 +3,10 @@
 /* Les couleurs en variables */
 
 /* :root {
-    var(--rosepale): #c08789;
+    var(--supernude): #c08789;
 } */
 
-
-bg-vieuxrose {
-    background-color: #c08988;
+body {
+    background-color: #c08789;
 }
 

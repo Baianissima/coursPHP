@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body class="bg-vieuxrose">
+<body class="bg-light">
     <!-- =================================== -->
     <!-- en-tête -->
     <!-- =================================== -->
     
-    <header class="container-fluid p-4 bg-grisclair">
-        <div class="col-12 text-center">
+    <header class="container-fluid p-4 bg-dark">
+        <div class="col-12 text-center text-info">
             <h1 class="display-4">Cours PHP - 01 Variables</h1>
             <p class="lead">Les variables en PHP</p>
 
@@ -28,11 +28,11 @@
         </div>
     </header>
 
-    <div class="container bg-white">
+    <div class="container bg-light">
 
-        <section class="row">
+        <section class="row m-4 p-4">
             <div class="col-md-6">
-                <h2>Les variables</h2>
+                <h2  class="alert-info">Les variables</h2>
 
                 <p>Chaque variable possède un identifiant particulier, qui commence toujours par le caractère dollar ($) suivi de la variable. Les règles de créa tion des noms de la variable sont les suivantes :</p>
 
@@ -46,10 +46,10 @@
             </div>
             <!-- fin col -->
 
-            <div class="col-sm-12 col-md-4">
-                <h3>Déclaration des variables</h3>
+            <div class="col-sm-12 col-md-6">
+                <h3  class="alert-info">Déclaration des variables</h3>
                 <ul>
-                  <li>La décalration des variables n'est pas obligatoire en debut de script, c'est une différence avec JS ou C. On peut créer des variables n'importe où mais avant de les utiliser. Toutefois utiliser une variable non crée ne provoquera pas d'erreur.</li>
+                  <li>La déclaration des variables n'est pas obligatoire en debut de script, c'est une différence avec JS ou C. On peut créer des variables n'importe où mais avant de les utiliser. Toutefois utiliser une variable non crée ne provoquera pas d'erreur.</li>
 
                   <li>Il n'est pas nécessaire d'initialiser une variable et une variable n'aura pas de type.</li>
 
@@ -58,12 +58,11 @@
             </div>
             <!-- fin col -->
 
-            <div class="col-sm-12 col-md-4">
-              <h3>Noms de variables</h3>
+            <div class="row m-4 p-4">
+              <h3 class="alert-info">Noms de variables</h3>
 
-              <div class="row">
-                <div class="col-md-6">
-                  <h5>Noms de variables autorisés</h5>
+                <div class="col-sm-12 col-md-6">
+                  <h5 class="p-4">Noms de variables autorisés</h5>
                     <ul>
                       <li>$mavar</li>
                       <li>$_mavar</li>
@@ -71,12 +70,10 @@
                       <li>$_12345</li>
                   </ul>
                 </div>
-              </div>
-              <!-- fin row -->
+              <!-- fin col -->
 
-              <div class="row">
-                <div class="col-md-6">
-                  <h5>Noms de variables interdits</h5>
+                <div class="col-sm-12 col-md-6">
+                  <h5  class="p-4">Noms de variables interdits</h5>
                     <ul>
                       <li>$*mavar</li>
                       <li>$5mavar</li>
@@ -84,18 +81,15 @@
                       <li>$mavar2+</li>
                   </ul>
                 </div>
-              </div>
-              <!-- fin row de cette col -->
-
+              <!-- fin col -->
             </div>
-            <!-- fin col -->
-
+            <!-- fin row div dans la row section  -->
         </section>
         <!-- fin section row 1 -->
 
-        <section class="row">
+        <section class="row m-4 p-4">
           <div class="col-sm-12">
-            <h3>Affecter des variables par valeur et par référence</h3>
+            <h3  class="alert-info">Affecter des variables par valeur et par référence</h3>
             <p>Affecter c'est donner une valeur à une variable. A sa création, vous ne donnez pas son type à une variable, c'es la valeur que vous lui affectez qui détermine ce type.</p>
             <h5>Exemples :</h5>
               <ul>
@@ -114,10 +108,10 @@
         </section>
         <!-- fin section row 2 -->
 
-        <section class="row">
+        <section class="row m-4 p-4">
           <div class="col-sm-12">
-            <h2>Les variables prédéfinies</h2>
-            <p>PHP dispose d'un grand nombre de variables prédéfinies, qui contiennent des informations à la fois sur le serveur et sur toutes les données qui peuvent transiter entre le poste client et le serveur, comme les valeurs dans un formulaire, les cookies ou les sessions.</p>
+            <h2  class="alert-info">Les variables prédéfinies</h2>
+            <p>PHP dispose d'un grand nombre de variables prédéfinies, qui contiennent des lightrmations à la fois sur le serveur et sur toutes les données qui peuvent transiter entre le poste client et le serveur, comme les valeurs dans un formulaire, les cookies ou les sessions.</p>
 
             <table class="table table-striped">
               <thead>
@@ -160,28 +154,34 @@
                 <tr>
                   <th scope="row"><code>$_REQUEST<code></th>
                   <td>Contient l'ensemble des variables "superglobales" <code>$_GET, $_POST, $_COOKIE et $_FILES</code>.</td>
-                    <br>Une variable superblogale signifie que cette variable est disponibile partout dans le script, y compris au sein des fonctions !
+                  <br>
+                  <p class="alert alert-success">Une variable superglobale est disponibile partout dans le script, y compris au sein des fonctions !</p>
                 </tr>
 
                 <tr>
                   <th scope="row"><code>$_SERVEUR</code></th>
-                  <td>Contient lles informations liées au serveur web, tel le contenu des en-têtes HTTP ou le nom du sxript en cours d'éxécution. Retenonons les variables suivantes :
+                  <td>Contient lles lightrmations liées au serveur web, tel le contenu des en-têtes HTTP ou le nom du sxript en cours d'éxécution. Retenonons les variables suivantes :
                     <ul>
                       <li><code>$_SERVER["HTTP_ACCEPT_LANGUAGE"]</code> : contient le code de la langue du navigateur client. Ex.  <?php echo  $_SERVER["HTTP_ACCEPT_LANGUAGE"]; ?></li>
 
                       <li><code>$_SERVER["HTTP_COOKIE"]</code> : contient le nom et la valeur des cookies. Ex.  <?php echo $_SERVER["HTTP_COOKIE"]; ?></li>
 
-                      <li><code>$_SERVER["HTTP_HOST]</code> : donne le nom de domaine. Ex. <?php echo $_SERVER["HTTP_HOST"]; ?></li>
+                      <li><code>$_SERVER["HTTP_HOST"]</code> : donne le nom de domaine. Ex. <?php echo $_SERVER["HTTP_HOST"]; ?></li>
 
-                      <li><code>$_SERVER["SERVER_ADDR]</code> : donne l'adresse IP du serveur. Ex. </li>
+                      <li><code>$_SERVER["SERVER_ADDR"]</code> : donne l'adresse IP du serveur. Ex. <?php echo $_SERVER["SERVER_ADDR"]; ?></li>
 
-                      <li><code>$_SERVER["HTTP_]</code> : contient</li>
+                      <li><code>$_SERVER["PHP_SELF]</code> : contient le nom du script en cours. Ex <?php echo $_SERVER[">PHP_SELF"]; ?> </li>
 
-                      <li><code>$_SERVER["HTTP_]</code> : contient</li>
+                      <li><code>$_SERVER["QUERY_STRING"]</code> : contient lz chaîne de la requête utilisée pour accéder au script. Ex.  <?php echo $_SERVER["QUERY_STRING"]; ?> </li>
 
                     <!-- Ici cet echo en php vérifie le langage -->
                       <?php echo $_SERVER["HTTP_ACCEPT_LANGUAGE"]; ?>
                     </ul>
+                  </td>
+
+                <tr>
+                    <th scope="row"><code>$_SESSION</code></th>
+                    <td>Contient l'ensemble des noms des variables de session et leurs valeurs</td>
                 </tr>
               </tbody>
             </table>
@@ -193,16 +193,14 @@
 
     </div>
   <!-- fin div container -->
+
   <!-- ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
   <?php require_once '../inc/footer.inc.php'; ?>
 
+  <!-- Commenter à l'intérieur du code PHP si on veut garder l'light que pour le côté serveur !  -->
 
-  <!-- Commenter à l'intérieur du code PHP si on veut garder l'info que pour le côté serveur !  -->
-
-  <!-- <?php require -->
-  // Ici on appelle le footer cree dans dossier inc pour qu il se repete sur cette page : 
-  // ../inc/footer.inc.php'; ?>
-
+  // Ici on appelle le footer crée dans le dossier inc pour qu'il se repète sur cette page : 
+  // <?php '../inc/footer.inc.php'?>
 
     <!-- Optional JavaScript -->
     <!-- Bootstrap Bundle with Popper -->

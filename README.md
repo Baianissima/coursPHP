@@ -5,6 +5,7 @@ Initiation PHP
 DOSSIERS :
 
 ## 00_exos
+    ### 01_exos_variables.php
 ## 00_pages
     ### 01_ma_page_php.php
 ## 01_intro
