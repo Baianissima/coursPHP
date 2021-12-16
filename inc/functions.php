@@ -58,12 +58,12 @@ function dateFR() {
 function dateJour(){
     setlocale (LC_TIME, 'fr_FR.utf8','fra'); 
     echo "<p>Date et Jour :<span class=\"fw-bold\"> ". strftime('%A %e/ %m /%Y')."</p>";
-  }
+}
 
-  function date_fr() {
+function date_fr() {
     setlocale(LC_TIME, 'fra_fra');
     echo"<p>Date et Jour :<span class=\"fw-bold\"> ". utf8_encode( strftime('%A, %d, %B, %Y'))."</p>";
-  }
+}
 
 
 
