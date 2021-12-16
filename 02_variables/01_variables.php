@@ -24,6 +24,7 @@
             <p class="lead">Les variables en PHP</p>
 
             <!-- ce code en 1 ligne sert à afficher le chemnin du fichier sur la page html -->
+            <!-- <?php echo "<p>Exemple de constante en PHP >>> Chemin absolu du fichier en cours : " . __FILE__ . "</p>"; ?> -->
         </div>
     </header>
 
