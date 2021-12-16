@@ -173,7 +173,7 @@
 
                       <li><code>$_SERVER["HTTP_HOST]</code> : donne le nom de domaine. Ex. <?php echo $_SERVER["HTTP_HOST"]; ?></li>
 
-                      <li><code>$_SERVER["HTTP_]</code> : contient</li>
+                      <li><code>$_SERVER["SERVER_ADDR]</code> : donne l'adresse IP du serveur. Ex. </li>
 
                       <li><code>$_SERVER["HTTP_]</code> : contient</li>
 
