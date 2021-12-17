@@ -1,5 +1,7 @@
 <?php
 
+require_once '../inc/functons.php'; //APPEL DES FONCTIONS
+
 /* Ceci est un commentaire
 sur plusieurs lignes en PHP :
 c'est pratique ! */

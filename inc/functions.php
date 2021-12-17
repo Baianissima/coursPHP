@@ -69,5 +69,5 @@ function date_fr() {
 
 // déclaration d'une constante qui contient une url ATTENTION on le déplace plus tard VOIR
 
-define("validator", "https://validator.w3.org/");
+// define("validator", "https://validator.w3.org/");
 ?>

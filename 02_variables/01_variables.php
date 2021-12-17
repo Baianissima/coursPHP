@@ -1,3 +1,7 @@
+<?php
+ require_once '../inc/functions.php'; //APPEL DES FONCTIONS
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -24,7 +28,10 @@
             <p class="lead">Les variables en PHP</p>
 
             <!-- ce code en 1 ligne sert à afficher le chemnin du fichier sur la page html -->
-            <!-- <?php echo "<p>Exemple de constante en PHP >>> Chemin absolu du fichier en cours : " . __FILE__ . "</p>"; ?> -->
+            <?php echo "<p>Exemple de constante en PHP >>> Chemin absolu du fichier en cours : " . __FILE__ . "</p>"; 
+            
+            minutePap();
+            ?>
         </div>
     </header>
     <!-- fin container-fluid -->
@@ -264,8 +271,37 @@
           <div class="col">
             <h2>Les constantes</h2>
             <p>Vous serez parfois amené à utiliser de manière répétitive des informations devant rester constantes dans toutes les pages d’un même site. Il peut s’agir de texte ou de nombres qui reviennent souvent. Pour ne pas risquer l’écrasement accidentel de ces valeurs, qui pourrait se produire si elles étaient contenues dans des variables, vous avez tout intérêt à les enregistrer sous forme de constantes personnalisées.</p>
-            <p>On peut définir ses constantes soi-même : pour définir des constantes personalisées, utilisez la fonction <code>define()</code> dont la syntaxe est la suivante <code></code> cf. la page suivante <a href="../00-pages/03_page.php">page avec des constantes</a></p>
+            <p>On peut définir ses constantes soi-même : pour définir des constantes personalisées, utilisez la fonction <code>define()</code> dont la syntaxe est la suivante <code></code> cf. la page suivante <a href="../00_pages/03_page.php">page avec des constantes</a></p>
           </div>
+
+          <div class="col">Les contantes prédéfinies</div>
+          <p>
+          
+          Il existe... A COMPLETER cette div...
+          
+          On peut définir ses constantes soi-même : pour définir des constantes personalisées, utilisez la fonction <code>define()</code> dont la syntaxe est la suivante <code></code> cf. la page suivante <a href="">page avec des constantes</a></p> <a href="../00_pages/04_page.php"</a>Constantes prédéfinies</p>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Constantes</th>
+                <th scope="col">Résultat</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <th scope="col"><code>PHP_VERSION</code></th>
+                <td>Version de PHP sur ce serveur n° : <?php echo PHP_VERSION; ?></td>
+              </tr>
+
+              <tr>
+                <th scope="row"><code>PHP_OS</code></th>
+                <td>Système d'exploitation (Operating System) du serveur : <?php echo PHP_OS; ?></td>
+              </tr>
+            </tbody>
+          </table>
+
         </section>
 
     </div>

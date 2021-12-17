@@ -1,4 +1,7 @@
 <?php
+require_once '../inc/functons.php'; //APPEL DES FONCTIONS
+
+
     echo "<h1>Page avec des constantes</h1>";
 // vérifier cela sur la casse TRUE et FALSE : A VOIR !
     define("PI", 3.1415926535);
@@ -22,7 +25,7 @@
 
     echo "<hr>";
 
-    
+  require_once '../inc/functons.php'; //APPEL DES FONCTIONS
 
 
 ?>

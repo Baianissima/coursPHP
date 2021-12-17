@@ -7,6 +7,8 @@
         
         <p>
         <?php 
+
+require_once '../inc/functons.php'; //APPEL DES FONCTIONS
             setlocale(LC_ALL, 'fr_FR');
             echo strftime("%A %e %B %Y");
             echo ' - ';
