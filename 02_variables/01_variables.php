@@ -27,6 +27,7 @@
             <!-- <?php echo "<p>Exemple de constante en PHP >>> Chemin absolu du fichier en cours : " . __FILE__ . "</p>"; ?> -->
         </div>
     </header>
+    <!-- fin container-fluid -->
 
     <div class="container bg-light">
 
@@ -190,6 +191,82 @@
           <!-- fin div col -->
         </section>
         <!-- fin section row 3 -->
+
+        <section class="row">
+          <div class="col-md-8">
+            <h2>Les opérateurs d'affectation combinés</h2>
+            <p>En plus de l'opéarteur classique d'affectation = il en existe plusieurs</p>
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="row">opérateurs</th>
+                  <th scope="row">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><code>+=</code></th>
+                  <td>
+                  Addition puis affectation :<br>
+                  <code>$x += $y équivaut à $x = $x + $y</code><br>
+                  <code>$y</code> peut être une expression complexe dont la valeur est un nombre.
+                  </td>
+                </tr>
+
+                <tr>
+                  <th scope="row"><code>-=</code></th>
+							    <td>Soustraction puis affectation :<br>
+								  <code>$x -= $y équivaut à $x = $x - $y</code><br>
+								  <code>$y</code> peut être une expression complexe dont la valeur est un nombre.</td>
+                </tr>
+
+                <tr>
+                  <th scope="row"><code>*=</code></th>
+							    <td>Multiplication puis affectation :<br>
+							    <code>$x *= $y équivaut à $x = $x * $y</code><br>
+							    <code>$y</code> peut être une expression complexe dont la valeur est un nombre.</td>
+                </tr>
+
+                <tr>
+                  <th scope="row"><code>**=</code></th>
+							    <td>Puissance puis affectation:<br>
+							    <code>$x**=2 équivaut à $x=($x)²</code><br>
+                </tr>
+
+                <tr>
+                  <th scope="row"><code>/=</code></th>
+							    <td>Division puis affectation :<br>
+							    <code>$x /= $y équivaut à $x = $x / $y</code><br>
+							    <code>$y</code> peut être une expression complexe dont la valeur est un nombre différent de 0.</td>
+                </tr>
+
+                <tr>
+                  <th scope="row"><code>%=</code></th>
+							    <td>Modulo puis affectation :<br>
+							    <code>$x /= $y équivaut à $x = $x / $y</code><br>
+							    <code>$y</code>peut être une expression complexe dont la valeur est un nombre.</td>
+                </tr>
+
+                <tr>
+                <th>Concaténation/affectation</th>
+                  <td>Concaténation puis affectation :<br>
+							    <code>$x .= $y équivaut à $x = $x . $y</code><br>
+							    <code>$y</code>peut être une expression littérale dont la valeur est une chaîne de caractères.</td>
+                </tr>
+            </table>
+          </div>
+          <!-- fin div col du tableau -->      
+        </section>
+        <!-- fin section row 4 -->
+
+        <section class="row">
+          <div class="col">
+            <h2>Les constantes</h2>
+            <p>Vous serez parfois amené à utiliser de manière répétitive des informations devant rester constantes dans toutes les pages d’un même site. Il peut s’agir de texte ou de nombres qui reviennent souvent. Pour ne pas risquer l’écrasement accidentel de ces valeurs, qui pourrait se produire si elles étaient contenues dans des variables, vous avez tout intérêt à les enregistrer sous forme de constantes personnalisées.</p>
+            <p>On peut définir ses constantes soi-même : pour définir des constantes personalisées, utilisez la fonction <code>define()</code> dont la syntaxe est la suivante <code></code> cf. la page suivante <a href="../00-pages/03_page.php">page avec des constantes</a></p>
+          </div>
+        </section>
 
     </div>
   <!-- fin div container -->

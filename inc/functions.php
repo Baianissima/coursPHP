@@ -67,24 +67,7 @@ function date_fr() {
     echo"<p>Date et Jour :<span class=\"fw-bold\"> ". utf8_encode( strftime('%A, %d, %B, %Y'))."</p>";
 }
 
+// déclaration d'une constante qui contient une url ATTENTION on le déplace plus tard VOIR
 
-
-
-
-//   EXEMPLES (voir la doc https://www.php.net/manual/fr/function.setlocale.php ) :
-//   Exemple #1 Exemple avec setlocale()
-
-//   <?php
-//   /* Configure le script en hollandais */
-//   setlocale(LC_ALL, 'nl_NL');
-  
-//   /* Affiche : vrijdag 22 december 1978 */
-//   echo strftime("%A %e %B %Y", mktime(0, 0, 0, 12, 22, 1978));
-  
-//   /* Essai de différentes valeurs possible pour l'allemand */
-//   $loc_de = setlocale(LC_ALL, 'de_DE@euro', 'de_DE', 'de', 'ge');
-//   echo "L'identifiant de l'allemand sur ce système est '$loc_de'";
-//   ?>
-
-
+define("validator", "https://validator.w3.org/");
 ?>

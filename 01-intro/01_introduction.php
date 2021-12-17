@@ -1,8 +1,8 @@
-<!-- Démarrage PHP : repos coursPHP sur OS (C:) : il faut ouvrir le fichier index de localhost pour travailler sur php, sinon la page ne marche pas : 
+<?php
 
-http://localhost/coursPHP/01-intro/01_introduction.php  -->
-
-<!-- https://github.com/vienendelsur/coursPHP_suresnes2122 -->
+define("validator", "https://validator.w3.org/");
+   
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,15 +19,21 @@ http://localhost/coursPHP/01-intro/01_introduction.php  -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body class="bg-vieuxrose>
+<body class="">
     <!-- =================================== -->
     <!-- en-tête -->
     <!-- =================================== -->
     
-    <header class="container-fluid p-4 bg-grisclair">
+    <header class="container-fluid p-4">
         <div class="col-12 text-center">
             <h1 class="display-4">Cours PHP - Introduction</h1>
-            <p class="lead">PHP : Php Hyper-text Preprocessor</p>
+            <p class="lead">PHP : Php Hypertext Preprocessor</p>
+
+            <?php
+                // if (defined("validator")) echo "la constante validator est bien définie";
+
+                echo "<p>Validez votre HTML CSS sur le site du <a href=\"" .validator. "\" target=\"_blanck\"> Validator </a></p>";
+            ?>
         </div>
     </header>
 
