@@ -25,7 +25,7 @@ $frat = "Fraternité";
     <!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         
-    <title>Cours PHP - Exo 01 Variables</title>
+    <title>Cours PHP - Exo 01_Variables</title>
 
     <!-- mes styles -->
     <link rel="stylesheet" href="../css/styles.css">
@@ -38,8 +38,8 @@ $frat = "Fraternité";
     
     <header class="container-fluid p-4 bg-dark">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">Cours PHP - Exo 01 Variables</h1>
-            <p class="lead"></p>
+            <h1 class="display-4">Cours PHP - Exos</h1>
+            <p class="lead">01 Variables</p>
         </div>
     </header>
     <!-- fin containeur-fluid -->
