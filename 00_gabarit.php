@@ -6,7 +6,7 @@
 <html lang="fr">
 <head>
     <!-- ====================================================== -->
-    <!--              A AJOUTER LE HEAD EN REQUIRE              --> 
+    <!--              AJOUTER LE HEAD EN REQUIRE              --> 
     <!-- ====================================================== -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,9 +53,7 @@
                 <p>PARAGRAPHE</p>
                 
                 <!-- un passage PHP  -->
-                <?php
-                    ;
-                ?>      
+                
             </div>
             <!-- fin col -->
 
@@ -69,9 +67,7 @@
                     <li>1 LIGNE DE LA LI</li>
 
                     <!-- un passage PHP dans la UL -->
-                        <?php
-                            ;
-                        ?>
+                       
                     </li>
 				</ul>
             </div>

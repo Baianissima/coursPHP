@@ -10,7 +10,7 @@ DOSSIERS :
     ### 01_page_php.php
     ### 02_page_php.php
     ### 03_page_php.php
-    ### 04page_php.php
+    ### 04_page_php.php
 ## 01_intro
     ### 01_introduction.php
         #### 1/ Réaliser un site dynamique
@@ -51,9 +51,7 @@ DOSSIERS :
     ### footer.inc.php
 
 SOMMAIRE A COMPLETER :
-
 ## 10_boutique
-
 
 
 CREER CES 3 DOSSIERS :
