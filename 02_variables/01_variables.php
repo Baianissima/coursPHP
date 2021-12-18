@@ -299,6 +299,21 @@
                 <th scope="row"><code>PHP_OS</code></th>
                 <td>Système d'exploitation (Operating System) du serveur : <?php echo PHP_OS; ?></td>
               </tr>
+
+              <tr>
+                <th scope="row"><code>DEFAULT_INCLUDE_PATH</code></th>
+                <td>Chemin d'accès aux fichiers par défaut : <?php echo DEFAULT_INCLUDE_PATH; ?> </td>
+              </tr>
+
+              <tr>
+                <th scope="row"><code>_FILE_</code></th>
+                <td>Nom du fichier en cours d'éxécution : <?php _FILE_; ?> </td>
+              </tr>
+
+              <tr>
+                <th scope="row"><code>_LINE_</code></th>
+                <td>Nom de la ligne du fichier : <?php _LINE_; ?> </td>
+              </tr>
             </tbody>
           </table>
 

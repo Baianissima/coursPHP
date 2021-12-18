@@ -1,5 +1,5 @@
 <?php
- require_once '../inc/functions.php'; //appel des fonctions
+ require_once '../inc/functions.php'; // appel des fonctions
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +23,7 @@
 
 <body class="bg-light">
     <!-- ====================================================== -->
-    <!-- en-tête -- HEADER A COMPLETER AVEC NAV EN REQUIRE --   --> 
+    <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
     
     <header class="container-fluid p-4 bg-dark">
@@ -53,7 +53,9 @@
                 <p>PARAGRAPHE</p>
                 
                 <!-- un passage PHP  -->
-                   
+                <?php
+                    ;
+                ?>      
             </div>
             <!-- fin col -->
 
@@ -67,6 +69,10 @@
                     <li>1 LIGNE DE LA LI</li>
 
                     <!-- un passage PHP dans la UL -->
+                        <?php
+                            ;
+                        ?>
+                    </li>
 				</ul>
             </div>
             <!-- fin col -->
@@ -107,7 +113,6 @@
         <!-- fin row -->
     </div>
     <!-- fin div container -->
-
 
     <!-- ====================================================== -->
     <!--                  FOOTER EN REQUIRE                     --> 

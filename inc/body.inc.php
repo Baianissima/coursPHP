@@ -1,6 +1,6 @@
 <?php
 
-require_once '../inc/functons.php'; //APPEL DES FONCTIONS
+require_once '../inc/functions.php'; //APPEL DES FONCTIONS
 
 /* Ceci est un commentaire
 sur plusieurs lignes en PHP :

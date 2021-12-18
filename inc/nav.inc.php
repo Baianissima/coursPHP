@@ -1,2 +1,3 @@
+<?php
+require_once '../inc/functions.php'; //APPEL DES FONCTIONS
 ?>
-require_once '../inc/functons.php'; //APPEL DES FONCTIONS

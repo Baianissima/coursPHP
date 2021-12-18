@@ -14,7 +14,7 @@ define("validator", "https://validator.w3.org/");
     <!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         
-    <title>Cours PHP - Suresnes 2021/2022</title>
+    <title>Cours PHP - Colombbus, Agence Suresnes</title>
 
     <link rel="stylesheet" href="../css/styles.css">
 </head>
@@ -24,7 +24,7 @@ define("validator", "https://validator.w3.org/");
     <!-- en-tête -->
     <!-- =================================== -->
     
-    <header class="container-fluid p-4">
+    <header class="container-fluid p-4 text-white">
         <div class="col-12 text-center">
             <h1 class="display-4">Cours PHP - Introduction</h1>
             <p class="lead">PHP : Php Hypertext Preprocessor</p>
@@ -37,9 +37,9 @@ define("validator", "https://validator.w3.org/");
         </div>
     </header>
 
-    <div>
+    <div class="container">
         <section class="row m-2 p-2 justify-content-center">
-            <div class="col-md-3 m-2 border border-warning">
+            <div class="col-md-3 m-2 border bg-light">
                 <h4>1/ Réaliser un site dynamique</h4>
                 <p>Pour réaliser un site dynamique nous allons aborder les points suivants :</p>
                     <ul>
@@ -56,7 +56,7 @@ define("validator", "https://validator.w3.org/");
             </div>
             <!-- fin col -->
 
-            <div class="col-md-3 m-2 p-1 border border-warning">
+            <div class="col-md-3 m-2 p-1 border bg-light">
                 <h4>2/ Qu'est-ce que <code>PHP</code></h4>
                 <p>PHP permet de créer des pages intéractives.</p>
                     <ul>
@@ -70,7 +70,7 @@ define("validator", "https://validator.w3.org/");
             </div>
             <!-- fin col -->
 
-            <div class="col-md-3 m-2 p-1 border border-warning">
+            <div class="col-md-3 m-2 p-1 border bg-light">
                 <h4>3/ Rappel sur les BDD</h4>
                 <ul>
                     <li>Pour contenir la masse d'informations colelctées, PHP s'appuie généralement sur une BDD, le plus souvent MySQL mais aussi SQLite, et sur des serveurs Apache.</li>
@@ -85,7 +85,7 @@ define("validator", "https://validator.w3.org/");
 
         <!-- section 2 -->
         <section class="row m-4 p-4 justify-content-center">
-            <div class="col-md-3 m-2 p-2 border border-warning">
+            <div class="col-md-3 m-2 p-2 border bg-light">
 
                 <p>Avec le code suivant écrit dans un fichier nommé 02_infos.php, toutes les infos sur le PHP exécuté dans ce serveur (serveur d'évaluation : (cf. http://localhost/coursPHP/01-intro/01_introduction.php)</p>
 
@@ -100,12 +100,12 @@ define("validator", "https://validator.w3.org/");
             </div>
             <!-- fin col -->
      
-            <div class="col-md-3 m-2 p-2 border border-warning">
+            <div class="col-md-3 m-2 p-2 border bg-light">
                 <?php echo date('d/m/Y - H:m:s'); ?>
             </div>
             <!-- fin col -->
 
-            <div class="col-md-3 m-2 p-2 border border-warning">
+            <div class="col-md-3 m-2 p-2 border bg-light">
                 <p>La fonction date() avec ses arguments qui nous donnent la date et l'heure du serveur</p>
                 <?php // echo date('d/m/Y - H:m:s'); ?>
                 
@@ -116,7 +116,7 @@ define("validator", "https://validator.w3.org/");
             </div>
             <!-- fin col -->
 
-            <div class="col-md-12 p-4 m-4 border border-warning">
+            <div class="col-md-12 p-4 m-4 border bg-light">
                 <h4>Le cycle de vie d'une page PHP</h4>
                 <ol>
                     <li>Envoie d'une requête HTTP (Hyper TExt Transfer Protocol par le navigateur client vers le serveur du type http://www.monsite.fr/infos.php</li>
@@ -134,7 +134,7 @@ define("validator", "https://validator.w3.org/");
 
         </div>
         <section class="row m-2 p-2">
-            <div class="col-md-12 border border-warning">
+            <div class="col-md-12 border bg-light">
                 <h3>Inclure des fichiers externes en PHP</h3>
                 <table class="table table-striped">
                     <thead>
@@ -205,6 +205,7 @@ define("validator", "https://validator.w3.org/");
             <div class="text-center text-dark p-5 m-5" style="background-color: rgba(0, 0, 0, 0.2);">
                 © 2021 :
                 <a class="text-dark" href="https://mdbootstrap.com/">Vanusa Santos, Colombbus</a>
+                <?php require_once '../inc/footer.inc.php'; ?>
             </div>
             <!-- Copyright -->     
         </footer>    

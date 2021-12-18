@@ -7,7 +7,10 @@ DOSSIERS :
 ## 00_exos
     ### 01_exos_variables.php
 ## 00_pages
-    ### 01_ma_page_php.php
+    ### 01_page_php.php
+    ### 02_page_php.php
+    ### 03_page_php.php
+    ### 04page_php.php
 ## 01_intro
     ### 01_introduction.php
         #### 1/ Réaliser un site dynamique
@@ -44,6 +47,7 @@ DOSSIERS :
     ### head.inc.php
     ### body.inc.php
     ### nav.inc.php
+    ### end.inc.php
     ### footer.inc.php
 
 SOMMAIRE A COMPLETER :
