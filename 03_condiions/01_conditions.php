@@ -46,7 +46,7 @@
 
     <div class="container justify-content-center bg-light">
 
-        <section class="row m-2 p-2">
+        <section class="row mt-4 p-2">
 
             <div class="col-md-4">
 
@@ -161,7 +161,7 @@
         </section>
         <!-- fin section row --> 
 
-        <section class="row">
+        <section class="row mt-4 p-2">
             <div class="col-md-6">
                 <h2 class="alert-info text-center">"If... else if... else"</h2>
                 <p>Une syntaxe plus complexe : <br>
@@ -266,7 +266,7 @@
         </section>
         <!-- fin row -->
 
-        <section class="row">
+        <section class="row mt-4 p-2">
             <div class="class">
              <h2></h2>
              <p></p>

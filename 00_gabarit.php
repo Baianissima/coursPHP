@@ -43,7 +43,7 @@
 
     <div class="container justify-content-center bg-light">
 
-        <section class="row m-4 p-4">
+        <section class="row mt-4 p-4">
 
             <div class="col-md-6">
 
