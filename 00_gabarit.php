@@ -32,10 +32,12 @@
         <div class="col-12 text-center text-info">
             <h1 class="display-4">TITRE NIVEAU 1</h1>
             <p class="lead">p class lead</p>
-            <!-- passage PHP pour tester s il fonctionne avant de poursuivre -->
+            <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $varOla = "Olá !";
-                echo "<p>$varOla tudo bem?</p>";
+                echo "<p class=\"text-white\">$varOla tudo bem?</p>";
+        
+                whatDay();
             ?>
         </div>
     </header>

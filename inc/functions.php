@@ -9,7 +9,7 @@ function minutePap() {
 
 // 2nde fonction PHP : le jours de la semaine
 function whatDay() {
-    echo "<p>Nous sommes " . date('l') . " my friend !</p>";
+    echo "<p class=\"text-white\">It's " . date('l') . ", my brother !</p>";
 }
 
 // test perso avec une fonction galabru ;-)

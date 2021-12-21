@@ -30,7 +30,9 @@
             <p class="lead"></p>
             <?php
                 $varOla = "Olá !";
-                echo "<p>$varOla tudo bem?</p>";
+                echo "<p class=\"text-white\">$varOla tudo bem?</p>";
+        
+                whatDay();
             ?>
         </div>
     </header>

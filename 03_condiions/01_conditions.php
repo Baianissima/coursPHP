@@ -36,8 +36,8 @@
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $varOla = "Olá !";
-                echo "<p>$varOla tudo bem?</p>";
-
+                echo "<p class=\"text-white\">$varOla tudo bem?</p>";
+        
                 whatDay();
             ?>
         </div>
