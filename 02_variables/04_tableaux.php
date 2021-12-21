@@ -169,7 +169,25 @@
             <!-- fin col -->
 
             <div class="col-5 m-4 p-4">
-                <h2 class="alert-info">TITRE NIVEAU 2</h2>       
+                <h2 class="alert-info">Codes de la page des exos</h2>
+
+                <p class=alert alert-danger>Tableau associatif dans un <code>SELECT (lbel, option, form-control...)</code><br>
+                
+                
+                <code>echo "<hr><pre class=\"bg-warning\"> EXO : Suite : cette fois-ci mettez les valeurs du tableau dans un select de formulaire</pre>"; <br>
+
+                echo "<hr><pre class=\"bg-warning\"> 2) BOUCLE FOREACH : avec un SELECT, option, value, form-control, et un label</pre>"; <br>
+
+                echo "<label for=\"size2\"> Tailles </label><select class=\"form-control w-25\">"; <br>
+
+                echo "</select>";</code>
+            </div>
+
+            <!-- fin col -->
+                
+
+                </p>
+                       
             </div>
             <!-- fin col -->         
         </section>

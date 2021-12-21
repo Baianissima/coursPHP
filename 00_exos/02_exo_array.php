@@ -24,17 +24,17 @@
     <!-- en-tête -->
     <!-- =================================== -->
     
-    <header class="container-fluid p-4 bg-dark">
+    <header class="container-fluid p-2 bg-dark">
         <div class="col-12 text-center text-info">
             <h1 class="display-4">Cours PHP - Exos</h1>
-            <p class="lead">02 Arrays</p>
+            <p class="lead">02 Arrays : les tableaux</p>
         </div>
     </header>
     <!-- fin containeur-fluid -->
 
-    <div class="container m-4 mx-auto bg-light">
+    <div class="container mt-4 mx-auto">
         <section class="row">
-            <div class="col-sm-5 p-4 m-4 alert alert-info">
+            <div class="col-sm-6 p-2 m-2 alert alert-info">
                 <h3>Méthode 1</h3>
                 <?php
 
@@ -44,7 +44,7 @@
                 $tableau1 = array('Gabin', 'Arletty', 'Fernandel', 'Dalio', 'Pauline Carton');
                 echo $tableau1; // erreur de type "array to string conversion", car on ne peut pas afficher directement un tableau
 
-                //Le warning s'affiche : Parse error: syntax error, unexpected token "&", expecting end of file in C:\xampp\htdocs\coursPHP\00_exos\02_exo_array.php on line 39
+                //Le white s'affiche : Parse error: syntax error, unexpected token "&", expecting end of file in C:\xampp\htdocs\coursPHP\00_exos\02_exo_array.php on line 39
 
                 echo "<pre>"; // la balise pre permet de préserver l'affichage après exécution
                 print_r( $tableau1 ); // print_r affiche le contenu du tableau avec les indices
@@ -103,27 +103,24 @@
                 echo "<p> Le nombre de valeurs dans le tableau est de :avec sizeof() " .sizeof($couleurs). " </p>";
 
                 ?>
-
             </div>
             <!-- fin div col -->
 
-            <div class="col-sm-5 p-4 m-4 alert alert-info">
-                <h3>Méthode 2</h3>
-                <?php
-                    // METHODE 2
-                $tableau2 = ['France', 'Espagne', 'Italie', 'Portugal'];
-                echo "<pre>";
-                var_dump( $tableau2);  // var_dump affiche le conteu d'un array avec types des valeurs
-                echo "</pre>";
-                ?>
-            </div>
-            <!-- fin div col -->
+            <div class="col-5">
 
-        </section>
-         <!-- fin section row -->
+                <div class="col- p-2 m-2 alert alert-info">
+                    <h3>Méthode 2</h3>
+                    <?php
+                        // METHODE 2
+                    $tableau2 = ['France', 'Espagne', 'Italie', 'Portugal'];
+                    echo "<pre>";
+                    var_dump( $tableau2);  // var_dump affiche le conteu d'un array avec types des valeurs
+                    echo "</pre>";
+                    ?>
+                </div>
+                <!-- fin div col -->
 
-         <section class="row">
-             <div class="col-sm-5 p-4 m-4 alert alert-info">
+                <div class="col-sm-12 p-2 m-2 alert alert-info">
                     <h3>Méthode 3</h3>
 
                     <?php
@@ -161,12 +158,16 @@
                 debug($couleurs);
                 ?>
              </div>
-             <!-- fin col -->
-             
 
-             <div class="col-sm-5 p-4 m-4 alert alert-info">
-                <h3>Tableau associatif</h3>
-                // 1 tableau associatif (un array pour déterminer le numéro de chaque élément
+        </section>
+         <!-- fin section row -->
+         
+
+        <section class="row">
+            <h2 class="m-4 p-4">Les tableaux associatifs</h2>
+            <div class="col-sm-7 m-2 p-2 alert alert-info">
+                <h3 class="m-4 p-4">Les indices</h3>
+                1 tableau associatif (un array pour déterminer le numéro de chaque élément
                 // $couleurs = array('b' => 'bleu', 'bl' => 'blanc', 'r' => 'rouge',);
                 // dans un tableau associatif nous pouvons choisir le noms des indices
                 
@@ -181,15 +182,60 @@
                 debug($couleurs);
                 ?>
 
-             </div>
-             <!-- fin col -->
-         </section>
+            <p>Dans un tableau associatif nous pouvons choisir le nom des indices <br> <code>$couleurs = array()</p><br>
+                'b' => 'bleu',<br>
+                'bl' => 'blanc',<br>
+                'r' => 'rouge',<br>
+                );</code></p>
 
-         <section class="row">
-            <div class="col-sm-12 p-4 m-4 alert alert-info">
-                <h3>EXOS :</h3>
+                <?php 
+                // tableau associatif
+                // dans un tableau associatif nous pouvons choisir le nom des indices 
                 
-                    Ajouter la phrase "Bleu, blanc, rouge":
+                $couleurs = array(
+                    'b' => 'bleu',
+                    'bl' => 'blanc',
+                    'r' => 'rouge',
+                );
+
+                debug($couleurs);
+                // un echo d'une des valeurs de notre tableau associatif
+                echo '<p>La première couleur du tableau associatif est le ' .$couleurs['b']. '</p>';
+                echo "<p>La première couleur du tableau associatif est le $couleurs[b]</p>"; // si l'écho est entre guillemets doubles il n'est plus util de noter l'indice associatif (ici b) entre simple quote >>>> INDISPENSABLE avec des requêtes SQL
+
+                echo "<p> le nombre de valeurs dans le tableau est de : avec count() "  .count($couleurs). "</p>";
+                echo "<p> le nombre de valeurs dans le tableau est de :  avec sizeof() "  .sizeof($couleurs). " </p>";
+
+                echo "<p> le drapeau français est $couleurs[b], $couleurs[bl], $couleurs[r].</p>";
+                ?> 
+            </div>
+             <!-- fin col -->
+
+
+            <div class="col-sm-4 m-2 p-2 alert alert-info">
+                <h2 class="m-4 p-4" alert-info">Tableau associatif dans un &lt;SELECT> <br>
+                (avec label, option, form-control</h2>
+
+                <p>Pour mettre un tableau associtif dans un select, avec une boucle foreach qui fabrique les <code>&lt;option value""> <br>              
+                
+                    echo "&lt;label for=\"size2\"> Tailles &lt;/label>&lt;select class=\"form-control w-25\">"; <br>
+
+                    foreach( $tailles2 as $indice2 => $size2 ) { <br>
+                            echo "&lt;option value=\"$indice2\"> $size2 &lt;/option>"; <br>
+                        } <br>
+                    
+                    echo "&lt;/select>";
+                    </p>
+            </div>
+        </section>
+        <!-- fin row -->
+
+         
+        <section class="row">
+            <div class="col-sm-12 p-2 m-2 alert alert-info">
+                <h2>EXOS :</h2>
+                
+                    <p>1) Ajouter la phrase "Bleu, blanc, rouge":</p>
                     <?php
                         echo "<p>Le drapeau français est $couleurs[b],  $couleurs[bl], $couleurs[r] </p>";
                     
@@ -197,7 +243,7 @@
                     // On va faire une boucle pour afficher les valeurs d'un tableau
                     // Foreach >>> pour chaque >>> le moins le plus simples
 
-                    
+    
                     echo "<ul>";
                     foreach ($tableau1 as $acteurs) {
                         echo "<li>" .$acteurs. "<li>";
@@ -260,8 +306,8 @@
          <!-- fin row -->
 
          <section class="row">
-            <div class="col-md-12 p-4 m-4">
-                <h2 class="alert-info">4) Tableau multidimensionnels</h2>        
+            <div class="col-md-12 p-2 m-2">
+                <h3 class="alert-info">4) Tableau multidimensionnels</h3>        
                 
                 <?php
                 foreach ($contacts as $personne) {
@@ -272,7 +318,7 @@
                 foreach ($contacts as $indice => $infos) {
                        
                     if ($indice == 'prenom') { 
-                        echo "<h3 class=\"bg-success\">$infos</h3>"; 
+                        echo "<h3 class=\"bg-white\">$infos</h3>"; 
                     } else {
                         echo "<p>$infos</p>";
                         }               
@@ -302,20 +348,135 @@
                         ),
                     );
 
-                    debug($tableau_multi);
-                    debug($tableau_multi[2]);
-                    debug($tableau_multi[1]['prenom']);
+                    debug($tableau_multi); // fonction pour afficher tout le tableau
+                    debug($tableau_multi[2]); // infos sur l indice 2 du tableau
+                    debug($tableau_multi[1]['prenom']); // sur l indiice 1 la valeur du nom dans le sous-tableau
+
+                    // BOUCLE FOR
+
+                    echo "<hr> <pre class=\"bg-white\">BOUCLE FOR </pre>";
+
+                    // Pour parcourir
+                    for ($i = 0; $i < count($tableau_multi); $i++) {
+                        // echo '<p>' .$tableau_multi[$i]['prenom']. '</p>'; // tant que $I est inférieur au nombre des élements dans le tableau, que l on compte avec count(), on entre dans la boucle
+
+                        echo "<p>" .$tableau_multi[$i]['prenom']. " " .$tableau_multi[$i]['nom']. "</p>";
+                        // debug($tableau_multi[$i]);
+                        // echo "<p>$tableau_multi[$i]['prenom']</p>"; ici les guillemets ne font pas fonctionner le code du formateur
+                    }
+
+                    echo "<hr>";
 
 
-                    ?>
+                    // BOUCLE FOREACH 1
+
+                       // Pour parcourir avec une boucle foreach, une autre méthode
+                       // On psse en variable les contenus de chaque indice du tableau et en ciblant les indices nommés ( le prénom en l occurrence) des ous-tableaux associatifs
+                    echo "<hr> <pre class=\"bg-white\">1) BOUCLE FOREACH </pre>";
+
+                    echo "<p>";
+                    foreach($tableau_multi as $indice => $prenom) {
+                        // debug($prenom);
+                        echo '<strong>' .$tableau_multi[$indice]['prenom']. ' </strong> - '; // ici on met les prénoms en gras avec strong et entre des tirets
+                    }
+                    echo "</p>";
+
+                    // BOUCLE FOREACH 2
+                    echo "<hr> <pre class=\"bg-white\">2) BOUCLE FOREACH</pre>";
+
+                    echo "<p>";
+                    foreach($tableau_multi as $indice => $acteurs) {
+                        // debug($prenom);
+                        echo '<strong>' .$acteurs['prenom']. ' ' . $acteurs['nom']. ' </strong> - ';
+                    }
+                    echo "</p>";
+
+                    //EXO : Faire un tableau $tailles avec des tailles de vetements SMALL, MEDIEUM, LARGE et EXTRA-LARGE et les afficher dans une boucle foreach dans une ul
+                    echo "<hr> <pre class=\"bg-white\">EXO : Faire un tableau $tailles avec des tailles de vetments EXTRA, SMALL ou XL et les afficher dans une boucle foreach dans une ul</pre>";
+                    
+                    echo "<ul>";
+                    $tailles = ['s', 'm', 'l', 'xl'];
+                    //$tailles_bis = array ('s', 'm', 'l', 'xl');
+                    debug($tailles);
+                    echo "</ul>";
+
+                    echo "<ul>";
+                    foreach( $tailles as $indice => $size ) {
+                        echo "<li>" .$indice. " pour " .$size. "</li>";
+                    }
+                    echo "</ul>";
             
-            
-            
+                    //EXO :  Le même dans un tableau associatif appelé $tailles2
+                    echo "<hr> <pre class=\"bg-white\">EXO : Le même dans un tableau associatif</pre>";
+
+                    echo "<ul>";
+                    $tailles2 = [
+                        's' => 'S - small', 
+                        'm' => 'M - medium', 
+                        'l' => 'L - large', 
+                        'xl' => 'XL - extra large'
+                    ];
+                    echo "</ul>";
+
+
+
+                    //BOUCLE FOREACH : les tailles - tableau 2
+                    echo "<hr><pre class=\"bg-white\">BOUCLE FOREACH : les tailles - tableau 2</pre>";
+
+                    echo "<ul>";
+                    foreach( $tailles2 as $indice2 => $size2 ) {
+                        echo "<li> $indice2 pour $size2 </li>";
+                    }
+                    echo "</ul>";
+
+
+
+                    // EXO : Suite : cette fois-ci mettez les valeurs du tableau dans un select de formulaire
+                    echo "<hr><pre class=\"bg-white\"> EXO : Suite : cette fois-ci mettez les valeurs du tableau dans un select de formulaire</pre>";
+
+                    echo "<hr><pre class=\"bg-white\"> 2) BOUCLE FOREACH : avec un SELECT, option, value, form-control, et un label</pre>";
+
+                    echo "<label for=\"size2\"> Tailles </label><select class=\"form-control w-25\">";
+                    
+                    foreach( $tailles2 as $indice2 => $size2 ) {
+                        echo "<option value=\"$indice2\"> $size2 </option>";
+                    }
+                    echo "</select>";
+
+
+                    // autre exemple :
+                    echo "<hr><pre class=\"bg-white\">Autre exemple de tableau assocaitif en SELECT></pre>";
+
+                    $eleve3= [
+                        'rd' => 'Redha', 
+                        'vt' => 'Vincent', 
+                        'ar' => 'Arnold', 
+                        'nd' => 'Nadia',
+                        'ms' => 'Mostapha'
+                    ];
+        
+                    echo "<label for=\"size2\">Eleves </label><select class=\"form-control w-25\">";
+                    
+                    foreach( $eleve3 as $indice3 => $prenom3 ) {
+                        echo "<option value=\"$indice3\"> $prenom3</option>";
+                    }
+                    echo "</select>";
+                ?>
+
+                    <!-- le select copié après Crtl U commenté :
+                    <label for="size2"> Tailles </label>
+                        <select class="form-control w-25">
+                            <option value="s"> S - small </option>
+                            <option value="m"> M - medium </option>
+                            <option value="l"> L - large </option>
+                            <option value="xl"> XL - extra large </option>
+                        </select> -->
+                    
             </div>
             <!-- fin col -->
 
-            <div class="col-5 m-4 p-4">
-                <h2 class="alert-info"></h2>       
+            <div class="col-5 m-2 p-2">
+                <h3 class="alert-info"></h3>       
             </div>
             <!-- fin col -->         
         </section>
