@@ -67,6 +67,14 @@ function date_fr() {
     echo"<p>Date et Jour :<span class=\"fw-bold\"> ". utf8_encode( strftime('%A, %d, %B, %Y'))."</p>";
 }
 
+// function date_eng()
+// setlocale(LC_ALL, 'fr_FR.utf8, 'fra');
+// echo strftime("%A %e %B %Y");
+// echo ' - ';
+// date_default_timezone_set("Europe/Paris");
+// echo date('H:i:s');
+
+
 // déclaration d'une constante qui contient une url ATTENTION on le déplace plus tard VOIR
 
 // define("validator", "https://validator.w3.org/");

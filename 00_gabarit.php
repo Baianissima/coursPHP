@@ -27,10 +27,11 @@
     <!-- ====================================================== -->
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
-    
-    <header class="container-fluid p-4 bg-dark">
+
+    <!-- fin containeur-fluid -->
+    <header class="container-fluid f-header p-2 bg-dark">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">TITRE NIVEAU 1</h1>
+            <h1 class="display-4 text-center">TITRE NIVEAU 1</h1>
             <p class="lead">p class lead</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
@@ -43,7 +44,7 @@
     </header>
     <!-- fin container-fluid header -->
 
-    <div class="container justify-content-center bg-light">
+    <div class="container justify-content-center bg-light mt-2 mb-2 p-2 m-auto">
 
         <section class="row mt-4 p-4">
 

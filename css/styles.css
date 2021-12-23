@@ -1,15 +1,20 @@
 /* styles pour le dossier coursPHP */
 
 
-/* Les couleurs en variables */
+header{
+    background-color: rgb(97, 109, 109);
+}
 
-/* :root {
-<<<<<<< Updated upstream
-    var(--blush): #c08789;
-=======
-    var(--supernude): #c08789;
-    var(--grisphp) : #8892bf;
->>>>>>> Stashed changes
-} */
+body{
+    background-color: rgb(161, 199, 199);
+    color: rgb(116, 211, 211);
+}
+
+.container{
+    background-color: azure;
+}
 
 
+footer{
+    background-color: rgb(97, 109, 109);
+}

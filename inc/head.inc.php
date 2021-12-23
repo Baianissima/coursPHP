@@ -5,7 +5,6 @@
     #---------------------------------------------
     $variable1 = "La page faite avec des fichiers en inc";
     require_once '../inc/functions.php'; //APPEL DES FONCTIONS
-
 ?>
 
 <html lang="fr">
@@ -15,17 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo "<title>$variable1</title>" ?>
 
-    <style>
-        .bg-orange {
-            background-color: orange;
-        }
-
-        .bg-blush {
-            background-color: #9eb2c3;
-        }
-        
-    </style>
-    <!-- <link rel="stylesheet" href="../css/styles.css" -->
+    <!-- mes styles -->
+    <link rel="stylesheet" href="../css/styles.css"
 </head>
 
 
