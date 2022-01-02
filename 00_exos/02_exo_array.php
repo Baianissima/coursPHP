@@ -495,8 +495,18 @@
     </div>
     <!-- fin div container -->
 
+    <!-- ====================================================== -->
+    <!--                  FOOTER EN REQUIRE                     --> 
+    <!-- ====================================================== -->
+    
+    <footer>
+    <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
+    <?php require_once '../inc/footer.inc.php'; ?>
+    </footer>
+
    
     <!-- Optional JavaScript -->
+    
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"

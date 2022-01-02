@@ -85,7 +85,7 @@ define("validator", "https://validator.w3.org/");
 
         <!-- section 2 -->
         <section class="row m-4 p-4 justify-content-center">
-            <div class="col-md-3 m-2 p-2 border bg-light">
+            <div class="col-md-3 m-2 p-2 border text-info">
 
                 <p>Avec le code suivant écrit dans un fichier nommé 02_infos.php, toutes les infos sur le PHP exécuté dans ce serveur (serveur d'évaluation : (cf. http://localhost/coursPHP/01-intro/01_introduction.php)</p>
 

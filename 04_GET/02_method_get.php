@@ -28,7 +28,7 @@
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
     
-    <header class="container-fluid p-4 bg-dark">
+    <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
             <h1 class="display-4">Cours PHP - Chapitre 5 - 01 Methode POST</h1>
             <p class="lead">$_POST[ ] permet de récupérer les données saisies dans un formulaire</p>

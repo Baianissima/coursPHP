@@ -165,10 +165,12 @@
     <!-- ====================================================== -->
     <!--                  FOOTER EN REQUIRE                     --> 
     <!-- ====================================================== -->
+    
     <footer>
     <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
     <?php require_once '../inc/footer.inc.php'; ?>
     </footer>
+    
     <!-- Optional JavaScript -->
 
     <!-- Bootstrap Bundle with Popper -->

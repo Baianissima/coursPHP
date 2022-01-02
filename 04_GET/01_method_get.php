@@ -29,7 +29,7 @@
     <!-- ====================================================== -->
     
     <header class="container-fluid p-4">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center text-info">
             <h1 class="display-4">Cours PHP - Chapitre 4- 01 Methode GET</h1>
             <p class="lead">$_GET[ ] représente les données qui transitent par l'url</p>
 

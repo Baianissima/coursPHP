@@ -1,0 +1,24 @@
+/* styles pour le cours PHP 2021/2022 Suresnes Pisola  */
+
+
+/* font-family: 'Merriweather', serif;
+font-family: 'Montserrat', sans-serif; */
+
+body {
+    font-family: 'Merriweather', serif;
+    font-size: 1em;
+    background-image: url(../img/special-delivery.jpg);
+    background-repeat: repeat;
+}
+
+.f-header {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+h2 {
+    font-size: 1.8em;
+}

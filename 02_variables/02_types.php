@@ -23,7 +23,7 @@
     <!-- en-tête -->
     <!-- =================================== -->
     
-    <header class="container-fluid p-4 bg-dark">
+    <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
             <h1 class="display-4">Cours PHP - 02 Types de données</h1>
             <p class="lead">Les variables en PHP</p>

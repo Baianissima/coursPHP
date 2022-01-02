@@ -59,9 +59,10 @@
 
                     <li>L'attribut "action" de la balise "form" contient donc le nom de ce fichier placé dans le même dossier que notre page avec le "form"</li>
                 </ul>
+            </div>
 
-                <hr>
 
+            <div class="col-md-6">
                 <form action="04_traitement_form.php" method="POST">
 
                     <div class="form-group">
@@ -157,6 +158,7 @@
     <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
     <?php require_once '../inc/footer.inc.php'; ?>
     </footer>
+
     <!-- Optional JavaScript -->
 
     <!-- Bootstrap Bundle with Popper -->

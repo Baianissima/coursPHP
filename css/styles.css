@@ -6,6 +6,10 @@ header{
 }
 
 body{
+    font-size: 1em;
+    /* background-image: url(../img/elephant-skin-245071_1280.jpeg); */
+    background-image: url(../img/background-1747786__480.webp);
+    background-repeat: repeat;
     background-color: rgb(161, 199, 199);
     color: rgb(116, 211, 211);
 }

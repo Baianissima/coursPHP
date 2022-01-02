@@ -6,6 +6,11 @@ DOSSIERS :
 
 ## 00_exos
     ### 01_exos_variables.php
+    ### 02_exo.array.php
+    ### 03_exos_boucles.php
+    ### 04_exos_form.php
+    ### 04_traitment_form.php
+
 ## 00_pages
     ### 01_page_php.php
     ### 02_page_php.php

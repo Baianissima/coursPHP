@@ -31,21 +31,22 @@ $frat = "Fraternité";
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body class="bg-light">
+<body class="">
     <!-- =================================== -->
     <!-- en-tête -->
     <!-- =================================== -->
     
-    <header class="container-fluid p-4 bg-dark">
+    <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
+        implements
             <h1 class="display-4">Cours PHP - Exos</h1>
             <p class="lead">01 Variables</p>
         </div>
     </header>
     <!-- fin containeur-fluid -->
 
-    <div class="container m-4 mx-auto bg-light">
-        <section class="row bg-primary text-white">
+    <div class="container m-4 mx-auto">
+        <section class="row bg-success text-white">
             <div class="col-sm-12">
                 <?php
                 echo $entier;
@@ -80,21 +81,31 @@ $frat = "Fraternité";
 
                 date_fr();
 
-                
-
                 ?>
             </div>
             <!-- fin div col -->
         </section>
          <!-- fin section row -->
 
-        <a href="https://www.php.net/manual/fr/datetime.format.php"</a>
+        <div>
+            <a href="https://www.php.net/manual/fr/datetime.format.php"</a>
+        </div>
 
     </div>
     <!-- fin div container -->
 
+    <!-- ====================================================== -->
+    <!--                  FOOTER EN REQUIRE                     --> 
+    <!-- ====================================================== -->
+    
+    <footer>
+        <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
+        <?php require_once '../inc/footer.inc.php'; ?>
+    </footer>
+
    
     <!-- Optional JavaScript -->
+
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"

@@ -24,7 +24,7 @@
     <!-- en-tête -- HEADER A COMPLETER AVEC NAV EN REQUIRE --   --> 
     <!-- ====================================================== -->
     
-    <header class="container-fluid p-4 bg-dark">
+    <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
             <h1 class="display-4">Cours PHP - 02 Chaînes de caracteres</h1>
             <p class="lead"></p>

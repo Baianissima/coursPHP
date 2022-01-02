@@ -28,7 +28,7 @@
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
     
-    <header class="container-fluid p-4 bg-dark">
+    <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
             <h1 class="display-4">Cours PHP - 03 Conditions</h1>
             <p class="lead">Les instructions conditionnelles ou les conditions : indispensables à la gestion du déroulement d'un algorythme quelconque, <br>

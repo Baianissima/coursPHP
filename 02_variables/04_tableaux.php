@@ -26,7 +26,7 @@
     <!-- en-tête -- HEADER A COMPLETER AVEC NAV EN REQUIRE --   --> 
     <!-- ====================================================== -->
     
-    <header class="container-fluid p-4 bg-dark">
+    <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
             <h1 class="display-4">Cours PHP - 04 Tableaux</h1>
             <p class="lead">Les tableaux répresentent un type composé car ils permettent de stocker sous un même nom de variable plusieurs valeurs indépendants. C'est comme un tiroir divisé en compartiments. Chaque compartiment, que nous nommerons "un élément du tableau", est repéré par un indice numérique (le premier ayant par défaut la valeur 0 et non 1). D'où l'expression de "tableaux indicé".</p>

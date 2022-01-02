@@ -15,7 +15,8 @@
     <?php echo "<title>$variable1</title>" ?>
 
     <!-- mes styles -->
-    <link rel="stylesheet" href="../css/styles.css"
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
+</html
 
 

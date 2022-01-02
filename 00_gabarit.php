@@ -23,14 +23,14 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body class="bg-light">
+<body class="">
     <!-- ====================================================== -->
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
 
     <!-- fin containeur-fluid -->
-    <header class="container-fluid f-header p-2 bg-dark">
-        <div class="col-12 text-center text-info">
+    <header class="container-fluid f-header p-2">
+        <div class="col-12 text-center">
             <h1 class="display-4 text-center">TITRE NIVEAU 1</h1>
             <p class="lead">p class lead</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
@@ -84,7 +84,7 @@
         <!-- section row pour un tableau -->
         <section class="row">
             <div class="col-8 justify-content-center">
-                <h2 class="alert-info">TITRE NIVEAU 2</h2>
+                <h2 class="">TITRE NIVEAU 2</h2>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -120,8 +120,8 @@
     <!-- ====================================================== -->
     
     <footer>
-    <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
-    <?php require_once '../inc/footer.inc.php'; ?>
+        <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
+        <?php require_once '../inc/footer.inc.php'; ?>
     </footer>
 
     <!-- Optional JavaScript -->
