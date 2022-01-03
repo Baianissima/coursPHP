@@ -6,6 +6,7 @@ header{
 }
 
 body{
+    height: 100%;
     font-size: 1em;
     /* background-image: url(../img/elephant-skin-245071_1280.jpeg); */
     background-image: url(../img/background-1747786__480.webp);

@@ -30,7 +30,7 @@
     
     <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">Cours PHP - Chapitre 4- 01 Methode GET</h1>
+            <h1 class="display-4">Cours PHP - Chapitre 4 - 01 Methode GET</h1>
             <p class="lead">$_GET[ ] représente les données qui transitent par l'url</p>
 
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
@@ -78,29 +78,29 @@
                         ); <br>
                     </code></li>
 
-                    <li>Pour voir le tableau on fera d'abord un <code>var_dump(*_GET) : il faut donc le décommenter !</code></li>    
-                    
-                <p>         
+                    <li>Pour voir le tableau on fera d'abord un <code>var_dump(*_GET) : il faut donc le décommenter !</code></li>          
+                <ul>         
             </div>            
             <!-- fin col -->
             
             <div class="col-md-6">
                 <h2>Exemples (cliquer sur les liens qui établissent les informations des produits dans $_GET) :</h2>
 
-                <p><a href="02_method_get.php?article=jean&couleur=bleu&prix=70">Cliquer ici pour voir le jean bleu</a></p>
+                <p><a href="02_method_get.php?article=jean&couleur=bleu&prix=70">Cliquer ici pour voir le jean bleu à 70 euros</a></p>
+                <!-- nom de la page ? indice1=valeur1 & indice2=valeur2 & indice3=valeur3 -->
 
-                <p><a href="02_method_get.php?article=robe&couleur=rouge&prix=60">Cliquer ici pour voir la robe rouge</a></p>
+                <p><a href="02_method_get.php?article=robe&couleur=rouge&prix=60">Cliquer ici pour voir la robe rouge à 60 euros</a></p>
 
-                <p><a href="02_method_get.php?article=pull&couleur=blanc&prix=50">Cliquer ici pour voir le pull blanc</a></p>
+                <p><a href="02_method_get.php?article=pull&couleur=blanc&prix=50">Cliquer ici pour voir le pull blanc à 50 euros</a></p>
 
-                <p><a href="02_method_get.php?article=slip&couleur=vert&prix=20">Cliquer ici pour voir le slip vert</a></p>
+                <p><a href="02_method_get.php?article=slip&couleur=vert&prix=20">Cliquer ici pour voir le slip vert à 20 euros</a></p>
             </div>
              <!-- fin col -->
         </section>
         <!-- fin row -->
         
         <div class="col">
-         <p>TESTdd</p>
+         <p>Un paragraphe</p>
         </div>
 
 
