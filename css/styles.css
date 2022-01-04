@@ -1,8 +1,9 @@
 /* styles pour le dossier coursPHP */
 
 
-header{
+header {
     background-color: rgb(97, 109, 109);
+    color: rgb(37, 43, 43);
 }
 
 body{
@@ -12,14 +13,14 @@ body{
     background-image: url(../img/background-1747786__480.webp);
     background-repeat: repeat;
     background-color: rgb(161, 199, 199);
-    color: rgb(116, 211, 211);
+    color: rgb(97, 109, 109);
 }
 
 .container{
     background-color: azure;
 }
 
-
-footer{
+footer {
     background-color: rgb(97, 109, 109);
+    color: rgb(37, 43, 43);
 }

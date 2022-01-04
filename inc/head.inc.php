@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
-    #---------------------------------------------
+    #--------------------------------------------------#
     # Ceci est aussi un commentaire en PHP, avec dièse #
-    #---------------------------------------------
+    #--------------------------------------------------#
     $variable1 = "La page faite avec des fichiers en inc";
     require_once '../inc/functions.php'; //APPEL DES FONCTIONS
 ?>

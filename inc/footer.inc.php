@@ -18,9 +18,8 @@
         ?>
         
         <div>
-            <small>Copyright &copy; My Website</small>
+            <small>Copyright &copy; My Website du Cours PHP - Colombbus 2021-2022</small>
         </div>
-
     </div>
 </footer>
 
