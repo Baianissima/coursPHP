@@ -15,10 +15,27 @@
                         // debug($pdoDIA);
                         // debug(get_class_methods($pdoDIA));
 
- // 3 - TRAITEMENT DU FORMULAIRE (version basique, et c'est la version non sécurisée)
- if ( !empty( $_POST )) {
-    //  debug($_POST);
-    $insertion = $pdoDIA->query( " INSERT INTO commentaires (pseudo, message, date_enregistrement) VALUES ( '$_POST[pseudo]', '$_POST[message]', NOW()  ) ");
+ // Ici une demo seulement : TRAITEMENT DU FORMULAIRE (version basique, et c'est la version non sécurisée)
+
+//  if ( !empty( $_POST )) {
+//     //  debug($_POST);
+//     $insertion = $pdoDIA->query( " INSERT INTO commentaires (pseudo, message, date_enregistrement) VALUES ( '$_POST[pseudo]', '$_POST[message]', NOW()  ) ");
+//  }
+
+
+// 3 - TRAITEMENT DU FORMULAIRE
+
+ if ( !empty( $_POST )) {  // Ici on lit : "Si $_POST n'est pas vide..."
+    $_POST['pseudo'] = htmlspecialchars($_POST['pseudo']); // pour se prémunir des failles et des injections SQL
+    $_POST['message'] = htmlspecialchars($_POST['message']);
+
+    $insertion = $pdoDIA->prepare( " INSERT INTO commentaires (pseudo, message, date_enregistrement) VALUES (:pseudo, :message, NOW()) ");
+
+    $insertion->execute( array(
+        ':pseudo' => $_POST['pseudo'],
+        ':message' => $_POST['message'],
+
+    ));
  }
 ?>
 
@@ -41,33 +58,38 @@
 
     <!-- mes styles -->
     <link rel="stylesheet" href="../css/styles.css">
+
 </head>
 
 <body class="">
     <!-- ====================================================== -->
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
 
-    <!-- fin containeur-fluid -->
-    <header class="container-fluid f-header p-2">
+    <header class="container-fluid text-info f-header p-2">
+    
         <div class="col-12 text-center">
-            <h1 class="display-4">Cours PHP - Chapitre 09 : sécurité</h1>
-            <p class="lead">01 dialogue</p>
+            <h1 class="display-4">PHP</h1>
+            <p class="lead">Chapitre 09_securite / Page 01_dialogue</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
-                $varOla = "Olá !";
-                echo "<p class=\"text-white\">$varOla tudo bem?</p>";
-        
-                whatDay();
+                $varOla = "Olá!";
+                echo "<p class=\"text-white\">$varOla Tudo bem?</p>"; 
+                // whatDay();
             ?>
         </div>
     </header>
     <!-- fin container-fluid header -->
 
-    <div class="container mt-2 mb-2 p-2 m-auto">
-        <section class="row">
-            <div class="col-md-12">
-                <h2>1- Création d'une BDD</h2>
+
+    <div class="container mt-4 mb-4 p-2 m-auto">
+
+        <section class="row mb-4">
+            <div class="col-md-6">
+                <h2>1 - Création d'une BDD</h2>
                 <ul>
                     <li>Nom de la BDD : dialogue</li>
                     <li>Faire 1 table, le nom de la table est : commentaires (vérifier que la table et la BDD sont avec le moteur InnoDB</li>
@@ -79,12 +101,9 @@
                 </ul>
             </div>
             <!-- fin col -->
-        </section>
-        <!-- fin row -->
 
-        <section class="row">
             <div class="col-md-6">
-                <h2>2-Connexion à la BDD dialogue</h2>
+                <h2>2 - Connexion à la BDD dialogue</h2>
                 <ul>
                     <li>Se connecter à la BDD en haut de page, avant le DOCTYPE.</li>
                     <li>Afficher toutes les données depuis la table commentaires</li>
@@ -97,10 +116,11 @@
         </section>
         <!-- fin row -->
 
-        <section class="row">
+
+        <section class="row mb-4">
+
             <div class="col-md-12">
-            <div class="col-md-6">
-                <h2>3 - Afficher les données</h2>
+                <h2>3 - Afficher les données d'abord avec un var_dump (ma function debug)</h2>
 
                 <?php
                     $resultat = $pdoDIA->query( " SELECT * FROM commentaires ");
@@ -109,15 +129,35 @@
                     // debug($nbr_commentaires);
                 ?>
             </div>
-            <!-- fin col -->        
-            </div>
+            <!-- fin col -->  
         </section>
-        <!-- fin row -->
+        
+        
+        <section class="row mb-4">
 
+            <div class="col-md-6">
+                <h2>5 - L'insertion d'informations
+                <h5>Les information ajoutées dans ce formulaire doivent apparaître dans le tableau d'à côté ----------------------------------------------------> </h5>
+                <!-- form avec action et method < action est vide car nous envoyons les données avec cette même page??? et POST va envoyer dans la superglobale $_POST -->
 
-        <section class="row">
-            <div class="col-md-12">
-                <h2>Il y a <?php echo $nbr_commentaires; ?> commentaires !</h2>
+                <form action="" method="POST">
+                    <div class="mb-3">
+                        <label for="pseudo" class="form-label">Votre pseudo</label>
+                        <input type="text" name="pseudo" id="pseudo" class="form-control" required></input>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Votre message</label>
+                        <textarea name="message" id="message" cols="30" rows="5" class="form-control" required></textarea>
+                    </div>
+                                    
+                    <input type="submit"></input>
+                </form>
+            </div>
+            <!-- fin col -->
+
+            <div class="col-md-6">
+                <h2>4 - Total de commentaires : <?php echo $nbr_commentaires; ?></h2>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -145,60 +185,19 @@
         </section>
         <!-- fin row -->
 
-
-        <section class="row">
+        <!-- gabarit pour une section -->
+        <section class="row mb-4">
             <div class="col-md-6">
-                <h2>Insertion d'un message</h2>
-                <!-- form avec action et method < action est vide car nous envoyons les données avec cette même page??? et POST va envoyer dans la superglobale $_POST -->
-                <ul>
-                  <li>Faire un formulaire HTML</li>
-                  <li>Avec method et POST</li>
-                </ul>
-
-                <form action="" method="POST">
-                    <div class="mb-3">
-                        <label for="pseudo" class="form-label">Votre pseudo</label>
-                        <input type="text" name="pseudo" id="pseudo" class="form-control" required></input>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Votre message</label>
-                        <textarea name="message" id="message" cols="30" rows="5" class="form-control" required></textarea>
-                    </div>
-                                    
-                    <input type="submit"></input>
-                </form>
+                <h2></h2>         
             </div>
-            <!-- fin col -->
-
+            <!-- fin col --> 
 
             <div class="col-md-6">
-                <h2></h2>
-               
+                <h2></h2>         
             </div>
-            <!-- fin col -->   
+            <!-- fin col -->  
         </section>
         <!-- fin row -->
-
-        <section class="row">
-            <div class="col-md-6">
-                <h2></h2>
-               
-            </div>
-            <!-- fin col -->
-
-
-            <div class="col-md-6">
-                <h2></h2>
-               
-            </div>
-            <!-- fin col -->           
-        </section>
-        <!-- fin row -->
-
-
-            
-
     </div>
     <!-- fin div container -->
 

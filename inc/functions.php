@@ -43,10 +43,8 @@ function whatDays(){
 function dateFR() {
     // ou setlocale(LC_ALL, 'fr_fr');
     // ma contribution trouvée sur le doc http://www.finalclap.com/faq/81-php-afficher-date-heure-francais : setlocale(LC_TIME, 'fra_fra')
-
-
     setlocale(LC_TIME, 'fra_fra');
-    echo "<p>Nous sommes le " . utf8_encode( strftime('%A, %d %B, %Y')) . "</p>";
+    echo "<p>Nous sommes le " . utf8_encode( strftime('%A, %e %B, %Y')) . "</p>";
 
     
     // ou concatener avec 3 echos :
@@ -87,7 +85,7 @@ function jeprint_r($mavar) {
     echo "</pre>";
 }
 
-// CREATION D'UNE FONCTION POUR var_dump (la var debug avec ce var_dump doit être vu seulement par le développeur, il faut mettre en commentaire avant de lancer le site au client !!!) avec des styles bootstrap : on crée une étiquette jaune pour le titre var_dump dans les styles
+// CREATION D'UNE FONCTION POUR var_dump (la var debug doit être vu seulement par le développeur, il faut mettre en commentaire avant de lancer le site au client !!!) avec des styles bootstrap : on crée une étiquette jaune pour le titre var_dump dans les styles
 
 function debug($mavar2) {
     echo "<br><small class=\"bg-warning text-white\">Ici on fait afficher une var_dump !</small><pre class=\"alert alert-success\">";

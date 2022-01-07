@@ -28,30 +28,39 @@
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
     
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
+    
     <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">Cours PHP - 03 Conditions</h1>
-            <p class="lead">Les instructions conditionnelles ou les conditions : indispensables à la gestion du déroulement d'un algorythme quelconque, <br>
-            ces instructions sont présentes dans tous les langages. Cela sera familier pour ceux qui ont déjà pratiqué un langage tel que le JavaScript.</p>
+            <h1 class="display-4">PHP</h1>
+            <p class="lead">03 Conditions</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $varOla = "Olá !";
                 echo "<p class=\"text-white\">$varOla tudo bem?</p>";
         
-                whatDay();
+                // whatDay();
             ?>
         </div>
     </header>
     <!-- fin container-fluid : header -->
 
-    <div class="container justify-content-center bg-light">
+    <div class="container justify-content-center">
+
+        <section class="row mt-4 p-2">
+            <div class="col-md-12">
+                <p class="alert alert-success">Les instructions conditionnelles ou les conditions : indispensables à la gestion du déroulement d'un algorythme quelconque, 
+                ces instructions sont présentes dans tous les langages. Cela sera familier pour ceux qui ont déjà pratiqué un langage tel que le JavaScript.</p>
+            </div>    
+        </section>
 
         <section class="row mt-4 p-2">
 
             <div class="col-md-4">
 
                 <h2 class="alert-info text-center">"If"</h2>
-
                 <p>L'instruction <code>if</code> est la plus simples et la plus utilisée des instructions conditionnelles. Elle est essentielle en ce qu'elle permet d'orienter l'exécution du script en fonction de la valeur booléenne d'une expression.</br>
 
                 <code>

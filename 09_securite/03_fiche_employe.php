@@ -14,11 +14,10 @@
                         ));
                         // debug($pdoENT);
                         // debug(get_class_methods($pdoENT));
+                        // debug($_GET);
 
-
-
-
- // Ici une demo seulement : TRAITEMENT DU FORMULAIRE (version basique, et c'est la version non sécurisée)
+                        // if (isset$_GET['id_employe'])) {
+                        // }
 
 //  if ( !empty( $_POST )) {
 //     //  debug($_POST);
@@ -55,7 +54,7 @@
 <html lang="fr">
 <head>
     <!-- ====================================================== -->
-    <!--              AJOUTER LE HEAD EN REQUIRE              --> 
+    <!--              AJOUTER LE HEAD EN REQUIRE                --> 
     <!-- ====================================================== -->
 
     <!-- required my tags -->
@@ -66,10 +65,10 @@
     <!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         
-    <title>Cours PHP - Chapitre 09 : sécurité (02 employés)</title>
+    <title>Cours PHP - Chapitre 09 : sécurité (03 fiche_employe)</title>
 
     <!-- mes styles -->
-    <link rel="stylesheet" href="../css/styles.css">
+    <!-- <link rel="stylesheet" href="../css/styles.css"> -->
 </head>
 
 <body class="">
@@ -85,7 +84,7 @@
     <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
             <h1 class="display-4">PHP</h1>
-            <p class="lead">Chapitre 09_securite / Page 02_employes</p>
+            <p class="lead">Chapitre 09_securite / Page 03_fiche_employe</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $varOla = "Olá !";
@@ -97,7 +96,7 @@
     </header>
     <!-- fin container-fluid header -->
 
-    <div class="container mt-4 mb-4 p-2 m-auto text-center">
+    <div class="container mt-4 mb-4 p-2 m-auto">
         <section class="row">
             <div class="col-md-12">
                 <h2>1 - Afficher des données de la table employés sur un tableau :</h2>
@@ -144,7 +143,8 @@
                             <td><?php echo $ligne['service']; ?></td>
                             <td><?php echo $ligne['salaire']; ?></td>
                             <td><?php echo $ligne['date_embauche']; ?></td>
-                            <td><a href="fiche_employe.php?id_employe=<?php echo $ligne['id_employes']; ?>">Fiche</a></td>
+                            <!--  -->
+                            <td><a href="03_fiche_employe.php?id_employe=<?php echo $ligne['id_employes']; ?>">Fiche</a></td>
                         </tr>
                         <!-- Fermeture de la boucle while avec l'accolade fermante ici : -->
                         <?php } ?>

@@ -28,23 +28,27 @@
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
     
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
+    
     <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">Cours PHP - Exos - 06 PDO</h1>
-            <p class="lead">Faire des requêtes préparées</p>
+            <h1 class="display-4">PHP</h1>
+            <p class="lead">Exos 06 PDO : faire des requêtes préparées</p>
 
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $varOla = "Olá !";
                 echo "<p class=\"text-white\">$varOla tudo bem?</p>";
         
-                whatDay();
+                // whatDay();
             ?>
         </div>
     </header>
     <!-- fin container-fluid : header -->
 
-    <div class="container mt-2 mb-2 p-2 m-auto">
+    <div class="container mt-4 mb-4 p-2 m-auto">
 
         <section class="row">
             <div class="col-md-6">

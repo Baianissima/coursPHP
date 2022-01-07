@@ -28,6 +28,10 @@
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
     
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
+    
     <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
             <h1 class="display-4">Cours PHP - 02 Boucles</h1>
@@ -44,7 +48,7 @@
     </header>
     <!-- fin container-fluid : header -->
 
-    <div class="container justify-content-center bg-light mt-2 mb-2 p-2 m-auto">
+    <div class="container justify-content-center mt-2 mb-2 p-2 m-auto">
 
         <section class="row">
 
@@ -113,11 +117,11 @@
     <!-- ====================================================== -->
     <!--                  FOOTER EN REQUIRE                     --> 
     <!-- ====================================================== -->
-    
     <footer>
-    <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
-    <?php require_once '../inc/footer.inc.php'; ?>
+        <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
+        <?php require_once '../inc/footer.inc.php'; ?>
     </footer>
+
     <!-- Optional JavaScript -->
 
     <!-- Bootstrap Bundle with Popper -->

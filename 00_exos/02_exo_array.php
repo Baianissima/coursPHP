@@ -20,14 +20,18 @@
 </head>
 
 <body class="bg-light">
-    <!-- =================================== -->
-    <!-- en-tête -->
-    <!-- =================================== -->
+   <!-- ====================================================== -->
+    <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
+    <!-- ====================================================== -->
     
-    <header class="container-fluid p-2 bg-dark">
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
+    
+    <header class="container-fluid p-2">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">Cours PHP - Exos</h1>
-            <p class="lead">02 Arrays : les tableaux</p>
+            <h1 class="display-4">PHP</h1>
+            <p class="lead">Exos / 02 Arrays : les tableaux</p>
         </div>
     </header>
     <!-- fin containeur-fluid -->

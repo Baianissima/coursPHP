@@ -26,24 +26,28 @@
 
 <body class="bg-light">
     <!-- ====================================================== -->
-    <!-- en-tête -- HEADER A COMPLETER AVEC NAV EN REQUIRE --   --> 
+    <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
+    
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
     
     <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">Cours PHP - 03 Chaînes de caracteres</h1>
-            <p class="lead"></p>
+            <h1 class="display-4">PHP</h1>
+            <p class="lead">Les variables / 03 Chaînes de caracteres</p>
             <?php
                 $varOla = "Olá !";
                 echo "<p class=\"text-white\">$varOla tudo bem?</p>";
         
-                whatDay();
+                // whatDay();
             ?>
         </div>
     </header>
     <!-- fin container-fluid header -->
 
-    <div class="container justify-content-center bg-light">
+    <div class="container justify-content-center">
 
         <section class="row m-4 p-4">
 
@@ -191,8 +195,10 @@
     <!-- ====================================================== -->
     <!--                  FOOTER EN REQUIRE                     --> 
     <!-- ====================================================== -->
-    <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
-    <?php require_once '../inc/footer.inc.php'; ?>
+    <footer>
+        <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
+        <?php require_once '../inc/footer.inc.php'; ?>
+    </footer>
 
     <!-- Optional JavaScript -->
 

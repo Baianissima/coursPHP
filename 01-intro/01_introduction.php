@@ -20,26 +20,33 @@
 </head>
 
 <body class="">
-    <!-- =================================== -->
-    <!-- en-tête -->
-    <!-- =================================== -->
+    <!-- ====================================================== -->
+    <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
+    <!-- ====================================================== -->
     
-    <header class="container-fluid p-4 text-white">
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
+    
+    <header class="container-fluid p-4 text-info">
         <div class="col-12 text-center">
-            <h1 class="display-4">Cours PHP - Introduction</h1>
-            <p class="lead">PHP : Php Hypertext Preprocessor</p>
-
-            <?php
-                // if (defined("validator")) echo "la constante validator est bien définie";
-
-                echo "<p>Validez votre HTML CSS sur le site du <a href=\"" .validator. "\" target=\"_blanck\"> Validator </a></p>";
-            ?>
+            <h1 class="display-4">PHP</h1>
+            <p class="lead">Introduction PHP = Php Hypertext Preprocessor</p>
         </div>
     </header>
 
     <div class="container">
+
+        <section>
+        <?php
+                // if (defined("validator")) echo "la constante validator est bien définie";
+
+                echo "<p>Validez votre HTML CSS sur le site du <a href=\"" .validator. "\" target=\"_blanck\"> Validator </a></p>";
+            ?>
+        </section>
+
         <section class="row m-2 p-2 justify-content-center">
-            <div class="col-md-3 m-2 border bg-light">
+            <div class="col-md-3 m-2 border">
                 <h4>1/ Réaliser un site dynamique</h4>
                 <p>Pour réaliser un site dynamique nous allons aborder les points suivants :</p>
                     <ul>
@@ -215,11 +222,13 @@
 
   <!-- Commenter à l'intérieur du code PHP si on veut garder l'info que pour le côté serveur !  -->
 
-  <!-- <?php require 
-    // Ici on appelle le footer cree dans dossier inc pour qu il se repete sur cette page : 
-  '../inc/footer.inc.php'; ?> -->
-
-  <?php require_once '../inc/footer.inc.php'; ?>
+    <!-- ====================================================== -->
+    <!--                  FOOTER EN REQUIRE                     --> 
+    <!-- ====================================================== -->
+    <footer>
+        <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
+        <?php require_once '../inc/footer.inc.php'; ?>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- Bootstrap Bundle with Popper -->

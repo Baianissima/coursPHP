@@ -19,14 +19,18 @@
 </head>
 
 <body class="bg-light">
-    <!-- =================================== -->
-    <!-- en-tête -->
-    <!-- =================================== -->
+    <!-- ====================================================== -->
+    <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
+    <!-- ====================================================== -->
+    
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
     
     <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">Cours PHP - 02 Types de données</h1>
-            <p class="lead">Les variables en PHP</p>
+            <h1 class="display-4">PHP</h1>
+            <p class="lead">Les variables en PHP / 02 Types de données</p>
             <?php
             minutePap();
             ?>
@@ -34,7 +38,7 @@
     </header>
     <!-- fin container-fluid header -->
 
-    <div class="container bg-light">
+    <div class="container">
 
         <section class="row m-4 p-4">
             
@@ -241,13 +245,13 @@
     </div>
   <!-- fin div container -->
 
-  <!-- ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
-  <?php require_once '../inc/footer.inc.php'; ?>
-
-  <!-- Commenter à l'intérieur du code PHP si on veut garder l'light que pour le côté serveur !  -->
-
-  <!-- // Ici on appelle le footer crée dans le dossier inc pour qu'il se repète sur cette page : 
-  // <?php '../inc/footer.inc.php'?> -->
+    <!-- ====================================================== -->
+    <!--                  FOOTER EN REQUIRE                     --> 
+    <!-- ====================================================== -->
+    <footer>
+        <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
+        <?php require_once '../inc/footer.inc.php'; ?>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- Bootstrap Bundle with Popper -->

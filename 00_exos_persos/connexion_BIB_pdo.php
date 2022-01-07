@@ -43,7 +43,7 @@
     </header>
     <!-- fin container-fluid header -->
 
-    <div class="container mt-2 mb-2 p-2 m-auto">
+    <div class="container mt-4 mb-4 p-2 m-auto">
 
         <section class="row mt-4">
 

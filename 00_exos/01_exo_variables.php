@@ -32,15 +32,19 @@ $frat = "Fraternité";
 </head>
 
 <body class="">
-    <!-- =================================== -->
-    <!-- en-tête -->
-    <!-- =================================== -->
+    <!-- ====================================================== -->
+    <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
+    <!-- ====================================================== -->
     
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
+
     <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
         implements
-            <h1 class="display-4">Cours PHP - Exos</h1>
-            <p class="lead">01 Variables</p>
+            <h1 class="display-4">PHP</h1>
+            <p class="lead">Exos / 01 Variables</p>
         </div>
     </header>
     <!-- fin containeur-fluid -->

@@ -1,6 +1,6 @@
 
 
-<footer class="text-info">
+<footer class="">
 <!-- <footer id="sticky-footer" class="fixed-bottom"> -->
     <!-- Ici on demande à PHP d'afficher l'heure au format français -->
 
@@ -25,6 +25,7 @@
         </div>
     </div>
 </footer>
+
 
 <!-- plus d'infos sur la fonction des heures :
 https://www.php.net/manual/fr/function.date.php

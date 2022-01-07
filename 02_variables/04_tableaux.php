@@ -23,30 +23,36 @@
 
 <body class="bg-light">
     <!-- ====================================================== -->
-    <!-- en-tête -- HEADER A COMPLETER AVEC NAV EN REQUIRE --   --> 
+    <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
+    
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
     
     <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">Cours PHP - 04 Tableaux</h1>
-            <p class="lead">Les tableaux répresentent un type composé car ils permettent de stocker sous un même nom de variable plusieurs valeurs indépendants. C'est comme un tiroir divisé en compartiments. Chaque compartiment, que nous nommerons "un élément du tableau", est repéré par un indice numérique (le premier ayant par défaut la valeur 0 et non 1). D'où l'expression de "tableaux indicé".</p>
+            <h1 class="display-4">PHP</h1>
+            <p class="lead">04 Tableaux</p>
             <?php
                 $varOla = "Olá !";
                 echo "<p class=\"text-white\">$varOla tudo bem?</p>";
         
-                whatDay();
+                // whatDay();
             ?>
         </div>
     </header>
     <!-- fin container-fluid header -->
 
-    <div class="container justify-content-center bg-light">
+    <div class="container justify-content-center">
 
         <section class="row m-4 p-4">
 
             <div class="col-md-6">
 
                 <h2 class="alert-info"01- Les tableaux>01) Les tableaux</h2>
+
+                <p class="alert alert-success">Les tableaux répresentent un type composé car ils permettent de stocker sous un même nom de variable plusieurs valeurs indépendants. C'est comme un tiroir divisé en compartiments. Chaque compartiment, que nous nommerons "un élément du tableau", est repéré par un indice numérique (le premier ayant par défaut la valeur 0 et non 1). D'où l'expression de "tableaux indicé".</p>
 
                 <p>Un tableau appellé "array" en anglais est une variable amélioré dans laquelle on stocke une multitude de valeurs. <br>
                 Ces valeurs peuvent être de n'importe quel type. <br>

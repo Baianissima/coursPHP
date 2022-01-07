@@ -265,7 +265,7 @@
   </div>
 
   <!-- pied de page -->
-  <footer class="bg-dark text-white" id="contact">
+  <footer class="text-white" id="contact">
 
     <h4>Conctactez-moi</h4>
     <form>

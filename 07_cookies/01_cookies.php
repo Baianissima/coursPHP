@@ -27,9 +27,12 @@
 <html lang="fr">
 <head>
     <!-- ====================================================== -->
-    <!--              AJOUTER LE HEAD EN REQUIRE                --> 
+    <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
-
+    
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
     <!-- required my tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,7 +68,7 @@
     </header>
     <!-- fin container-fluid : header -->
 
-    <div class="container mt-2 mb-2 p-2 m-auto">
+    <div class="container mt-4 mb-4 p-2 m-auto">
 
         <section class="row">
             <div class="col-md-6">

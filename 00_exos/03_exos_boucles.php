@@ -28,17 +28,21 @@
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
     
-    <header class="container-fluid f-header p-2 bg-dark">
+    <nav>
+        <?php require_once '../inc/navbar.inc.php'; ?>
+    </nav>
+    
+    <header class="container-fluid f-header p-2">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4 text-center">Cours PHP - 00 Exos</h1>
-            <p class="lead">Exos 03 Boucles/p>
+            <h1 class="display-4 text-center">PHP</h1>
+            <p class="lead">Exos / 03 Boucles</p>
 
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $varOla = "Olá !";
                 echo "<p class=\"text-white\">$varOla tudo bem?</p>";
         
-                whatDay();
+                // whatDay();
             ?>
         </div>
     </header>

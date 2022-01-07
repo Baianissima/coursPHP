@@ -14,6 +14,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php echo "<title>$variable1</title>" ?>
 
+    <!-- mes typos google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300&family=Shizuru&display=swap" rel="stylesheet">
+
     <!-- mes styles -->
     <link rel="stylesheet" href="../css/styles.css">
 </head>
