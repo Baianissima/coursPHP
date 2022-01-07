@@ -1,5 +1,5 @@
 <?php
- require_once '../inc/functions.php'; // appel des fonctions
+ require_once '../inc/functions.php'; // appel des fonctions toujours avant DOCTYPE
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
     <!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         
-    <title>Cours PHP - Exos - Form</title>
+    <title>Cours PHP - Exos - 06 PDO</title>
 
     <!-- mes styles -->
     <link rel="stylesheet" href="../css/styles.css">
@@ -30,8 +30,8 @@
     
     <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">Cours PHP - Exos - Form</h1>
-            <p class="lead">Exercice traitement d'un formulaire</p>
+            <h1 class="display-4">Cours PHP - Exos - 06 PDO</h1>
+            <p class="lead">Faire des requêtes préparées</p>
 
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
@@ -48,104 +48,63 @@
 
         <section class="row">
             <div class="col-md-6">
-                <h2>Formulaire</h2>
-
-                <ul>           
-                    <li>EXO : faire un formulaire avec les champs PRENOM, NOM, E-MAIL, ADRESSE, CODE POSTALE, VILLE et TELEPHONE.</li>
-                    
-                    <li>Le champ prenom n'est pas obligatoire.</li>
-
-                    <li>Le traitement du formulaire se fait dans un second fichier nommé 04_traitement_form.php</li>
-
-                    <li>L'attribut "action" de la balise "form" contient donc le nom de ce fichier placé dans le même dossier que notre page avec le "form"</li>
-                </ul>
+                <h2>Consignes pour l'exercice PDO de requete preparée :</h2>            
+                    <ul>
+                        <li>Require des fonctions</li>
+                        <li>Se connecter à la BDD entreprise</li>
+                        <li>Afficher dans une ul les noms/prenoms des employes du service commercial, trier par salaire du plus petit au plus grand</li>
+                        <li>Utiliser une requête préparée avec bindParam</li>
+                        <li>Afficher le nombre de commerciaux</li>
+                        <li>Chercher ensuite sur le Web comment mettre le salaire au format français. Ex. 3 000,00 euros</li>
+                    </ul>echo '<hr>';              
             </div>
+            <!-- fin col -->
 
 
-            <div class="col-md-6">
-                <form action="04_traitement_form.php" method="POST">
+            <?php
+                // ETAPES A SUIVRE :
 
-                    <div class="form-group">
-                        <label for="prenom">Prénom</label>
-                        <input type="text" class="form-control" id="prenom" name="prenom">
-                    </div>
-                    <!-- fin prénom -->
+                // connexion à la BDD depuis le Mac :
+                $pdoENT = new PDO('mysql:host=localhost;dbname=entreprise',  
+                'root',  // le pseudo ou l'utilisateur de la BDD
+                // '',  // ici le mot de passe en local sur PC est vide avec XAMPP
+                'root', // cette ligne commentée donne le mdp pour Mac avec MAMP
+                array(
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,  // Pour afficher les erreurs SQL dans le navigateur
+                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8', // Pour définir le carset (jeux de caracteres) des echanges avec la BDD
+                ));
+                debug($pdoENT);
+                debug(get_class_methods($pdoENT)); // ici nous auro la liste des methodes
 
-                    <div class="form-group">
-                        <label for="">Nom</label>
-                        <input type="text" class="form-control" id="nom" name="nom" required>
-                    </div>
-                    <!-- fin nom -->
+                    // SELECT * FROM employes WHERE prenom='Fabrice'
+                    // 1 - On demande des informations à la BDD car il y a un ou plusieurs résultats
 
-                    <div class="form-group">
-                        <label for="">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
-                    <!-- fin email -->
+            
+                    $requete = $pdoENT->query (" SELECT * FROM employes WHERE prenom='Fabrice' ");
 
-                    <div class="form-group">
-                        <label for="code_postal">Code postal</label>
-                        <input type="number" class="form-control" id="code_postal" name="code_postal" min="01000" max="99999" required>
-                    </div>
-                    <!-- fin code postal -->
+                    echo '<hr>';
+                    debug($requete);
 
-                    <div class="form-group">
-                        <label for="">Adresse</label>
-                        <input type="text" class="form-control" id="adresse" name="adresse" required>
-                    </div>
-                    <!-- fin adresse -->
+                    // debut de la requête préparée :
+            
+                    $service = 'commercial';  // On cherche plus d'un résultat
+                    $resultat = $pdoENT->prepare( " SELECT nom, prenom, salaire FROM employes WHERE service = :service ORDER BY salaire ASC " );
+                    $resultat->bindParam( ':service', $service); // 2 - On lie le marqueur
+                    $resultat->execute(); // 3 - On execute la requête
+                    $nombre_employes = $resultat->rowCount();
 
-                    <div class="form-group">
-                        <label for="ville">Ville</label>
-                        <input type="text" class="form-control" id="ville" name="ville" required>
-                    </div>
-                    <!-- fin ville -->
+                    // debug($nombre_employes);
+                    echo '<h4> Il y a ' .$nombre_employes. ' employés au service ' .$service. ' </h4>';
 
-                    <div class="form-group">
-                        <label for="telephone">Téléphone</label>
-                        <input type="number" class="form-control" id="telephone" name="telephone" required>
-                    </div>
-                    <!-- fin ville -->
-
-                    <div class="row mb-2">
-                        <div class="col">
-                            <textarea name="message" id="message"  class="form-control" rows="3"></textarea>
-                        </div>
-                    </div>     
-                    <!-- fin row interne du form -->   
-
-                    <button type="submit" class="btn btn-small btn-info">Envoyer</button>
-                    <!-- fin button envoyer -->                
-                </form>
-            </div>
-            <!-- fin div form -->
+                    while ( $informations = $resultat->fetch (PDO::FETCH_ASSOC)) {
+                                // debug($informations);
+                                // echo $informations['nom'];
+                                // echo $informations['salaire'];
+                        echo '<p>' .$informations['nom']. ' '.$informations['prenom']. ' '.$informations['service'] . ' - Date d\'embauche : ' .$informations['date_embauche']. ' </p>'; // ici on fait un echo des résultats;
+                    }
+            ?>
         </section>
         <!-- fin row -->
-
-       
-       
-        <?php 
-
-         // ici une row a etre completée par de données seulement si le formulaire est envoyé
-
-            if (!empty($_POST)) { // si $_POST n'est pas vide = différent de empty (!empty) c'est qu'il est rempli et donc que e formulaire a été envoyé, on peut envoyer un formulaire avec des champs vides. Tout n'est pas obligatoire, les valeurs de $_POST sont alors des strings vides.
-                echo "<section class=\"row bg-warning p-4\"><div class=\"col-md-12\"><h2>Données issues du formulaire</h2>";
-                
-                // echo "<p>Prenom :" .$_POST['prenom']. " Nom : " .$_POST['nom']. "</p>";
-
-                echo "<p>Prenom : " .$_POST['prenom']. "</p>";
-
-                echo "<p>Nom : " .$_POST['nom']. "</p>";
-
-                echo "<p>Message : " .$_POST['message']. "</p>";
-
-                echo "</div></section>";
-        }
-        // debug($_POST);
-        // echo $_POST['nom'];
-      ?>    
-       
-
 
     </div>
     <!-- fin div container -->

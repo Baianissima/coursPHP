@@ -1,6 +1,6 @@
 <?php
-
-define("validator", "https://validator.w3.org/");
+    require_once '../inc/functions.php'; // appel des fonctions
+    define("validator", "https://validator.w3.org/");
    
 ?>
 

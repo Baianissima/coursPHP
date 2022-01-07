@@ -1,4 +1,6 @@
-<?php require_once '../inc/functions.php'; ?> //appel des fonctions
+<?php
+    require_once '../inc/functions.php'; //APPEL DES FONCTIONS
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,10 +15,13 @@
     <!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         
-    <title>Cours PHP - 04 / Tableaux</title>
+    <title>Cours PHP - 03 Chaînes de caracteres</title>
 
     <!-- mes styles -->
+    <!-- <link rel="stylesheet" href="../css/styles.css"> -->
+
     <link rel="stylesheet" href="../css/styles.css">
+    
 </head>
 
 <body class="bg-light">
@@ -26,7 +31,7 @@
     
     <header class="container-fluid p-4">
         <div class="col-12 text-center text-info">
-            <h1 class="display-4">Cours PHP - 02 Chaînes de caracteres</h1>
+            <h1 class="display-4">Cours PHP - 03 Chaînes de caracteres</h1>
             <p class="lead"></p>
             <?php
                 $varOla = "Olá !";

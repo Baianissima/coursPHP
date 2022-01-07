@@ -3,15 +3,16 @@
 
 header {
     background-color: rgb(97, 109, 109);
-    color: rgb(37, 43, 43);
+    color: rgb(8, 189, 189);
+    /* color: rgb(37, 43, 43); */
 }
 
 body{
     height: 100%;
     font-size: 1em;
     /* background-image: url(../img/elephant-skin-245071_1280.jpeg); */
-    background-image: url(../img/background-1747786__480.webp);
-    background-repeat: repeat;
+    background-image: url(../img/cube-background-2484131__480.webp) no-repeat;
+    /* background-repeat: repeat; */
     background-color: rgb(161, 199, 199);
     color: rgb(97, 109, 109);
 }
@@ -22,5 +23,5 @@ body{
 
 footer {
     background-color: rgb(97, 109, 109);
-    color: rgb(37, 43, 43);
+    /* color: rgb(37, 43, 43); */
 }

@@ -1,6 +1,9 @@
-<footer>
+
+
+<footer class="text-info">
 <!-- <footer id="sticky-footer" class="fixed-bottom"> -->
     <!-- Ici on demande à PHP d'afficher l'heure au format français -->
+
     <div class="container-fluid p-4 m-4 m-auto text-center">
        
         <!-- ce code avec 1 constante en PHP en 1 ligne sert à afficher le chemin du fichier sur la page html -->
