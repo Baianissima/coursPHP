@@ -1,0 +1,30 @@
+/* Styles pour le dossier PORTFOLIO - en mode Bootstrap */
+
+:root {
+    --corail: #f76742;
+    --vert:  #0eac21;
+}
+
+.bg-corail {
+    background-color: #f76742;
+    background-color: #0eac21;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    /* 100 vh view height la hauteur de l'écran 100 % de l'écran  */
+    height: 100vh;
+}
+blockquote {
+    margin-top: 40px;
+}
+
+
+h3 {
+    font-size: 1em;
+}
+
+footer {
+    height: 400px;
+}
