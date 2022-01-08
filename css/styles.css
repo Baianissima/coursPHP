@@ -8,8 +8,7 @@ header {
 }
 
 body{
-    /* font-family: 'Barlow', sans-serif; */
-    /* font-family: 'Shizuru', cursive; */
+    font-family: 'Barlow', sans-serif;
     height: 100%;
     font-size: 1em;
     background-image: url(../img/cube-background-2484131__480.webp);
@@ -22,7 +21,7 @@ body{
 }
 
 .container{
-    background-color: azure;
+    background-color:azure;
 }
 
 footer {
@@ -31,12 +30,12 @@ footer {
     /* color: rgb(37, 43, 43); */
 }
 
-/* pour supprimer les fleches ddu menu deroulant */
+/* pour supprimer les fleches du menu bootstrap */
 .dropdown-toggle::after {
     display:none;
 }
 
-/* class creee pour centrer la nav menu */
+/* class creee pour centrer la nav */
 .menu{
     padding-left: 200px;
 }

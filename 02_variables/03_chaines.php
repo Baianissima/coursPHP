@@ -41,7 +41,7 @@
                 $varOla = "Olá !";
                 echo "<p class=\"text-white\">$varOla tudo bem?</p>";
         
-                // whatDay();
+                whatDay();
             ?>
         </div>
     </header>

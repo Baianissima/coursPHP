@@ -1,6 +1,6 @@
 <?php
  
- // 1 APPEL DES FOCTIONS
+ // 1 APPEL DES FONCTIONS
  require_once '../inc/functions.php'; // appel des fonctions
 
  // 2 - CONNEXION BDD
@@ -68,29 +68,26 @@
     <title>Cours PHP - Chapitre 09 : sécurité (03 fiche_employe)</title>
 
     <!-- mes styles -->
-    <!-- <link rel="stylesheet" href="../css/styles.css"> -->
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body class="">
     <!-- ====================================================== -->
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
-
-    <!-- fin containeur-fluid -->
     <nav>
         <?php require_once '../inc/navbar.inc.php'; ?>
     </nav>
-    
+
     <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
             <h1 class="display-4">PHP</h1>
             <p class="lead">Chapitre 09_securite / Page 03_fiche_employe</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
-                $varOla = "Olá !";
-                echo "<p class=\"text-white\">$varOla tudo bem?</p>";
-        
-                // whatDay();
+                $varOla = "Olá!";
+                echo "<p class=\"text-white\">$varOla Tudo bem?</p>";
+                whatDay();
             ?>
         </div>
     </header>
@@ -114,7 +111,6 @@
             </div>
         </section>
         <!-- fin row -->
-
 
         <section class="row">
             <div class="col-md-6">
@@ -212,12 +208,18 @@
             <!-- fin col -->
         </section>
         <!-- fin row -->
-
-        <section class="row">
+                            
+        <!-- gabarit pour une section -->
+        <section class="row mb-4">
             <div class="col-md-6">
-                <h2></h2>
+                <h2></h2>         
             </div>
-            <!-- fin col -->   
+            <!-- fin col --> 
+
+            <div class="col-md-6">
+                <h2></h2>         
+            </div>
+            <!-- fin col -->  
         </section>
         <!-- fin row -->
     </div>
@@ -226,7 +228,6 @@
     <!-- ====================================================== -->
     <!--                  FOOTER EN REQUIRE                     --> 
     <!-- ====================================================== -->
-    
     <footer>
         <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
         <?php require_once '../inc/footer.inc.php'; ?>

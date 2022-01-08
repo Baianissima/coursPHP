@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 
-<body class="bg-light">
+<body class="">
     <!-- ====================================================== -->
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->

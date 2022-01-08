@@ -1,9 +1,9 @@
 <?php
  
- // 1 APPEL DES FOCTIONS
+ // 1 APPEL DES FONCTIONS
  require_once '../inc/functions.php'; // appel des fonctions
 
- // 2 - CONNEXION BDD
+ // 2 - CONNEXION BDD entreprise
  $pdoENT = new PDO('mysql:host=localhost;dbname=entreprise',
                         'root',
                         // '',  // mdp pour MAC avec XAMP
@@ -76,8 +76,6 @@
     <!-- ====================================================== -->
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
-
-    <!-- fin containeur-fluid -->
     <nav>
         <?php require_once '../inc/navbar.inc.php'; ?>
     </nav>
@@ -88,16 +86,15 @@
             <p class="lead">Chapitre 09_securite / Page 02_employes</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
-                $varOla = "Olá !";
-                echo "<p class=\"text-white\">$varOla tudo bem?</p>";
-        
-                // whatDay();
+                $varOla = "Olá!";
+                echo "<p class=\"text-white\">$varOla Tudo bem?</p>";
+                whatDay();
             ?>
         </div>
     </header>
     <!-- fin container-fluid header -->
 
-    <div class="container mt-4 mb-4 p-2 m-auto text-center">
+    <div class="container mt-4 mb-4 p-2 m-auto">
         <section class="row">
             <div class="col-md-12">
                 <h2>1 - Afficher des données de la table employés sur un tableau :</h2>
@@ -213,11 +210,17 @@
         </section>
         <!-- fin row -->
 
-        <section class="row">
+       <!-- gabarit pour une section -->
+       <section class="row mb-4">
             <div class="col-md-6">
-                <h2></h2>
+                <h2></h2>         
             </div>
-            <!-- fin col -->   
+            <!-- fin col --> 
+
+            <div class="col-md-6">
+                <h2></h2>         
+            </div>
+            <!-- fin col -->  
         </section>
         <!-- fin row -->
     </div>

@@ -1,13 +1,13 @@
 <?php
  
- // 1 APPEL DES FOCTIONS
+ // 1 APPEL DES FONCTIONS
  require_once '../inc/functions.php'; // appel des fonctions
 
- // 2 - CONNEXION BDD : DIALOGUE
+ // 2 - CONNEXION BDD dialogue
  $pdoDIA = new PDO('mysql:host=localhost;dbname=dialogue',
                         'root',
-                        // '',
-                        'root',
+                        // '', // mdp pour MAC avec XAMP
+                        'root', // mdp pour MAC avec MAMP
                         array(
                             PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
                             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8', 
@@ -25,7 +25,7 @@
 
 // 3 - TRAITEMENT DU FORMULAIRE
 
- if ( !empty( $_POST )) {  // Ici on lit : "Si $_POST n'est pas vide..."
+ if (!empty( $_POST)) {  // Ici on lit : "Si $_POST n'est pas vide..."
     $_POST['pseudo'] = htmlspecialchars($_POST['pseudo']); // pour se prémunir des failles et des injections SQL
     $_POST['message'] = htmlspecialchars($_POST['message']);
 
@@ -58,7 +58,6 @@
 
     <!-- mes styles -->
     <link rel="stylesheet" href="../css/styles.css">
-
 </head>
 
 <body class="">
@@ -69,8 +68,7 @@
         <?php require_once '../inc/navbar.inc.php'; ?>
     </nav>
 
-    <header class="container-fluid text-info f-header p-2">
-    
+    <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
             <h1 class="display-4">PHP</h1>
             <p class="lead">Chapitre 09_securite / Page 01_dialogue</p>
@@ -78,12 +76,11 @@
             <?php
                 $varOla = "Olá!";
                 echo "<p class=\"text-white\">$varOla Tudo bem?</p>"; 
-                // whatDay();
+                whatDay();
             ?>
         </div>
     </header>
     <!-- fin container-fluid header -->
-
 
     <div class="container mt-4 mb-4 p-2 m-auto">
 

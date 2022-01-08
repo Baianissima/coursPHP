@@ -41,11 +41,6 @@
     <!-- fin container-fluid -->
 
     <div class="container">
-
-        <section>
-
-        </section>
-
         <section class="row m-4 p-4">
             <div class="col-md-6">
                 <h2  class="alert-info">Les variables</h2>

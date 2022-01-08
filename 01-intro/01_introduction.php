@@ -30,23 +30,20 @@
     
     <header class="container-fluid p-4 text-info">
         <div class="col-12 text-center">
-            <h1 class="display-4">PHP</h1>
-            <p class="lead">Introduction PHP = Php Hypertext Preprocessor</p>
-        </div>
-    </header>
+            <h1 class="display-4">Cours PHP - Introduction</h1>
+            <p class="lead">PHP : Php Hypertext Preprocessor</p>
 
-    <div class="container">
-
-        <section>
-        <?php
+            <?php
                 // if (defined("validator")) echo "la constante validator est bien définie";
 
                 echo "<p>Validez votre HTML CSS sur le site du <a href=\"" .validator. "\" target=\"_blanck\"> Validator </a></p>";
             ?>
-        </section>
+        </div>
+    </header>
 
+    <div class="container">
         <section class="row m-2 p-2 justify-content-center">
-            <div class="col-md-3 m-2 border">
+            <div class="col-md-3 m-2 border bg-light">
                 <h4>1/ Réaliser un site dynamique</h4>
                 <p>Pour réaliser un site dynamique nous allons aborder les points suivants :</p>
                     <ul>
@@ -141,7 +138,7 @@
 
         </div>
         <section class="row m-2 p-2">
-            <div class="col-md-12 border bg-light">
+            <div class="col-md-12 border">
                 <h3>Inclure des fichiers externes en PHP</h3>
                 <table class="table table-striped">
                     <thead>
@@ -225,10 +222,12 @@
     <!-- ====================================================== -->
     <!--                  FOOTER EN REQUIRE                     --> 
     <!-- ====================================================== -->
+    
     <footer>
         <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
         <?php require_once '../inc/footer.inc.php'; ?>
     </footer>
+
 
     <!-- Optional JavaScript -->
     <!-- Bootstrap Bundle with Popper -->
