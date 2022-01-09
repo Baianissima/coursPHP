@@ -25,6 +25,10 @@ h3 {
     font-size: 1em;
 }
 
+.section-2 .section-3 {
+    height: 500px;
+}
+
 footer {
     height: 400px;
 }

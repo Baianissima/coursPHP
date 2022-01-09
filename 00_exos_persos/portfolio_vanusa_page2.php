@@ -65,9 +65,11 @@
         <img src="images/woman-pngrepo-com-fondcorail300.png" alt="image avatar féminin">
         <h1 class="display-6">Bienvenue à l'espace pro de Vanusa !</h1>
 
-        <p>Formatrice et traductrice en quête de nouvelles compétences dans le numérique, <br>
+        <!-- <p>Formatrice et traductrice en quête de nouvelles compétences dans le numérique, <br>
           je suis une formation de Développement/Intégration Web à Colombbus, Agence Suresnes
-        </p>
+        </p> -->
+
+        <p>Cette page est un exo en 2 parties : page 1 sera l'accueil avec le form a remplir, et la page 2 servira para lister les informations de la bdd Contact</p>
 
         <blockquote class="mt-auto">
           <p class="lead">Envie d'en savoir plus ?</p>
@@ -199,7 +201,7 @@
     <!-- fin row 3 -->
           
     <!-- row 4 -->
-    <section class="row justify-content-evenly align-items-center mt-4" id="apropos">
+    <section class="section-2 row justify-content-evenly align-items-center mt-4" id="apropos">
 
       <h2 class="pt-4">A PROPOS</h2>
 
@@ -214,7 +216,7 @@
     <!-- fin row 4 -->
 
     <!-- row 5 -->
-    <section class="row justify-content-evenly align-items-center mt-4" id="services">
+    <section class="section-3 row justify-content-evenly align-items-center mt-4" id="services">
 
       <h2 class="pt-4">MES SERVICES</h2>
 
@@ -247,7 +249,7 @@
   <!-- pied de page -->
   <footer class="row container-fluid align-items-center p-5 text-center bg-dark text-white mx-auto" id="contact"> 
     <div class="col-md-6">
-      <h4 class="text-center pt-4">Contactez-moi ! Pour m'envoyer vos coordonnées, c'est par ici :</h4>
+      <h4 class="text-center">Contactez-moi</h4>
       <form>
         <div class="mb-3 ">
           <label for="exampleInputEmail1" class="form-label">Votre adresse e-mail</label>
@@ -267,12 +269,12 @@
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
         
-        <button type="submit" class="btn btn-success">Envoyer !</button>
+        <button type="submit" class="btn btn-success">Envoyer</button>
       </form>
     </div>
     <!-- fin col -->
 
-    <div class="col-md-4 h-100">
+    <div class="col-md-4 w-25">
         <img src="images/email-6370595_640.jpeg" alt="photo de mails envoyés">
     </div>
     <!-- fin col -->
