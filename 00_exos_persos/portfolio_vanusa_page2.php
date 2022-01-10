@@ -62,8 +62,8 @@
     <div class="d-flex flex-column align-items-center p-5 text-center bg-dark text-white mx-auto" id="accueil">
 
       <div class="mt-4">
-        <img src="images/woman-pngrepo-com-fondcorail300.png" alt="image avatar féminin">
-        <h1 class="display-6">Bienvenue à l'espace pro de Vanusa !</h1>
+        <!-- <img src="images/woman-pngrepo-com-fondcorail300.png" alt="image avatar féminin"> -->
+        <h1 class="display-6">Suite Portfolio en php - page 2</h1>
 
         <!-- <p>Formatrice et traductrice en quête de nouvelles compétences dans le numérique, <br>
           je suis une formation de Développement/Intégration Web à Colombbus, Agence Suresnes
@@ -71,12 +71,12 @@
 
         <p>Cette page est un exo en 2 parties : page 1 sera l'accueil avec le form a remplir, et la page 2 servira para lister les informations de la bdd Contact</p>
 
-        <blockquote class="mt-auto">
-          <p class="lead">Envie d'en savoir plus ?</p>
+        <!-- <blockquote class="mt-auto">
+          <p class="lead">Envie d'en savoir plus ?</p> -->
         </blockquote>
 
         <p class="lead">
-          <a href="#apropos" class="btn btn-sm btn-outline-light">Cliquez ici !</a>
+          <a href="portfolio_vanusa_page1.php" class="btn btn-sm btn-outline-light">Cliquez ici pour aller à la page 1 !</a>
         </p>
       </div>
       
@@ -249,28 +249,8 @@
   <!-- pied de page -->
   <footer class="row container-fluid align-items-center p-5 text-center bg-dark text-white mx-auto" id="contact"> 
     <div class="col-md-6">
-      <h4 class="text-center">Contactez-moi</h4>
-      <form>
-        <div class="mb-3 ">
-          <label for="exampleInputEmail1" class="form-label">Votre adresse e-mail</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">J'utiliserai votre e-mail exclusivement pour vous contacter !</div>
-        </div>
-
-        <div class="mb-3 ">
-          <label for="exampleInputEmail1" class="form-label">Votre numéro de téléphone</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">J'utiliserai votre numéro de téléphone exclusivement pour vous contacter !</div>
-        </div>
-       
-
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        
-        <button type="submit" class="btn btn-success">Envoyer</button>
-      </form>
+      <h4 class="text-center"></h4>
+      
     </div>
     <!-- fin col -->
 

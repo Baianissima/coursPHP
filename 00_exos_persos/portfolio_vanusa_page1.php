@@ -3,36 +3,41 @@
 <?php
  // 1 - APPEL DES FONCTIONS
     // require_once '../inc/functions.php';
- 
 
- // 2 - CONNEXION BDD : ici c'est la BDD DIALOGUE : remplacer DIA et DIALOGUE en fonction de la nouvelle BDD
- $pdoCONTACT = new PDO('mysql:host=localhost;dbname=contact',
-                        'root',
-                        // '',  // mdp pour PC a decomenter si travail sur PC
-                        'root', // mdp pour MAC a decomenter si travail sur MAC
-                        array(
-                            PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
-                            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8', 
-                        ));
-                        // debug($pdoDIA);
-                        // debug(get_class_methods($pdoDIA));
-
-// Ici une demo seulement : TRAITEMENT DU FORMULAIRE (version basique, et c'est la version non sécurisée)
-//  if ( !empty( $_POST )) {
-//     //  debug($_POST);
-//     $insertion = $pdoDIA->query( " INSERT INTO commentaires (pseudo, message, date_enregistrement) VALUES ( '$_POST[pseudo]', '$_POST[message]', NOW()  ) ");
-//  }
+  
+    // 2 - CONNEXION BDD : ici c'est la BDD DIALOGUE : remplacer DIA et DIALOGUE en fonction de la nouvelle BDD
+    $pdoCONTACT = new PDO('mysql:host=localhost;dbname=contact',
+                           'root',
+                           // '',  // mdp pour PC a decomenter si travail sur PC
+                           'root', // mdp pour MAC a decomenter si travail sur MAC
+                           array(
+                               PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+                               PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8', 
+                           ));
+                           // debug($pdoDIA);
+                           // debug(get_class_methods($pdoDIA));
+   
+   // Ici une demo seulement : TRAITEMENT DU FORMULAIRE (version basique, et c'est la version non sécurisée)
+   //  if ( !empty( $_POST )) {
+   //     //  debug($_POST);
+   //     $insertion = $pdoDIA->query( " INSERT INTO commentaires (pseudo, message, date_enregistrement) VALUES ( '$_POST[pseudo]', '$_POST[message]', NOW()  ) ");
+   //  }
 
 
 // 3 - TRAITEMENT DU FORMULAIRE
  if ( !empty( $_POST )) {  // Ici on lit : "Si $_POST n'est pas vide..."
     $_POST['nom'] = htmlspecialchars($_POST['nom']); // pour se prémunir des failles et des injections SQL
     $_POST['prenom'] = htmlspecialchars($_POST['prenom']);
+    $_POST['adresse'] = htmlspecialchars($_POST['prenom']);
+    $_POST['code_postal'] = htmlspecialchars($_POST['adresse']);
+    $_POST['ville'] = htmlspecialchars($_POST['ville']);
+    $_POST['telephone'] = htmlspecialchars($_POST['telephone']);
+    $_POST['message'] = htmlspecialchars($_POST['message']);
 
-    $insertion = $pdoDIA->prepare( " INSERT INTO commentaires (pseudo, message, date_enregistrement) VALUES (:pseudo, :message, NOW()) ");
+    // $insertion = $pdoCONTACT->prepare( " INSERT INTO commentaires (pseudo, message, date_enregistrement) VALUES (:pseudo, :message, NOW()) ");
 
     $insertion->execute( array(
-        ':pseudo' => $_POST['pseudo'],
+        ':nom'=> $_POST['nom'],
         ':message' => $_POST['message'],
 
     ));
@@ -101,7 +106,7 @@
 
       <div class="mt-4">
         <img src="images/woman-pngrepo-com-fondcorail300.png" alt="image avatar féminin">
-        <h1 class="display-6">Bienvenue à l'espace pro de Vanusa !</h1>
+        <h1 class="display-6">Portfolio en php - page 1</h1>
 
         <!-- <p>Formatrice et traductrice en quête de nouvelles compétences dans le numérique, <br>
           je suis une formation de Développement/Intégration Web à Colombbus, Agence Suresnes
@@ -110,11 +115,11 @@
         <p>Cette page est un exo en 2 parties : page 1 sera l'accueil avec le form a remplir, et la page 2 servira para lister les informations de la bdd Contact</p>
 
         <blockquote class="mt-auto">
-          <p class="lead">Envie d'en savoir plus ?</p>
+          <!-- <p class="lead">Bienvenue à l'espace pro de Vanusa </p> -->
         </blockquote>
 
         <p class="lead">
-          <a href="#apropos" class="btn btn-sm btn-outline-light">Cliquez ici !</a>
+          <a href="portfolio_vanusa_page2.php" class="btn btn-sm btn-outline-light">Cliquer ici pour aller à la page 2 !</a>
         </p>
       </div>
       
@@ -285,27 +290,60 @@
   </div>
 
   <!-- pied de page -->
-  <footer class="row container-fluid align-items-center p-5 text-center bg-dark text-white mx-auto" id="contact"> 
+  <footer class="row container-fluid align-items-center p-5 text-center bg-dark text-white mx-auto" id="contact">
+    <h4 class="text-center">Contactez-moi</h4>
+
     <div class="col-md-6">
-      <h4 class="text-center">Contactez-moi</h4>
-      <form>
+      
+    <form action="portfolio_vanusa_page2.php" method="POST">
+
+        <div class="mb-3 col-12">
+          <div class="col-4">
+            <label for="nom" name="nom" required class="form-label">Nom</label>
+            <input type="text" class="form-control" id="prenom" aria-describedby="nomlHelp">
+          </div>
+          
+          <div class="col-4">
+            <label for="prenom" name="prenom" required class="form-label">Prenom</label>
+            <input type="text" class="form-control" id="prenom" aria-describedby="prenomlHelp">
+        </div>
+      
+          
+        </div>
+
+        
+
         <div class="mb-3 ">
-          <label for="exampleInputEmail1" class="form-label">Votre adresse e-mail</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">J'utiliserai votre e-mail exclusivement pour vous contacter !</div>
+          <label for="adresse" name="adresse" class="form-label">Adresse</label>
+          <input type="text" class="form-control" id="adresse" aria-describedby="adresselHelp">
         </div>
 
         <div class="mb-3 ">
-          <label for="exampleInputEmail1" class="form-label">Votre numéro de téléphone</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">J'utiliserai votre numéro de téléphone exclusivement pour vous contacter !</div>
+          <label for="code_postal" name="code_postal" required class="form-label">Code postal</label>
+          <input type="number" class="form-control" id="code_postal" aria-describedby="code_postalHelp">
         </div>
-       
 
-        <div class="mb-3 form-check">
+        <div class="mb-3 ">
+          <label for="ville" name="ville" required class="form-label">Ville</label>
+          <input type="text" class="form-control" id="ville" aria-describedby="villeHelp">
+        </div>
+
+        <div class="mb-3 ">
+          <label for="email" name="email"  required class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3 ">
+          <label for="telephone" name="telephone" required class="form-label">Votre adresse e-mail</label>
+          <input type="telephone" class="form-control" id="telephone" aria-describedby="telephoneHelp">
+
+          <div id="emailHelp" class="form-text">J'utiliserai vos informations personnelles exclusivement pour vous contacter !</div>
+        </div>
+
+        <!-- <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
+        </div> -->
         
         <button type="submit" class="btn btn-success">Envoyer</button>
       </form>
