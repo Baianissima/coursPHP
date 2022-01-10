@@ -20,6 +20,10 @@ body{
     color: rgb(97, 109, 109);
 }
 
+.section{
+    background-color:azure;
+}
+
 .container{
     background-color:azure;
 }

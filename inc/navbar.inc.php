@@ -3,7 +3,7 @@
     <!-- Navbar fixed-top -->
     <!-- ================ -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <div class="p-2">
 
@@ -120,7 +120,7 @@
                             <li><a class="dropdown-item" href="#">03_exo_pdo</a></li>
                         </ul>
                     </li>
-                </lu>
+                </lu> -->
 
                 <!-- <span class="navbar-text"> -->
                    <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
@@ -128,6 +128,8 @@
                         echo "<p class=\"text-white\">$varOla Tudo bem?</p>"; 
                         whatDay(); -->
                 <!-- </span> -->
-            </div>
+
+
+            <!-- </div>
         </div>
-    </nav>
+      </nav> -->

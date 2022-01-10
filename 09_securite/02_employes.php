@@ -16,8 +16,6 @@
                         // debug(get_class_methods($pdoENT));
 
 
-
-
  // Ici une demo seulement : TRAITEMENT DU FORMULAIRE (version basique, et c'est la version non sécurisée)
 
 //  if ( !empty( $_POST )) {
@@ -26,7 +24,7 @@
 //  }
 
 
-// 3 - TRAITEMENT DU FORMULAIRE
+// 3 - TRAITEMENT DU FORMULAIRE : ENVOI DES INFOS AVEC $_POST
 
  if (!empty($_POST)) {  // Ici on lit : "Si $_POST n'est pas vide..."
     debug($_POST);
@@ -40,6 +38,7 @@
 
     $insertion = $pdoENT->prepare( " INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire) VALUES (:prenom, :nom, :sexe, :service, :date_embauche, :salaire) "); // requête préparée avec des marqueurs
 
+    // Ici on exécute le tableau
     $insertion->execute( array(
         ':prenom' => $_POST['prenom'],
         ':nom' => $_POST['nom'],
@@ -82,7 +81,7 @@
     
     <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
-            <h1 class="display-4">PHP</h1>
+            <h1 class="display-4">Cours PHP - Chapitre 09_securite</h1>
             <p class="lead">Chapitre 09_securite / Page 02_employes</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
@@ -101,6 +100,7 @@
 
                 <!-- pour limiter le nombre a afficher à 5 employés seulement : ajouter LIMIT 5 apres DESC -->
 
+                <!-- affchage de données : voir code de Patrick , le mien est incomplet !!! -->
                 <?php
                     $resultat = $pdoENT->query( " SELECT * FROM employes ORDER BY id_employes DESC");
                     // debug($resultat);
@@ -117,7 +117,7 @@
         <section class="row">
             <div class="col-md-6">
                 <h2>Il y a <?php echo $nbr_employes; ?> employés :</h2>
-                <table class="table table-striped">
+                <table class="bg-white table table-striped">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -141,7 +141,7 @@
                             <td><?php echo $ligne['service']; ?></td>
                             <td><?php echo $ligne['salaire']; ?></td>
                             <td><?php echo $ligne['date_embauche']; ?></td>
-                            <td><a href="fiche_employe.php?id_employe=<?php echo $ligne['id_employes']; ?>">Fiche</a></td>
+                            <td><a href="03_fiche_employe.php?id_employes=<?php echo $ligne['id_employes']; ?>">Fiche</a></td>
                         </tr>
                         <!-- Fermeture de la boucle while avec l'accolade fermante ici : -->
                         <?php } ?>
@@ -154,7 +154,7 @@
                 <h2>Formulaire d'insertion d'un nouvel employé</h2>
                 <!-- form avec action et method < action est vide car nous envoyons les données avec cette même page??? et POST va envoyer dans la superglobale $_POST -->
 
-                <form action="" method="POST">
+                <form action="" method="POST" class="border border-primary p-1">
                     <div class="mb-3">
                         <label for="prenom" class="form-label">Prénom</label>
                         <input type="text" name="prenom" id="prenom" class="form-control" required></input>

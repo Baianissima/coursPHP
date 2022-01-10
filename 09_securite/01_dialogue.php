@@ -23,8 +23,15 @@
 //  }
 
 
-// 3 - TRAITEMENT DU FORMULAIRE
+// 3 - TRAITEMENT DU FORMULAIRE (version basique et non sécurisée)
+//ok');DELETE FROM commentaires;(a partir du ok c'est la requête malveillante à insérer, en dernier la requête SQL
 
+if (!empty( $_POST)) {
+//     debug ($_POST);
+//     $insertion = $pdoDIA->query( " INSERT INTO commentaires (pseudo, date_enregistrement, message) VALUES ( '$_POST[pseudo]', NOW(), '$POST}][message]') ");
+// }
+
+// 3 - TRAITEMENT DU FORMULAIRE AVEC UNE REQUÊTE PREPAREE
  if (!empty( $_POST)) {  // Ici on lit : "Si $_POST n'est pas vide..."
     $_POST['pseudo'] = htmlspecialchars($_POST['pseudo']); // pour se prémunir des failles et des injections SQL
     $_POST['message'] = htmlspecialchars($_POST['message']);
@@ -35,8 +42,8 @@
         ':pseudo' => $_POST['pseudo'],
         ':message' => $_POST['message'],
 
-    ));
- }
+//     ));
+//  }
 ?>
 
 <!DOCTYPE html>
