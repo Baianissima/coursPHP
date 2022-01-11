@@ -1,5 +1,5 @@
 
-    <!-- ================ -->
+  
     <!-- Navbar fixed-top -->
     <!-- ================ -->
 
@@ -120,7 +120,7 @@
                             <li><a class="dropdown-item" href="#">03_exo_pdo</a></li>
                         </ul>
                     </li>
-                </lu> -->
+                </lu>
 
 
                 <!-- <span class="navbar-text"> -->
