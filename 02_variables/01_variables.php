@@ -1,5 +1,8 @@
 <?php
  require_once '../inc/functions.php'; //APPEL DES FONCTIONS
+
+ // NAVBAR EN REQUIRE
+require_once '../inc/navbar.inc.php';
 ?>
 
 <!DOCTYPE html>

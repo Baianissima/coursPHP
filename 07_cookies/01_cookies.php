@@ -20,7 +20,9 @@
     // Création du cookie
     setcookie('langue', $langue, $expiration);
     debug($_COOKIE);
-
+    
+// NAVBAR EN REQUIRE
+require_once '../inc/navbar.inc.php';
 ?>
 
 <!DOCTYPE html>

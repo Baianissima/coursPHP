@@ -1,11 +1,11 @@
 <?php
  
- // 1 APPEL DES FONCTIONS
- require_once '../inc/functions.php'; // appel des fonctions
+ // 1 - APPEL DES FONCTIONS
+ require_once '../inc/functions.php';
 
- // 2 - CONNEXION BDD entreprise
- $pdoENT = new PDO('mysql:host=localhost;dbname=entreprise',
-                        'root',
+ // 2 - CONNEXION à la BDD entreprise
+ $pdoENT = new PDO('mysql:host=localhost;dbname=entreprise', // hôte et nom BDD
+                        'root', // pseudo
                         // '',  // mdp pour MAC avec XAMP
                         'root', // mdp pour MAC avec MAMP
                         array(
@@ -15,8 +15,7 @@
                         // debug($pdoENT);
                         // debug(get_class_methods($pdoENT));
 
-
- // Ici une demo seulement : TRAITEMENT DU FORMULAIRE (version basique, et c'est la version non sécurisée)
+ // Ici une demo seulement : TRAITEMENT DU FORMULAIRE (version basique, et c'est la version non sécurisée) :
 
 //  if ( !empty( $_POST )) {
 //     //  debug($_POST);
@@ -24,7 +23,7 @@
 //  }
 
 
-// 3 - TRAITEMENT DU FORMULAIRE : ENVOI DES INFOS AVEC $_POST
+// 3 - TRAITEMENT DU FORMULAIRE : ENVOI DES INFORMATIONS A SCTOKER AVEC $_POST
 
  if (!empty($_POST)) {  // Ici on lit : "Si $_POST n'est pas vide..."
     debug($_POST);
@@ -38,16 +37,19 @@
 
     $insertion = $pdoENT->prepare( " INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire) VALUES (:prenom, :nom, :sexe, :service, :date_embauche, :salaire) "); // requête préparée avec des marqueurs
 
-    // Ici on exécute le tableau
+    // Ici on exécute le tableau (array) sur la même page, pour vérifier, avec les données qui figurent sur la bdd
     $insertion->execute( array(
-        ':prenom' => $_POST['prenom'],
-        ':nom' => $_POST['nom'],
-        ':sexe' => $_POST['sexe'],
-        ':service' => $_POST['service'],
-        ':date_embauche' => $_POST['date_embauche'],
-        ':salaire' => $_POST['salaire'],
+		':prenom' => $_POST['prenom'],
+		':nom' => $_POST['nom'],
+		':sexe' => $_POST['sexe'],
+		':service' => $_POST['service'],
+		':date_embauche' => $_POST['date_embauche'],
+		':salaire' => $_POST['salaire'],
     ));
  }
+
+ // NAVBAR en require
+require_once '../inc/navbar.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +64,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google Fonts -->
+
     <!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         
@@ -75,14 +79,12 @@
     <!-- ====================================================== -->
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
-    <nav>
-        <?php require_once '../inc/navbar.inc.php'; ?>
-    </nav>
+    
     
     <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
             <h1 class="display-4">Cours PHP - Chapitre 09_securite</h1>
-            <p class="lead">Chapitre 09_securite / Page 02_employes</p>
+            <p class="lead">Page 02_employes</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $varOla = "Olá!";
@@ -94,18 +96,17 @@
     <!-- fin container-fluid header -->
 
     <div class="container mt-4 mb-4 p-2 m-auto">
-        <section class="row">
+        <section class="row text-center">
             <div class="col-md-12">
-                <h2>1 - Afficher des données de la table employés sur un tableau :</h2>
 
                 <!-- pour limiter le nombre a afficher à 5 employés seulement : ajouter LIMIT 5 apres DESC -->
 
-                <!-- affchage de données : voir code de Patrick , le mien est incomplet !!! -->
+                <!-- AFFICHAGE DE DONNEES -->
                 <?php
-                    $resultat = $pdoENT->query( " SELECT * FROM employes ORDER BY id_employes DESC");
-                    // debug($resultat);
+                    $resultat = $pdoENT->query( " SELECT * FROM employes ORDER BY id_employes DESC ");
+                    debug($resultat);
                     $nbr_employes = $resultat->rowCount();
-                    // debug($nbr_commentaires);
+                    debug($nbr_commentaires);
                 ?>
             </div>
             <!-- fin col -->        
@@ -114,10 +115,11 @@
         <!-- fin row -->
 
 
-        <section class="row">
-            <div class="col-md-6">
-                <h2>Il y a <?php echo $nbr_employes; ?> employés :</h2>
-                <table class="bg-white table table-striped">
+        <section class="row mx-auto">
+            <div class="col-md-6 bg-light m-5">
+                <h2>1 - Afficher des données de la table employés sur un tableau</h2>
+                    <h3>Il y a <?php echo $nbr_employes; ?> employés :</h3>
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -141,7 +143,7 @@
                             <td><?php echo $ligne['service']; ?></td>
                             <td><?php echo $ligne['salaire']; ?></td>
                             <td><?php echo $ligne['date_embauche']; ?></td>
-                            <td><a href="03_fiche_employe.php?id_employes=<?php echo $ligne['id_employes']; ?>">Fiche</a></td>
+                            <td><a href="03_fiche_employe.php?id_employes=<?php echo $ligne['id_employes']; ?>">Mise à jour</a></td>
                         </tr>
                         <!-- Fermeture de la boucle while avec l'accolade fermante ici : -->
                         <?php } ?>
@@ -150,11 +152,11 @@
             </div>
             <!-- fin col -->
 
-            <div class="col-md-6">
-                <h2>Formulaire d'insertion d'un nouvel employé</h2>
-                <!-- form avec action et method < action est vide car nous envoyons les données avec cette même page??? et POST va envoyer dans la superglobale $_POST -->
+            <div class="col-md-4 bg-light m-5">
+                <h2> 3 - Formulaire pour insertion d'un nouvel employé</h2>
+                <!-- form avec action et method < action est vide car nous envoyons les données avec cette même page et POST va envoyer dans la superglobale $_POST -->
 
-                <form action="" method="POST" class="border border-primary p-1">
+                <form action="" method="POST" class="border border-succes p-1">
                     <div class="mb-3">
                         <label for="prenom" class="form-label">Prénom</label>
                         <input type="text" name="prenom" id="prenom" class="form-control" required></input>
@@ -166,10 +168,11 @@
                     </div>
 
                     <div class="mb-3">
-                    <!-- voir doc bootstrap pour le bouton radio des forms -->
+                    <!-- voir doc bootstrap pour le bouton radio des forms : https://getbootstrap.com/docs/5.1/forms/checks-radios/ -->
                         <label for="sexe" class="form-label">Sexe :</label> <br>
                         <input type="radio" name="sexe" value="f" id="sexe" checked> Femme</input> <br>
-                        <input type="radio" name="sexe" value="m" id="sexe" checked> Homme</input> <br>         
+                        <input type="radio" name="sexe" value="m" id="sexe" checked> Homme</input> <br>
+                        <input type="radio" name="sexe" value="x" id="sexe" checked> Autre</input> <br>         
                     </div>
 
                     <div class="mb-3">

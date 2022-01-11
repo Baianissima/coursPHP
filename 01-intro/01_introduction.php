@@ -1,6 +1,9 @@
 <?php
     require_once '../inc/functions.php'; // appel des fonctions
     define("validator", "https://validator.w3.org/");
+
+    // NAVBAR EN REQUIRE
+require_once '../inc/navbar.inc.php';
    
 ?>
 

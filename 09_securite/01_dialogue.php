@@ -1,49 +1,42 @@
-<?php
- 
- // 1 APPEL DES FONCTIONS
- require_once '../inc/functions.php'; // appel des fonctions
+<?php 
 
- // 2 - CONNEXION BDD dialogue
- $pdoDIA = new PDO('mysql:host=localhost;dbname=dialogue',
-                        'root',
-                        // '', // mdp pour MAC avec XAMP
-                        'root', // mdp pour MAC avec MAMP
-                        array(
-                            PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
-                            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8', 
-                        ));
-                        // debug($pdoDIA);
-                        // debug(get_class_methods($pdoDIA));
+// 1 APPEL DES FONCTIONS
+require_once '../inc/functions.php';  
 
- // Ici une demo seulement : TRAITEMENT DU FORMULAIRE (version basique, et c'est la version non sécurisée)
+// 2 CONNEXION BDD dialogue
+$pdoDIA = new PDO( 'mysql:host=localhost;dbname=dialogue',// hôte nom BDD
+              'root',// pseudo 
+              // '',// mot de passe
+              'root',// mdp pour MAC avec MAMP
+              array(
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,// afficher les erreurs SQL dans le navigateur
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',// charset des échanges avec la BDD
+              ));
+              // debug($pdoDIA);
+              // debug(get_class_methods($pdoDIA));
 
-//  if ( !empty( $_POST )) {
-//     //  debug($_POST);
-//     $insertion = $pdoDIA->query( " INSERT INTO commentaires (pseudo, message, date_enregistrement) VALUES ( '$_POST[pseudo]', '$_POST[message]', NOW()  ) ");
-//  }
-
-
-// 3 - TRAITEMENT DU FORMULAIRE (version basique et non sécurisée)
-//ok');DELETE FROM commentaires;(a partir du ok c'est la requête malveillante à insérer, en dernier la requête SQL
-
-if (!empty( $_POST)) {
-//     debug ($_POST);
-//     $insertion = $pdoDIA->query( " INSERT INTO commentaires (pseudo, date_enregistrement, message) VALUES ( '$_POST[pseudo]', NOW(), '$POST}][message]') ");
+//  TRAITEMENT DU FORMULAIRE (version basique et non sécurisée)
+// ok');DELETE FROM commentaires;( requeête mailveillante à insérer, en dernier la requête SQL
+// if ( !empty( $_POST )) {
+// 	debug($_POST);
+// 	$insertion = $pdoDIA->query( " INSERT INTO commentaires (pseudo, date_enregistrement, message) VALUES ( '$_POST[pseudo]', NOW(), '$_POST[message]' ) " );
 // }
 
-// 3 - TRAITEMENT DU FORMULAIRE AVEC UNE REQUÊTE PREPAREE
- if (!empty( $_POST)) {  // Ici on lit : "Si $_POST n'est pas vide..."
-    $_POST['pseudo'] = htmlspecialchars($_POST['pseudo']); // pour se prémunir des failles et des injections SQL
-    $_POST['message'] = htmlspecialchars($_POST['message']);
+// 3 TRAITEMENT DU FORMULAIRE SÉCURISÉ AVEC UNE REQUÊTE PRÉPARÉE
+if ( !empty( $_POST )) {// est-ce que $_POST n'est pas vide
+	$_POST['pseudo'] = htmlspecialchars($_POST['pseudo']);// pour se prémunir des failles et des injections SQL
+	$_POST['message'] = htmlspecialchars($_POST['message']);
 
-    $insertion = $pdoDIA->prepare( " INSERT INTO commentaires (pseudo, message, date_enregistrement) VALUES (:pseudo, :message, NOW()) ");
+	$insertion = $pdoDIA->prepare( " INSERT INTO commentaires (pseudo, message, date_enregistrement) VALUES (:pseudo, :message, NOW()) " );// requete préparée avec des marqueurs
 
-    $insertion->execute( array(
-        ':pseudo' => $_POST['pseudo'],
-        ':message' => $_POST['message'],
+	$insertion->execute( array(
+		':pseudo' => $_POST['pseudo'],
+		':message' => $_POST['message'],
+	));
+}
 
-//     ));
-//  }
+// NAVBAR EN REQUIRE
+require_once '../inc/navbar.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +51,9 @@ if (!empty( $_POST)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Google Fonts à compléter avec les links -->
+
+    
     <!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         
@@ -71,9 +67,6 @@ if (!empty( $_POST)) {
     <!-- ====================================================== -->
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
-    <nav>
-        <?php require_once '../inc/navbar.inc.php'; ?>
-    </nav>
 
     <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
@@ -124,7 +117,7 @@ if (!empty( $_POST)) {
         <section class="row mb-4">
 
             <div class="col-md-12">
-                <h2>3 - Afficher les données d'abord avec un var_dump (ma function debug)</h2>
+                <h2>3 - Afficher les données d'abord avec un var_dump (ma fonction debug)</h2>
 
                 <?php
                     $resultat = $pdoDIA->query( " SELECT * FROM commentaires ");

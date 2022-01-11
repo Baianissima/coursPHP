@@ -17,12 +17,13 @@
                         // debug(get_class_methods($pdoENT));
                 
 
-// 3 RECEPTION DES INFORMATIONS AVEC $_GET
+// 3 - RECEPTION DES INFORMATIONS AVEC $_GET
 // debug($_GET);
 
+// Ouverture if isset
 if ( isset($_GET['id_employes']) ) { // on demande le détail d'un employé
 
-    debug($_GET);
+    // debug($_GET);
     $resultat = $pdoENT->prepare( " SELECT * FROM employes WHERE id_employes = :id_employes ");
     $resultat->execute(array(
         ':id_employes' => $_GET['id_employes'] // On associe le marqueur vide à l'id_employes
@@ -34,7 +35,8 @@ if ( isset($_GET['id_employes']) ) { // on demande le détail d'un employé
         }
 
         $fiche = $resultat->fetch( PDO::FETCH_ASSOC); // Je passe les infos dans une variable
-        debug($fiche); // ferme if isset
+        debug($fiche);
+        // fermeture if isset
 
         } else {
         header('location:02_employes.php'); // Si j'arrive sur la page avec rien dans l'url
@@ -69,6 +71,8 @@ if (!empty($_POST)) {  // not empty
     exit();
  }
 
+// NAVBAR EN REQUIRE
+ require_once '../inc/navbar.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -96,6 +100,8 @@ if (!empty($_POST)) {  // not empty
     <!-- ====================================================== -->
     <!-- en-tête :  HEADER A COMPLETER AVEC NAV EN REQUIRE      --> 
     <!-- ====================================================== -->
+
+    
 
     <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
@@ -126,30 +132,34 @@ if (!empty($_POST)) {  // not empty
         </section>
         <!-- fin row -->
 
-        <section class="row mb-4">
+        <section class="row mx-auto">
             <h2>Mise à jour de l'employé</h2>
-            <form action="" method="POST">
+            <form action="" method="POST" class="col-cmd-8">
 
-                <div class="mb-3">
-                    <label for="prenom" class="form-label">Prénom</label>
-                    <input type="text" name="prenom" id="prenom" class="form-control" value="<?php echo $fiche['prenom'];?>">
+                <div class="mb-3 row">
+                    <div class="form-group  col-6">
+                        <label for="prenom" class="form-label">Prénom *</label>
+                        <input type="text" name="prenom" id="prenom" class="form-control" value="<?php echo $fiche['prenom'];?>">
+                    </div>
+
+                    <div class="form-group col-6">
+                        <label for="prenom" class="form-label">Nom *</label>
+                        <input type="text" name="nom" id="nom" class="form-control" value="<?php echo $fiche['nom'];?>">
+                    </div>      
                 </div>
 
-                <div class="mb-3">
-                    <label for="prenom" class="form-label">Nom</label>
-                    <input type="text" name="nom" id="nom" class="form-control" value="<?php echo $fiche['nom'];?>">
-                </div>
-
+                
                 <!-- voir code bootstrap pour bouton radio - check-radios -->
-                <div class="mb-3">
-                    <label for="sexe" class="form-label">Sexe</label> <br>
-                    <input type="radio" name="sexe" value="f" id="sexe" checked>Femme<br>
-                    <input type="radio" name="sexe" value="m" <?php if (isset($fiche['sexe']) && $fiche['sexe'] == 'm') echo ' checked'; // le 1er bouton sera checked et le second le sera SI on f depuis $fiche?> id="sexe">Homme                      
-                </div>
+                <div class="mb-3 row">
+                    <div class="mb-3 col-md-6">
+                        <label for="sexe" class="form-label">Sexe</label> <br>
+                        <input type="radio" name="sexe" value="f" id="sexe" checked>Femme<br>
+                        <input type="radio" name="sexe" value="m" <?php if (isset($fiche['sexe']) && $fiche['sexe'] == 'm') echo ' checked'; // le 1er bouton sera checked et le second le sera SI on f depuis $fiche?> id="sexe">Homme    
+                    </div>
 
-                <div class="mb-3">
-                    <label for="service" class="form-label">Service</label>
-                    <select name="service" id="service">
+                    <div class="mt-4 col-md-6">
+                        <label for="service" class="form-label">Service *</label>
+                        <select name="service" id="service">
                             <!-- strcmp() string comparaison : strcmp est égal à 1 // !strcmp() est différent de 0 -->
                             <!-- https://www.php.net/manual/fr/function.strcmp.php -->
                             
@@ -162,17 +172,28 @@ if (!empty($_POST)) {  // not empty
                             <option value="production"<?php if (!strcmp("production", $fiche['service'])){ echo " selected"; }?>>Production</option>
                             <option value="secretariat"<?php if (!strcmp("secretariat", $fiche['service'])){ echo " selected"; }?>>Secrétariat</option>
                         </select>
+                    </div>                    
+                </div>
+
+                
+
+                <div class="mb-3 row">
+                    <div class="mb-3 col-md-6">
+                        <label for="date_embauche" class="form-label">Date d'embauche *</label>
+                        <input type="date" name="date_embauche" id="date_embauche" class="form-control" value="<?php echo $fiche['date_embauche'];?>">
                     </div>
-
-                <div class="mb-3">
-                    <label for="date_embauche" class="form-label">Date d'embauche</label>
-                    <input type="date" name="date_embauche" id="date_embauche" class="form-control" value="<?php echo $fiche['date_embauche'];?>">
+                    
+                    <div class="mb-3 col-md-6">
+                        <label for="salaire" class="form-label">Salaire</label>
+                        <input type="text" name="salaire" id="salaire" class="form-control" value="<?php echo $fiche['salaire'];?>">
+                    </div>
                 </div>
 
-                <div class="mb-3">
-                    <label for="salaire" class="form-label">Salaire</label>
-                    <input type="text" name="salaire" id="salaire" class="form-control" value="<?php echo $fiche['salaire'];?>">
-                </div>
+               
+
+                <div class="form-row justify-content-between">
+                    <small class="col-lg-8  col-md-6 align-baseline ml-1 mr-1 p-1">Les champs suivis d'une * sont obligatoires</small>
+        </div>  
 
                 <button type="submit" class="btn btn-primary">Mise à jour</button>       
             </form>
@@ -193,7 +214,7 @@ if (!empty($_POST)) {  // not empty
         </section>
         <!-- fin row -->
     </div>
-    
+
     <!-- fin div container -->
 
     <!-- ====================================================== -->
