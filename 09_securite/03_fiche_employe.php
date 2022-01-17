@@ -105,7 +105,7 @@ if (!empty($_POST)) {  // not empty
 
     <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
-            <h1 class="display-4">Cours PHP - Chapitre 09_securite</h1>
+            <h1 class="display-4">Cours PHP - Chapitre 09_sécurité</h1>
             <h4>Page 03_fiche_employe</h4>
             <p class="lead"><?php echo $fiche['nom']; ?></p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->

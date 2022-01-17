@@ -70,8 +70,8 @@ require_once '../inc/navbar.inc.php';
 
     <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
-            <h1 class="display-4">PHP</h1>
-            <p class="lead">Chapitre 09_securite / Page 01_dialogue</p>
+            <h1 class="display-4">PHP Chapitre 09_securite </h1>
+            <p class="lead">Page 01_dialogue</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $varOla = "Olá!";

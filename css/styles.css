@@ -36,7 +36,7 @@ footer {
 
 /* pour supprimer les fleches du menu bootstrap */
 .dropdown-toggle::after {
-    display:none;
+    display: none;
 }
 
 /* class creee pour centrer la nav */

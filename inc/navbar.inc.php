@@ -83,7 +83,6 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li><a class="dropdown-item" href="01_session.php">01_session</a></li>
                             <li><a class="dropdown-item" href="02_session.php">02_session</a></li>
-                            <li><a class="dropdown-item" href="03_session.php">03_session</a></li>
                         </ul>
                     </li>
 
@@ -121,17 +120,6 @@
                         </ul>
                     </li>
                 </lu>
-
-
-                <!-- <span class="navbar-text"> -->
-                   <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
-                        <!-- $varOla = "Olá!";
-                        echo "<p class=\"text-white\">$varOla Tudo bem?</p>"; 
-                        whatDay(); -->
-                <!-- </span>
-
-
              </div>
         </div>
-
       </nav> -->

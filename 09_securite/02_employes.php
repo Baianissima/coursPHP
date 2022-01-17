@@ -83,7 +83,7 @@ require_once '../inc/navbar.inc.php';
     
     <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
-            <h1 class="display-4">Cours PHP - Chapitre 09_securite</h1>
+            <h1 class="display-4">Cours PHP - Chapitre 09_sécurité</h1>
             <p class="lead">Page 02_employes</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
@@ -221,11 +221,14 @@ require_once '../inc/navbar.inc.php';
             <!-- fin col --> 
 
             <div class="col-md-6">
-                <h2></h2>         
+                <?php
+                    debug($GLOBALS);
+                ?>
             </div>
             <!-- fin col -->  
         </section>
         <!-- fin row -->
+
     </div>
     <!-- fin div container -->
 
