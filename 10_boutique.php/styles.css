@@ -1,0 +1,37 @@
+/* styles pour le dossier cours PHP */
+
+
+header {
+    /* background-color: rgb(243, 245, 247); */
+    color: rgb(76, 80, 83);
+  
+}
+
+body{
+    font-family: 'Barlow', sans-serif;
+    height: 100%;
+    font-size: 1em;
+    /* background-image: url(../img/cube-background-2484131__480.webp); */
+    background-image: url(../img/background-jeans.jpeg);
+    /* background-image: url(../img/triangles-3320452__480.webp); */
+    /* background-image: url(../img/abstract-5960591_1920.jpeg); */
+    /* background-repeat: repeat; */
+    background-color: rgb(161, 199, 199);
+    color: rgb(97, 109, 109);
+}
+
+footer {
+    background-color: rgb(76, 80, 83);
+    color: rgb(243, 245, 247);
+}
+
+/* pour supprimer les fleches du menu bootstrap */
+.dropdown-toggle::after {
+    display: none;
+}
+
+/* class creee pour centrer la nav */
+.menu{
+    padding-left: 200px;
+}
+

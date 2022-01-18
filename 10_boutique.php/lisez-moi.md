@@ -39,7 +39,7 @@
     id_produit
     reference
     categorie
-    titre ???
+    titre
     description
     couleur
     taille

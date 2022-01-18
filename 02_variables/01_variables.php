@@ -92,7 +92,7 @@ require_once '../inc/navbar.inc.php';
                       <li>$*mavar</li>
                       <li>$5mavar</li>
                       <li>SM1</li>
-                      <li>$mavar2+</li>
+                      <li>$mavar+</li>
                   </ul>
                 </div>
               <!-- fin col -->

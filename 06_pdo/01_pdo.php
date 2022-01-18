@@ -182,7 +182,7 @@ require_once '../inc/navbar.inc.php';
                     debug($requete);
                    
 
-                    // 2 - Nous avons un objet $requete, nous ne voyaons pas encore les données concernant Fabrice, pour y accéder nous devons utiliser une méthode de $requetequi s'appelle fetch()
+                    // 2 - Nous avons un objet $requete, nous ne voyaons pas encore les données concernant Fabrice, pour y accéder nous devons utiliser une méthode de $requete qui s'appelle fetch()
 
                     $ligne = $requete->fetch( PDO::FETCH_ASSOC );
                     // 3 - Avec fetch() on transforme l'objet $requete, avec le paramètre PDO::FETCH_ASSOC en un array associatif que l'on passe dans la variable $ligne : on y trouve les indices, les noms des colonnes de la table et les valeurs correspondantes

@@ -79,17 +79,17 @@ function date_fr() {
 
 
 // CREATION D'UNE FONCTION POUR print_r
-function jeprint_r($mavar) {
-    echo "<pre>";
-    print_r($mavar);
-    echo "</pre>";
-}
+// function jeprint_r($mavar) {
+//     echo "<pre>";
+//     print_r($mavar);
+//     echo "</pre>";
+// }
 
 // CREATION D'UNE FONCTION POUR var_dump (la var debug doit être vu seulement par le développeur, il faut mettre en commentaire avant de lancer le site au client !!!) avec des styles bootstrap : on crée une étiquette jaune pour le titre var_dump dans les styles
 
-function debug($mavar2) {
+function debug($mavar) {
     echo "<br><small class=\"bg-warning text-danger\">Ici on fait afficher une var_dump !</small><pre class=\"alert alert-success\">";
-    var_dump($mavar2); // à cette variable on applique la fonction var_dump()
+    var_dump($mavar); // à cette variable on applique la fonction var_dump()
     echo "</pre>";
 }
 ?>
