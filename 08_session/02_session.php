@@ -1,13 +1,18 @@
 <?php
- // pour arriver à cette page 3 il faut arriver avec $_GET : cliquer sur le lien "fiche" de la page 2
- 
+
  // 1 APPEL DES FONCTIONS
- require_once '../inc/functions.php'; // appel des fonctions
+ require_once '../inc/functions.php';
 
-
+ session_start(); // ici la session n'est pas recréée car elle existe déjà grâce au session_start() lancé dans le fichier 01_session.php
 
 // NAVBAR EN REQUIRE
  require_once '../inc/navbar.inc.php';
+
+ // LA VARIABLE ($GLOBALS) récupere toutes les informations de toutes les superglobales :
+    // debug($GLOBALS);
+
+    // echo '<h1>Cours PHP - $_SESSION</h1>';
+    // echo '<p>Les données du fichier de session sont accessibles et manipulables à partir de la superglobale $_SESSION.</p>';
 ?>
 
 <!DOCTYPE html>
@@ -39,8 +44,8 @@
     
 
     <header class="container-fluid f-header p-2 text-info">
-        <div class="col-12 text-center">
-            <h1 class="display-4">Cours PHP - Chapitre 08 - 02 Session</h1>
+        <div class="text-center">
+            <h1 class="display-4 text-center">Cours PHP - Chapitre 08 - 02_SESSION</h1>
             <p class="lead">La session est déjà ouverte, elle est accessible dans tout le script du site</p>
 
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
@@ -53,33 +58,24 @@
     </header>
     <!-- fin container-fluid header -->
 
-    <div class="container mt-4 mb-4 p-2 m-auto">
+    <div class="container mt-4 mb-4 p-2 mx-auto">
 
         <section class="row">
 
-            <div class="col-md-12">
+            <div class="col-md-5 p-2 m-2">
                 <h2>Avantage d'une session</h2>
                 <p>La session est disponible partout sur les pages d'un site</p>       
             </div>
-            <!-- fin col -->        
-        </section>
-        <!-- fin row -->
-                                                      
-        <!-- gabarit pour une section -->
-        <section class="row mb-4">
-            <div class="col-md-6">
-                <h2></h2>         
-            </div>
-            <!-- fin col --> 
-
-            <div class="col-md-6">
-                <h2></h2>         
-            </div>
             <!-- fin col -->  
+
+            <div class="col-md-5 p-2 m-2">
+                <h2>REGELER LE POSITIONNEMENT DU FOOTER !</h2>
+                <p> </p>       
+            </div>
+            <!-- fin col -->      
         </section>
         <!-- fin row -->
     </div>
-
     <!-- fin div container -->
 
     <!-- ====================================================== -->

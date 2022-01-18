@@ -20,7 +20,7 @@ require_once '../inc/navbar.inc.php';
     <!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
         
-    <title>Cours PHP - PDO</title>
+    <title>Cours PHP - BDD boutique</title>
 
     <!-- mes styles -->
     <link rel="stylesheet" href="../css/styles.css">
@@ -32,9 +32,9 @@ require_once '../inc/navbar.inc.php';
     <!-- ====================================================== -->
 
     <!-- fin containeur-fluid -->
-    <header class="container-fluid f-header p-2">
+    <header class="container-fluid f-header p-2 text-info">
         <div class="col-12 text-center">
-            <h1 class="display-4">Connexion à notre BDD</h1>
+            <h1 class="display-4">Création de la BDD boutique</h1>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $varOla = "Olá !";
