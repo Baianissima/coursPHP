@@ -154,7 +154,7 @@ require_once '../inc/navbar.inc.php';
 
         <section class="row">
             <div class="col-md-6">
-                <h2>3-Faire des requêtes avec <code>query()</code></h2>
+                <h2>3- Faire des requêtes avec <code>query()</code></h2>
                 <p>La méthode <code>query()</code> est utilisée pour faire des requêtes qui retournent un ou plusieurs résultats : <code>SELECT</code> mais aussi <code>DELETE</code>, <code>UPDATE</code> et <code>INSERT TO</code></p>
 
                 <p>Pour information on peut mettre dans les paramètres de fetch() :
@@ -177,8 +177,6 @@ require_once '../inc/navbar.inc.php';
 
             
                     $requete = $pdoENT-> query(" SELECT * FROM employes WHERE prenom='Fabrice' ");
-
-                    
                     debug($requete);
                    
 
@@ -186,7 +184,6 @@ require_once '../inc/navbar.inc.php';
 
                     $ligne = $requete->fetch( PDO::FETCH_ASSOC );
                     // 3 - Avec fetch() on transforme l'objet $requete, avec le paramètre PDO::FETCH_ASSOC en un array associatif que l'on passe dans la variable $ligne : on y trouve les indices, les noms des colonnes de la table et les valeurs correspondantes
-
                     debug($ligne);
                    
                     // echo $ligne['prenom'];
@@ -236,7 +233,7 @@ require_once '../inc/navbar.inc.php';
                     // SELECT DISTINCT(service) FROM employes ORDER BY service
 
                     $requete = $pdoENT -> query("SELECT DISTINCT(service) FROM employes ORDER BY service");
-                    $nbr_services = $requete->rowCount(); /* Compter le nombre d'employer dans l'entreprise */
+                    $nbr_services = $requete->rowCount(); /* Compter le nombre d'employés dans l'entreprise */
                     debug($nbr_services);
 
                     echo "<p>Il y a $nbr_services services dans l'entreprise :</p>";
@@ -248,7 +245,7 @@ require_once '../inc/navbar.inc.php';
                     echo "</ol>";
 
                    //Autre possibilité :
-                   // passage pp a  l interieur du html
+                   // passage php a  l interieur du html
 
                     // <ul>
                     //     <?php

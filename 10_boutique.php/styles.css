@@ -22,7 +22,8 @@ body{
 
 footer {
     background-color: rgb(76, 80, 83);
-    color: rgb(243, 245, 247);
+    /* color: rgb(243, 245, 247); */
+    color: rgb(76, 80, 83);
 }
 
 /* pour supprimer les fleches du menu bootstrap */
