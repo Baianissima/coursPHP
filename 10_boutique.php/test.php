@@ -53,7 +53,7 @@ require_once 'inc/navbar.inc.php';
     <!-- ====================================================== -->
     <main class="container mx-auto m-4 p-4 text-center bg-light">
         <section class="row">
-            <div class="col-sm-12">
+            <div class="col-md-12">
                 <?php
                     // Afficher les 4 produits avec SELECT * pour jeudi
                     
@@ -67,34 +67,55 @@ require_once 'inc/navbar.inc.php';
                     
                 ?>
             </div>
+            <!-- fin col -->
         </section>
         <!-- fin row -->
 
         <section>
             <div class="col-md-10 mx-auto m-4">
-                <h2 class="m-4 p-4">On exécute un tableau pour afficher la bDD en tableaux :</h2>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                        <th>Id_produit</th>
-                        <th>Membres</th>
-                        <th>Commandes</th>
-                        <th>Détail_commande</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                <!-- Ouverture de la boucle while avec l'accolade ouvrante ici avec tr et des td :-->
-                        
-                       
-                    </tbody>
-                </table>
+                <h2 class="m-4 p-4 text-center">Tableau en PHP des produits :</h2>
+    
+                <?php 
+                    echo "<table class=\"table table-sm table-info table-striped\">";
+                        echo "<thead>";
+                            echo "<tr>";
+                                echo "<th>Photos</th>";
+                                echo "<th>Ref</th>";
+                                echo "<th>Titre</th>";
+                                echo "<th>Catégorie</th>";
+                                echo "<th>Description</th>";
+                                echo "<th>Couleur</th>";
+                                echo "<th>Taille</th>";
+                                echo "<th>Public</th>";
+                                echo "<th>Prix</th>";
+                            echo "</tr>";
+                        echo "</thead>";
+
+                    foreach ( $pdoMAB->query( " SELECT * FROM produits " ) as $infos ) {
+                        echo "<tbody>";
+                            echo "<tr>";
+                                echo "<td><img src=['photo']></td>";
+                                echo "<td>" .$infos['reference']." </td>"; 
+                                echo "<td>" .$infos['titre']." </td>"; 
+                                echo "<td>" .$infos['categorie']." </td>"; 
+                                echo "<td>" .$infos['description']." </td>";
+                                echo "<td>" .$infos['couleur']." </td>";
+                                echo "<td>" .$infos['taille']." </td>"; 
+                                echo "<td>" .$infos['public']." </td>"; 
+                                echo "<td>" .$infos['prix']." </td>"; 
+                            echo "</tr>";
+                        echo "</tbody>";
+                    }
+                    echo "</table>";
+
+                // debug($infos['photo']);
+                ?> 
             </div>
             <!-- fin col -->
-        </section>
-        <!-- fin row -->
-
-
+        </section
+        ><!-- fin row -->
     </main>
+    <!-- fin container -->
 
     <!-- ====================================================== -->
     <!--                  FOOTER : en require                   --> 
@@ -103,8 +124,6 @@ require_once 'inc/navbar.inc.php';
         <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
         <!-- passage php avec : require_once 'inc/footer.inc.php'; -->
         <?php require_once 'inc/footer.inc.php'; ?>
-    
-
     </footer>
 
     <!-- Optional JavaScript -->
