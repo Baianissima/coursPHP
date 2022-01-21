@@ -48,3 +48,8 @@
     prix
     stock
 
+    Donner schéma BDD
+
+## PAGE INSCRIPTION (creer un compte utilisateur)
+    1) Faire un formulaire qui servira à l'inscription d'un utilisateur : voir modele sur cours JS + site santinicycling.com
+

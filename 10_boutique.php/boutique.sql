@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mar. 18 jan. 2022 à 01:45
+-- Généré le : ven. 21 jan. 2022 à 16:22
 -- Version du serveur :  5.7.34
 -- Version de PHP : 7.4.21
 
@@ -29,12 +29,14 @@ USE `boutique`;
 -- Structure de la table `commandes`
 --
 
-CREATE TABLE `commandes` (
-  `id_commande` int(4) NOT NULL,
-  `id_membre` int(4) NOT NULL,
-  `montant` int(4) NOT NULL,
+CREATE TABLE IF NOT EXISTS `commandes` (
+  `id_commande` int(3) NOT NULL AUTO_INCREMENT,
+  `id_membre` int(3) DEFAULT NULL,
+  `montant` int(3) NOT NULL,
   `date_enregistrement` datetime NOT NULL,
-  `etat` enum('En cours de traitement','Envoyé','Livré') NOT NULL
+  `etat` enum('En cours de traitement','Envoyé','Livré') NOT NULL,
+  PRIMARY KEY (`id_commande`),
+  KEY `id_membre` (`id_membre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -43,12 +45,15 @@ CREATE TABLE `commandes` (
 -- Structure de la table `details_commande`
 --
 
-CREATE TABLE `details_commande` (
-  `id_details_commande` int(3) NOT NULL,
-  `id_commande` int(3) NOT NULL,
-  `id_produit` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `details_commande` (
+  `id_details_commande` int(3) NOT NULL AUTO_INCREMENT,
+  `id_commande` int(3) DEFAULT NULL,
+  `id_produit` int(3) DEFAULT NULL,
   `quantite` int(3) NOT NULL,
-  `prix` int(3) NOT NULL
+  `prix` int(3) NOT NULL,
+  PRIMARY KEY (`id_details_commande`),
+  KEY `id_commande` (`id_commande`),
+  KEY `id_produit` (`id_produit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -57,18 +62,19 @@ CREATE TABLE `details_commande` (
 -- Structure de la table `membres`
 --
 
-CREATE TABLE `membres` (
-  `id_membre` int(3) NOT NULL,
-  `pseudo` varchar(20) NOT NULL,
-  `mdp` varchar(30) NOT NULL,
-  `nom` varchar(20) NOT NULL,
-  `prenom` varchar(20) NOT NULL,
-  `email` varchar(50) NOT NULL,
+CREATE TABLE IF NOT EXISTS `membres` (
+  `id_membre` int(3) NOT NULL AUTO_INCREMENT,
   `civilite` enum('m','f') NOT NULL,
-  `ville` varchar(20) NOT NULL,
-  `code_postal` int(5) NOT NULL,
+  `prenom` varchar(20) NOT NULL,
+  `nom` varchar(20) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `pseudo` varchar(20) NOT NULL,
+  `mdp` varchar(255) NOT NULL,
   `adresse` varchar(50) NOT NULL,
-  `statut` int(3) NOT NULL
+  `code_postal` int(5) NOT NULL,
+  `ville` varchar(20) NOT NULL,
+  `statut` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_membre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -77,8 +83,8 @@ CREATE TABLE `membres` (
 -- Structure de la table `produits`
 --
 
-CREATE TABLE `produits` (
-  `id_produit` int(3) NOT NULL,
+CREATE TABLE IF NOT EXISTS `produits` (
+  `id_produit` int(3) NOT NULL AUTO_INCREMENT,
   `reference` varchar(20) NOT NULL,
   `categorie` varchar(20) NOT NULL,
   `titre` varchar(100) NOT NULL,
@@ -86,42 +92,27 @@ CREATE TABLE `produits` (
   `couleur` varchar(20) NOT NULL,
   `taille` varchar(5) NOT NULL,
   `public` enum('m','f','mixte') NOT NULL,
-  `photo` varchar(200) NOT NULL,
-  `prix` int(4) NOT NULL,
-  `stock` int(4) NOT NULL
+  `photo` varchar(250) NOT NULL,
+  `prix` float NOT NULL,
+  `stock` int(3) NOT NULL,
+  PRIMARY KEY (`id_produit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Index pour les tables déchargées
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Index pour la table `membres`
+-- Contraintes pour la table `commandes`
 --
-ALTER TABLE `membres`
-  ADD PRIMARY KEY (`id_membre`);
+ALTER TABLE `commandes`
+  ADD CONSTRAINT `commandes_ibfk_1` FOREIGN KEY (`id_membre`) REFERENCES `commandes` (`id_commande`);
 
 --
--- Index pour la table `produits`
+-- Contraintes pour la table `details_commande`
 --
-ALTER TABLE `produits`
-  ADD PRIMARY KEY (`id_produit`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `membres`
---
-ALTER TABLE `membres`
-  MODIFY `id_membre` int(3) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `produits`
---
-ALTER TABLE `produits`
-  MODIFY `id_produit` int(3) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `details_commande`
+  ADD CONSTRAINT `details_commande_ibfk_1` FOREIGN KEY (`id_produit`) REFERENCES `produits` (`id_produit`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
