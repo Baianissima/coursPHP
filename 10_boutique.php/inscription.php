@@ -59,10 +59,10 @@ require_once 'inc/navbar.inc.php';
                     <label for="type" class="form-label">Civilité</label> <br>
                     <div class="row">
                         <div class="col-2">
-                            <input type="radio" name="vente" value="vente" id="type" checked> Femme</input>
+                            <input type="radio" name="vente" value="vente" id="type" checked> Mme.</input>
                         </div>
                         <div class="col-2">
-                            <input type="radio" name="location" value="location" id="type" checked> Homme</input>
+                            <input type="radio" name="location" value="location" id="type" checked> M.</input>
                         </div> 
                     </div>            
                 </div>
