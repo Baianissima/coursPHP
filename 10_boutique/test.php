@@ -4,7 +4,6 @@
 
 require_once 'inc/init.inc.php';
 
-require_once 'inc/navbar.inc.php';
 // debug testé : ma var_dump apparait ;-)
 // debug($_mavar);
 ?> 
@@ -36,6 +35,9 @@ require_once 'inc/navbar.inc.php';
     <!-- ====================================================== -->
     <!--  EN-TETE : header à preceder de NAVBAR en require      --> 
     <!-- ====================================================== -->
+   
+    <?php require_once 'inc/navbar.inc.php'; ?>
+    
     <header class="container-fluid f-header p-2 bg-white">
         <div class="col-12 text-center">
             <h1 class="display-4">My Boutique</h1>

@@ -7,7 +7,7 @@ header {
   
 }
 
-body{
+body {
     font-family: 'Barlow', sans-serif;
     height: 100%;
     font-size: 1em;
@@ -16,8 +16,12 @@ body{
     /* background-image: url(../img/triangles-3320452__480.webp); */
     /* background-image: url(../img/abstract-5960591_1920.jpeg); */
     /* background-repeat: repeat; */
-    background-color: rgb(161, 199, 199);
+    /* background-color: rgb(161, 199, 199); */
     color: rgb(97, 109, 109);
+}   
+
+h1, h2, h3 {
+    font-family: 'Belgrano', serif ;
 }
 
 footer {

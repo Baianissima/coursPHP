@@ -1,5 +1,5 @@
 
-<footer class="bg-light"">
+<footer class="bg-light">
 <!-- <footer id="sticky-footer" class="fixed-bottom"> -->
     <!-- Ici on demande à PHP d'afficher l'heure au format français -->
 
