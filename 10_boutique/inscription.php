@@ -54,7 +54,7 @@ require_once 'inc/navbar.inc.php';
     <!-- ====================================================== -->
     <main class="container mx-auto m-4 p-4 text-center bg-light">
         <section class="row m-4">
-            <form action="" method="POST" class="border border-succes p-1">
+            <form action="" method="POST" class="border border-succes p-1 bg-primary">
                 <div class="mb-4">
                     <label for="type" class="form-label">Civilité</label> <br>
                     <div class="row">
