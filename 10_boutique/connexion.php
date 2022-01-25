@@ -6,21 +6,20 @@
 
 require_once 'inc/init.inc.php';
 // debug($_SESSION);
-// debug(strlen(' Mon chien très, très chou ! '));
+
 
 // des IF pour le traitement du formulaire
 if (!empty($_POST) ) {
-    // debug($_POST);
+    
+    debug($_POST);
 
-    // 1) Les if qui suivent verifient si les valeurs passees dans $_POST correspondent a ce qui est atendu et autorisé en BDD
-
-    if ( !isset($_POST['civilite']) || $_POST['civilite'] != 'm' && $_POST['civilite'] != 'f') { // && c'est "ET"
+    if ( !isset($_POST['civilite']) || $_POST['civilite'] != 'm' && $_POST['civilite'] != 'f') { //
         // !isset n'est pas isset, .=concatenation puis affeectation, || ou streln string length longueur chaine de caractère
-        $contenu .= '<div class="alert alert-danger">Vérifier votre civilité !</div>'; // 2 Ex. si il n 'y a rien dans le $_POST ['civilite'] OU si il contient'm' ET 'f' (qui sont les valeurs autorisées) je ne remplis pas $contenu
+        $contenu .= '<div class="alert alert-danger">Vérifier votre civilité !</div>';
     }
 
     if ( !isset($_POST['prenom']) || strlen($_POST['prenom']) < 2 || strlen($_POST['prenom']) > 20) {
-        // !isset n'est pas isset, .=concatenation puis affeectation, || ou streln string length (longueur da la chaine de caractère)
+        // !isset n'est pas isset, .=concatenation puis affeectation, || ou streln string length longueur chaine de caractère
         $contenu .= '<div class="alert alert-danger">Votre prénom doit faire entre 2 et 20 caractères</div>';
     }
 
@@ -38,7 +37,7 @@ if (!empty($_POST) ) {
     
     // email
     if ( !isset($_POST['email']) || strlen($_POST['email']) > 50 || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-        // filter_var est une fonction predefinie en PHP, qui filtre une variable et dans ce fltre on passe la constante prédéfinie (NOM DE LA OCNSTANTE EST N MAJUCULE) qui vérifie que c'est bien au format email
+        // filter_var filtre é une variable, et dans ce filtre on passe la constante prédéfinie (EN MAJUCULE) qui vérifie que c'est bien au format email
         $contenu .= '<div class="alert alert-danger">Votre email n\'est pas conforme !</div>';
         }
 
@@ -47,7 +46,7 @@ if (!empty($_POST) ) {
    }   
 
    if ( !isset($_POST['code_postal']) || !preg_match('#^[0-9]{5}$#', $_POST['code_postal'])) {
-    // !preg_match() vérifie si la chaîne de caractère a le format est consitué des caracteres autorisés dans le premier parametre  > '#^[0-9]{5}$#'
+    // !preg_match vérifie si la chaîne de caractère a le format autorisé
     $contenu .= '<div class="alert alert-danger">Le code postal n\'est pas valable !</div>';
     }
 
@@ -55,15 +54,17 @@ if (!empty($_POST) ) {
     $contenu .= '<div class="alert alert-danger">Votre ville doit faire entre 4 et 20 caractères</div>';
     }  
 
-    if (empty($contenu)) { // si la variable qui affiche les avertissemens est vide, c'est qu il n y a ausune erreur dans $_POST
+    // A COMPLETER A PARTIR D'ICI APRES LA PAUSE DEJEUNER :
+
+    if (empty($contenu)) { // si la variable est vide c'est qu il n y a aucune erreur dans $_POST
         // Si la variable est vide c'est qu'il n'y a acune erreur dans $_POST
         $membre = executeRequete( " SELECT * FROM membres WHERE pseudo = :pseudo ",
-                                    array(':pseudo' => $_POST['pseudo'])); // on cherche s il y un membre ave le pseudo rentré dans $_POST
+                                    array(':pseudo' => $_POST['pseudo']));
         // Ici on compte le contenu de $membre
-        if ($membre->rowCount() > 0) { // si au déompte de cette requête le résultat ne donne pas 0, c'est que le pseudo existe
+        if ($membre->rowCount() > 0) {
             $contenu .='<div class="alert alert danger">Le pseudo est indispensable veuillez en choisir un autre ! </div>';
-        } else { // sionon, on exécute la requête d'insertion
-            $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT); // On hâche le mot de passe avec la fonction prédéfinie password_hash() ave un algorythme 'bcrypt', on passe cette information en variable
+        } else {
+            $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT); // bcrypt
 
             $succes = executeRequete( " INSERT INTO membres (civilite, prenom, nom, email, pseudo, mdp, adresse, code_postal, ville, statut) VALUES (:civilite, :prenom, :nom, :email, :pseudo, :mdp, :adresse, :code_postal, :ville, 0) ",
             array(
@@ -72,20 +73,14 @@ if (!empty($_POST) ) {
                 ':nom' => $_POST['nom'],
                 ':email' => $_POST['email'],
                 ':pseudo' => $_POST['pseudo'],
-                ':mdp' => $mdp, // on récupere le mdp de la variable qui continet le hash du mot de passe
+                ':mdp' => $mdp,
                 ':adresse' => $_POST['adresse'],
                 ':code_postal' => $_POST['code_postal'],
                 ':ville' => $_POST['ville'],
             ));
 
-            // AJOUTER LORS DE LA MISE EN LIGNE LA FONCTION mail()
-
-            // debug($succes);
-
-            // LIEN POUR CONNEXION D'UNE PAGE A l'AUTRE :
             if ($succes) {
-                // In on ajoute le lien pour que le lien d acces a cette page INSCRIPTION qd on remplie le formulaire pour que le lien apparaisse sur la page CONNEXION
-                $contenu .='<div class="alert alert-success">Vous êtes bien inscrit à La Boutique !<br> <a href="connexion.php">Cliquez ici !</a></div>';
+                $contenu .='<div class="alert alert-success">Vous êtes bien inscrit à La Boutique !</div>';
             } else {
                 $contenu .='<div class="alert alert-danger">Erreur de l\'inscription ! Recommencez !</div>';
             }
@@ -93,7 +88,6 @@ if (!empty($_POST) ) {
     }
 }
 
-// A FAIRE : rajouter required sur les champs du form puis rajouter un  second champ mdp pour vérifier si le MDP (password) saisi dans le 1er champ est identique dans le second pour faire la VERIFICATION DU MOT DE PASSE
 ?> 
 
 <!DOCTYPE html>
@@ -114,7 +108,7 @@ if (!empty($_POST) ) {
     <!-- Mes styles -->
     <link rel="stylesheet" href="css/styles.css" >
 
-    <title>Creer un compte</title>
+    <title>Connexion</title>
 </head>
 
 <body>
@@ -126,7 +120,7 @@ if (!empty($_POST) ) {
 
     <header class="container-fluid f-header p-2 bg-white">
         <div class="col-12 text-center">
-            <h1 class="display-4">Creez votre compte</h1>
+            <h1 class="display-4">Connectez-vous</h1>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $positiva = "Tudo joia!";

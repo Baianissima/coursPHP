@@ -8,19 +8,19 @@ function debug($mavar) { // la fonction avec son paramètre, une variable
 
 }
 
-// 2 - FONCTIONS POUR EXECUTER LES REQUETES PREPAREES (raccourci comme un require la requete preparee)
-function executeRequete( $requete, $parametres = array ()) {
-    foreach ($parametres as $indice => $valeur) {
-        $parametres[$indice] = htmlspecialchars($valeur);
-        global $pdoMAB;
+// 2 - FONCTIONS POUR EXECUTER LES REQUETES PREPAREES AVEV FOREACH (raccourci comme un require)
+function executeRequete( $requete, $parametres = array ()) { // utile pour toutes les requetes 1) la requete  2) fabrication du tableau avec des marqueurs
+    foreach ($parametres as $indice => $valeur) { // boucle foreach
+        $parametres[$indice] = htmlspecialchars($valeur); // boucle foreach // pour eviter les inections ???
+        global $pdoMAB; // "global" nous permet d'acceder à la variable $pdoMAB dans l'espace global du fichier init.inc.php
 
-        $resultat = $pdoMAB->prepare($requete);
-        $succes = $resultat->execute($parametres);
+        $resultat = $pdoMAB->prepare($requete); // prépare requête
+        $succes = $resultat->execute($parametres); // et ici exécute
 
         if ($succes === false) {
-            return false;    
+            return false; // si la requête n'a pas marché, je renvoie "false"
         } else {
-            return $resultat;
+            return $resultat; // sinon je renvoie les résultats de la requ
         } // fin if else
     } // fin foreach
 } // fin fonction
