@@ -208,7 +208,7 @@ if (!empty($_POST) ) {
 
         <section>
             <div class="col-md-4 mx-auto m-4">
-                <p class="alert alert-info text-center"><a href="connexion.php">Déjà inscrit ? Connectez-vous ici !</a></p>         
+                <p class="alert alert-info border-info text-center"><a href="connexion.php">Déjà inscrit ? Connectez-vous ici !</a></p>         
             </div>
             <!-- fin col -->
         </section>
