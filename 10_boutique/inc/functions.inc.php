@@ -20,16 +20,28 @@ function executeRequete( $requete, $parametres = array ()) { // utile pour toute
         if ($succes === false) {
             return false; // si la requête n'a pas marché, je renvoie "false"
         } else {
-            return $resultat; // sinon je renvoie les résultats de la requ
+            return $resultat; // sinon je renvoie les résultats de la requête
         } // fin if else
     } // fin foreach
 } // fin fonction
 
 
 // 3 - FONCTION POUR VERIFIER QUE LE MEMBRE EST CONNECTE
-
+function estConnecte() {
+    if (isset($_SESSION['membre'])) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 // 4 - FONCTION POUR VERIFIER QUE LE MEMBRE EST ADMIN
-
+function estAdmin() {
+    if (estConnecte() && $_SESSION['membre']['statut'] == 1 ) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 ?>
