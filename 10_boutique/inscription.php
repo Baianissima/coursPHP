@@ -123,7 +123,7 @@ if (!empty($_POST) ) {
     <!--  EN-TETE : header à preceder de NAVBAR en require      --> 
     <!-- ====================================================== -->
 
-    <header class="container-fluid f-header p-2 bg-white">
+    <header class="container-fluid f-header p-2 mb-4 bg-light">
         <div class="col-12 text-center">
             <h1 class="display-4">Creez votre compte</h1>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
@@ -138,7 +138,7 @@ if (!empty($_POST) ) {
     <!-- ====================================================== -->
     <!--                CONTAINER : contenu principal           --> 
     <!-- ====================================================== -->
-    <main class="container bg-light p-2">
+    <main class="container p-2">
         <section class="row justify-content-center p-4">
 
         <?php echo $contenu ?>

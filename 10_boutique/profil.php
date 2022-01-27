@@ -40,7 +40,8 @@ debug(estAdmin());
   
     <header class="container-fluid f-header p-2 mb-4 bg-light">
         <div class="col-12 text-center">
-            <h1>Sur cette page Profil : l'eco apparaît si le pseudo et le mdp sont corrects !</h1>
+            <h1>PAGE PROFIL</h1>
+            <h4>Sur cette page Profil : l'eco apparaît si le pseudo et le mdp sont corrects !</h4>
             <p class="alert alert-danger w-25">Bonjour, <?php echo $_SESSION['membre'] ['prenom'];?></p>
 
                 <?php
@@ -64,7 +65,7 @@ debug(estAdmin());
 
     <?php
         if(estAdmin()) {
-            echo '<p class="alert alert-danger w-25">Vous êtes admistrateur</p>';
+            echo '<p class="alert alert-danger w-25">Vous êtes admistrateur.</p>';
         } else {
             echo '<p class="alert alert-danger w-25">Vous êtes connecté.e ! Rendez-vous à la Boutique !</p>';
         }
@@ -75,7 +76,7 @@ debug(estAdmin());
     <!-- ====================================================== -->
     <main class="container p-2">
         <section class="row justify-content-center p-4">
-        <div class="col-md-10 mx-auto m-4">
+            <div class="col-md-10 mx-auto m-4">
                 <h2 class="m-4 p-4 text-center"></h2>         
             </div>
             <!-- fin col -->    
