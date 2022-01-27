@@ -41,31 +41,21 @@ debug(estAdmin());
     <header class="container-fluid f-header p-2 mb-4 bg-light">
         <div class="col-12 text-center">
             <h1>PAGE PROFIL</h1>
-            <h4>Sur cette page Profil : l'eco apparaît si le pseudo et le mdp sont corrects !</h4>
+            <h3>Ici on voi afficher le résultat du IF pour les variables adminstrateur(1) et client(0) </h3>
+            <h4>Les echos apparaîssent ici si le pseudo et le mdp sont corrects !</h4>
             <p class="alert alert-danger w-25">Bonjour, <?php echo $_SESSION['membre'] ['prenom'];?></p>
 
                 <?php
                     // $positiva = "Tudo joia!";
                     // echo "<p class=\"text-dark\">$positiva</p>";
                 ?>
-        </div>
-
-        <div class="col-md-4 mx-auto m-4">
-            <p class="alert alert-success border-success text-center"><a href="inscription.php">Aller sur la page INSCRIPTION</a>
-            </p>   
-        </div>
-
-        <div class="col-md-4 mx-auto m-4">
-            <p class="alert alert-success border-success text-center"><a href="connexion.php">Aller sur la page CONNEXION</a>
-            </p>         
-        </div>
-        
+        </div> 
     </header>
     <!-- fin container-fluid header -->
 
     <?php
         if(estAdmin()) {
-            echo '<p class="alert alert-danger w-25">Vous êtes admistrateur.</p>';
+            echo '<p class="alert alert-danger w-25">Vous êtes admistrateur !</p>';
         } else {
             echo '<p class="alert alert-danger w-25">Vous êtes connecté.e ! Rendez-vous à la Boutique !</p>';
         }
@@ -82,6 +72,16 @@ debug(estAdmin());
             <!-- fin col -->    
         </section>
         <!-- fin row -->
+
+        <div class="col-md-4 mx-auto m-4">
+            <p class="alert alert-success border-success text-center"><a href="inscription.php">Aller sur la page INSCRIPTION</a>
+            </p>   
+        </div>
+
+        <div class="col-md-4 mx-auto m-4">
+            <p class="alert alert-success border-success text-center"><a href="connexion.php">Aller sur la page CONNEXION</a>
+            </p>         
+        </div>
     </main>
     <!-- fin container -->
     
