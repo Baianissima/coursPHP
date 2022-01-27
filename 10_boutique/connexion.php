@@ -130,7 +130,7 @@ if ( !empty($_POST) ) {
 
         <section>
             <div class="col-md-4 mx-auto m-4">
-                <p class="alert alert-light"><a href="inscription.php">Pas encore membre ? Inscrivez-vous !</a></p>         
+                <p class="alert alert-success border-success text-center"><a href="inscription.php">Pas encore membre ? Inscrivez-vous !</a></p>         
             </div>
             <!-- fin col -->
         </section>

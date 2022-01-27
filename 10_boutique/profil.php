@@ -48,6 +48,17 @@ debug(estAdmin());
                     // echo "<p class=\"text-dark\">$positiva</p>";
                 ?>
         </div>
+
+        <div class="col-md-4 mx-auto m-4">
+            <p class="alert alert-success border-success text-center"><a href="inscription.php">Aller sur la page INSCRIPTION</a>
+            </p>   
+        </div>
+
+        <div class="col-md-4 mx-auto m-4">
+            <p class="alert alert-success border-success text-center"><a href="connexion.php">Aller sur la page CONNEXION</a>
+            </p>         
+        </div>
+        
     </header>
     <!-- fin container-fluid header -->
 
