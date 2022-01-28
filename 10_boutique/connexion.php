@@ -1,9 +1,10 @@
 
 <?php 
-// REQUIRE CONNEXION, SESSION, ETC
+// POUR SE CONNECTER ET SE DECONNECTER :
 
-//CONNEXION AU FICHIER INIT dans le dossier INC
+// (CONNEXION AU FICHIER INIT dans le dossier INC)
 require_once 'inc/init.inc.php';
+
 // debug($_SESSION);
 
 // 2 - DECONNEXION DU MEMBRE
@@ -17,33 +18,35 @@ require_once 'inc/init.inc.php';
 // debug($_POST);
 
 if ( !empty($_POST) ) {
+
+    // Une autre option ici : reassembler les 2 if :
+    
+
     if ( empty($_POST['pseudo'])) { // si c'est vide = 0 ou NULL c'est false
         $contenu .='<div class="alert alert-warning">Le pseudo est requis !</div>';
     }
 
-    if (empty($_POST['mdp'])) { //
+    if (empty($_POST['mdp'])) { // si mdp est vide
         $contenu .='<div class="alert alert-warning">Le mot de passe est requis !</div>';
     }
 
-    if (empty($contenu)) { //
-        $resultat = executeRequete( " SELECT * FROM membres WHERE pseudo = :pseudo ",
+    if (empty($contenu)) { // si la variable $contenu est vide, pas d'erreurs
+        $resultat = executeRequete( " SELECT * FROM membres WHERE pseudo = :pseudo ", // on cherche ummembre avec son pseudo unique
                 array(
                 ':pseudo' => $_POST['pseudo'],
                 // ':mdp' => $_POST['mdp'],
                 ));
 
-        if ( $resultat->rowCount() == 1 ) {   //
+        if ( $resultat->rowCount() == 1 ) {   // si il y a une ligne ce'est qu'il a ce pseudo et ce membre
             $membre = $resultat->fetch( PDO::FETCH_ASSOC );
             debug($membre);
 
-            // ce IF pour la vérification du mdp
-            if ( password_verify($_POST['mdp'], $membre['mdp'])) {
-                echo 'Coucou, cher membre !';
-                $_SESSION['membre'] = $membre;
-
+            // ce IF pour la vérification du mdp 
+            if ( password_verify($_POST['mdp'], $membre['mdp'])) { // si le hash du mdp de la bdd correspond au mdp tapé dans le formulaire, alors password_verify retourne TRUE
+                // echo 'Coucou, cher membre !';
+                $_SESSION['membre'] = $membre; // nous créons une session avec les infos du membre, dans un tableau multidimensionnel
                 // debug($_SESSION);
-
-                header( 'location:profil.php' );
+                header( 'location:profil.php' ); // on redirige le membre vers la page profil
                 exit();
             } else {
                 $contenu .='<div class="alert alert-danger">Erreur sr les identifiants !</div>';
@@ -54,7 +57,7 @@ if ( !empty($_POST) ) {
 
     } // fin empty $contenu
 
-} // fin verification formulaire
+} // fin vérification formulaire
 
 ?> 
 
@@ -70,6 +73,9 @@ if ( !empty($_POST) ) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;1,400&family=Belgrano&display=swap" rel="stylesheet">
 
+    <!-- Bootstrap ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
@@ -83,12 +89,16 @@ if ( !empty($_POST) ) {
 
     <!-- ====================================================== -->
     <!--  EN-TETE : header à preceder de NAVBAR en require      --> 
-    <!-- ====================================================== -->
-  
+    <!-- ====================================================== --> 
+    
+    <?php 
+        require_once 'inc/navbar.inc.php';
+    ?> 
+
     <header class="container-fluid f-header p-2 mb-4 bg-light">
         <div class="col-12 text-center">
-            <h1 class="display-4">CONNEXION A VOTRE ESPACE PERSONNEL</h1>
-            <p class="lead">( Rentrez vos identifiants)</p>
+            <h1 class="display-4">CONNECTEZ-VOUS</h1>
+            <p class="lead">Rentrez vos identifiants !</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
                 <?php
                     // $positiva = "Tudo joia!";
@@ -149,11 +159,10 @@ if ( !empty($_POST) ) {
     <!-- ====================================================== -->
     <!--                  FOOTER : en require                   --> 
     <!-- ====================================================== -->  
-    <footer>
-        <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
-        <!-- passage php avec : require_once 'inc/footer.inc.php'; -->
-        
-    </footer>
+    
+    <?php 
+        require_once 'inc/footer.inc.php';
+    ?> 
 
     <!-- Optional JavaScript -->
 

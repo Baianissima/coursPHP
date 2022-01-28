@@ -115,7 +115,11 @@ if (!empty($_POST) ) {
 
     <!-- ====================================================== -->
     <!--  EN-TETE : header à preceder de NAVBAR en require      --> 
-    <!-- ====================================================== -->
+    <!-- ====================================================== --> 
+    
+    <?php 
+        require_once 'inc/navbar.inc.php';
+    ?> 
   
 
     <header class="container-fluid f-header p-2 bg-white">
@@ -221,11 +225,10 @@ if (!empty($_POST) ) {
     <!-- ====================================================== -->
     <!--                  FOOTER : en require                   --> 
     <!-- ====================================================== -->  
-    <footer>
-        <!-- Ici on a l'includ pour synroniser le code du footer sur toutes les pages du dossier : -->
-        <!-- passage php avec : require_once 'inc/footer.inc.php'; -->
-        
-    </footer>
+    
+    <?php 
+        require_once 'inc/footer.inc.php';
+    ?> 
 
     <!-- Optional JavaScript -->
 

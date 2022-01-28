@@ -28,19 +28,19 @@ function executeRequete( $requete, $parametres = array ()) { // utile pour toute
 
 // 3 - FONCTION POUR VERIFIER QUE LE MEMBRE EST CONNECTE
 function estConnecte() {
-    if (isset($_SESSION['membre'])) {
-        return true;
+    if (isset($_SESSION['membre'])) { // s'il y a un indice membre, le membre est passé par la page de connexion
+        return true; // true = il est connecté
     } else {
-        return false;
+        return false;  // false = il n'est as connecté
     }
 }
 
-// 4 - FONCTION POUR VERIFIER QUE LE MEMBRE EST ADMIN
+// 4 - FONCTION POUR VERIFIER QUE LE MEMBRE EST ADMIN  (et qu'il est connecté)
 function estAdmin() {
-    if (estConnecte() && $_SESSION['membre']['statut'] == 1 ) {
-        return true;
+    if (estConnecte() && $_SESSION['membre']['statut'] == 1 ) {  // Si le membre à le statut 1 il est consideré comme Admin
+        return true; // True = il est connecté ET il est ADMIN
     } else {
-        return false;
+        return false; // Il est connecté pas il n'EST PAS ADMIN
     }
 }
 
