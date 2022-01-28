@@ -4,9 +4,9 @@
         <div class="container-fluid">
             <div>
                 <a class="navbar-brand" href="accueil.php">
-                    <img src="img/logo_maboutique.png" alt="" width="70" height="70">
+                    <img src="img/logo_rond_beige.png" alt="" width="70" height="70">
                 </a>
-                <a class="navbar-brand" href="accueil.php">MyBOUTIQUE</a>
+                <a class="navbar-brand" style="color: rgba(132, 113, 122, 0.8);" href="accueil.php">MyBOUTIQUE</a>
             </div>
             
             <div>
@@ -21,15 +21,15 @@
                     </li>
                     <li class="nav-item m-4">
                         <!-- <a class="nav-link active" href="<?= URL ?>inscription.php">Nouveau ici ? Inscrivez-vous !</a> -->
-                        <a class="nav-link active" href="inscription.php">Nouveau ici ? Inscrivez-vous !</a>
+                        <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="inscription.php">Nouveau ici ? Inscrivez-vous !</a>
                     </li>
                     <li class="nav-item m-4">
                         <!-- <a class="nav-link" href="<?= URL ?>connexion.php">Connectez-vous</a> -->
-                        <a class="nav-link" href="connexion.php">Connectez-vous</a>
+                        <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="connexion.php">Connectez-vous</a>
                     </li>
                     <li class="nav-item m-4">
                         <!-- <a class="nav-link" href="<?= URL ?>profil.php">Panier</a> -->
-                        <a class="nav-link" href="profil.php"><i class="bi bi-bag"></i></a>
+                        <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="panier.php"><i class="bi bi-bag"></i></a>
                     </li>
                 </ul>
             </div>

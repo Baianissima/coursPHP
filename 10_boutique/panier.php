@@ -8,7 +8,6 @@ require_once 'inc/init.inc.php';
 // debug($_SESSION);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -49,7 +48,7 @@ require_once 'inc/init.inc.php';
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $positiva = "Tudo joia!";
-                echo "<p class=\"text-dark\">$positiva</p>";
+                echo "<p>Votre panier est vide ! Pour le shopping, c'est par ici </p>";
             ?>
         </div>
     </header>

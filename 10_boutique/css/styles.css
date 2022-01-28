@@ -10,25 +10,30 @@ header {
 body {
     font-family: 'Barlow', sans-serif;
     height: 100%;
-    font-size: 1em;
+    font-size: 1.5em;
     /* background-image: url(../img/cube-background-2484131__480.webp); */
     background-image: url(../img/background-jeans.jpeg);
     /* background-image: url(../img/triangles-3320452__480.webp); */
     /* background-image: url(../img/abstract-5960591_1920.jpeg); */
     /* background-repeat: repeat; */
     /* background-color: rgb(161, 199, 199); */
-    color: rgb(97, 109, 109);
+    /* color: rgb(97, 109, 109); */
 }   
 
-h1, h2, h3 {
-    font-family: 'Belgrano', serif ;
-}
+h1, h2, h3, h4 {
+    /* font-family: 'Belgrano', serif ; */
+    /* color: rgba(132, 113, 122, 0.8);
 
+/* nav {
+    border-bottom: 1px;
+} */
+
+/* 
 footer {
-    background-color: rgb(76, 80, 83);
+    /* background-color: rgb(76, 80, 83); */
     /* color: rgb(243, 245, 247); */
-    color: rgb(76, 80, 83);
-}
+    /* color: rgb(76, 80, 83); */
+
 
 /* pour supprimer les fleches du menu bootstrap */
 .dropdown-toggle::after {
@@ -36,7 +41,7 @@ footer {
 }
 
 /* class creee pour centrer la nav */
-.menu{
+/* .menu{
     padding-left: 200px;
-}
+} */
 

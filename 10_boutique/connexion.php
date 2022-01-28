@@ -97,7 +97,7 @@ if ( !empty($_POST) ) {
 
     <header class="container-fluid f-header p-2 mb-4 bg-light">
         <div class="col-12 text-center">
-            <h1 class="display-4">CONNECTEZ-VOUS</h1>
+            <h1 class="display-4">Connectez-vous</h1>
             <p class="lead">Rentrez vos identifiants !</p>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
                 <?php
@@ -114,7 +114,7 @@ if ( !empty($_POST) ) {
     <main class="container p-2">
         <section class="row justify-content-center p-4">
         <?php echo $contenu; ?>
-            <form action="" method="POST" class="col-4 border alert-info p-4">
+            <form action="" method="POST" class="col-4 border alert-info p-4" style="color: rgba(132, 113, 122, 0.8);">
                 
                     <div class="mb-4">
                         <label for="pseudo" class="form-label">Pseudo*</label>
@@ -127,7 +127,7 @@ if ( !empty($_POST) ) {
                     </div>
 
                     <label>
-                        <input type="checkbox" value="remember-me" class="m-4">Se ouvenir de moi ;-)
+                        <input type="checkbox" value="remember-me" class="m-4">Se souvenir de moi ;-)
                     </label>
 
                     <div class="mb-4">
@@ -140,7 +140,11 @@ if ( !empty($_POST) ) {
 
         <section>
             <div class="col-md-4 mx-auto m-4">
-                <p class="alert alert-success border-success text-center"><a href="inscription.php">Pas encore membre ? Inscrivez-vous !</a></p>         
+                <p class="alert alert-success border-success text-center"><a href="inscription.php">Pas encore membre ? Inscrivez-vous !</a></p>    
+                     
+
+                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="inscription.php">Ajouter au panier</button>
+
             </div>
             <!-- fin col -->
         </section>
