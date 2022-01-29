@@ -73,6 +73,9 @@ if ( !empty($_POST) ) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;1,400&family=Belgrano&display=swap" rel="stylesheet">
 
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="img/favicon.ico"/>
+
     <!-- Bootstrap ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
@@ -142,8 +145,7 @@ if ( !empty($_POST) ) {
             <div class="col-md-4 mx-auto m-4">
                 <p class="alert alert-success border-success text-center"><a href="inscription.php">Pas encore membre ? Inscrivez-vous !</a></p>    
                      
-
-                <button type="button" class="btn btn-sm btn-outline-secondary"><a href="inscription.php">Ajouter au panier</button>
+                <!-- <button type="button" class="btn btn-sm btn-outline-secondary"><a href="inscription.php">Ajouter au panier</button> -->
 
             </div>
             <!-- fin col -->

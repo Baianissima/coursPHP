@@ -21,6 +21,9 @@ require_once 'inc/init.inc.php';
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,600;1,400&family=Belgrano&display=swap" rel="stylesheet">
 
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="img/favicon.ico"/>
+
     <!-- Bootstrap ICONS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
@@ -39,9 +42,7 @@ require_once 'inc/init.inc.php';
     <!--  EN-TETE : header à preceder de NAVBAR en require      --> 
     <!-- ====================================================== --> 
     
-    <?php 
-        require_once 'inc/navbar.inc.php';
-    ?> 
+    <?php require_once 'inc/navbar.inc.php'; ?> 
   
     <header class="container-fluid f-header p-2 mb-4 bg-light">
         <div class="col-12 text-center">
@@ -60,7 +61,7 @@ require_once 'inc/init.inc.php';
     <!--                CONTAINER : contenu principal           --> 
     <!-- ====================================================== -->
 <main class="container">
-  <section class="py-5 text-center container">
+  <section class="py-5 text-center">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
         <h2 class="fw-light">Que souhaitez-vous faire ?</h2>
@@ -78,7 +79,9 @@ require_once 'inc/init.inc.php';
   <div class="album py-5 bg-light">
 
     <!-- debut des cards de la galerie produits -->
-    <div class="galerie">
+    <div class="galerie container">
+
+    <!-- debut row-cols de BTS pour faire wrap : sm-2 pour 2 images par row, md-3 pour 3 images par row -->
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
 
       <!-- debut des col -->
@@ -256,8 +259,8 @@ require_once 'inc/init.inc.php';
     <!-- fin container -->
   </div>
 
-  <!-- debut section pour la récetion de la requête : test connexion base de données -->
-  <section>
+  <!-- debut section pour la réception de la requête : test connexion base de données -->
+  <section class="mt-4 p-4">
 
     <?php 
       $requete = $pdoMAB->query( " SELECT * FROM produits ORDER BY id_produit" );
@@ -265,7 +268,7 @@ require_once 'inc/init.inc.php';
       $pdt = $requete->rowCount();
       // debug($nbr_commentaires);
     ?>
-    <h4>Il y a <?php echo $pdt; ?> produits en ligne !</h4>
+    <h4>Il y a <?php echo $pdt; ?> produits dans la BDD de MyBoutique:</h4>
           <table class="table table-striped">
              <thead>
                <tr>
@@ -293,7 +296,7 @@ require_once 'inc/init.inc.php';
             <!-- fin -->
           </div>
           <!-- fin col -->
-      </section> -->
+      </section>
     <!-- fin row -->
   </main>
     <!-- fin div container -->
