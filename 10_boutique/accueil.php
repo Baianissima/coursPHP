@@ -77,7 +77,7 @@ require_once 'inc/init.inc.php';
 
   <div class="album py-5 bg-light">
 
-    <!-- debut des cardas de la galerie produits -->
+    <!-- debut des cards de la galerie produits -->
     <div class="galerie">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
 

@@ -1,11 +1,11 @@
 <!-- footer avec Copyright -->
-<footer class="container-fluid text-light">
+<footer class="container-fluid text-light" id="sticky-footer">
 <!-- <footer id="sticky-footer" class="fixed-bottom"> -->
     <!-- Ici on demande à PHP d'afficher l'heure au format français -->
 
-    <div class="p-4 text-center" style="background-color: rgba(132, 113, 122, 0.8);">
+    <div class="container-fluid p-4 m-4 m-auto text-center" style="background-color: rgba(132, 113, 122, 0.8);">
         <div class="p-4">
-            <small>Copyright &copy; Vanusa Santos, Colombbus 2021-2022</small>
+            <small>Copyright &copy; Santos, Colombbus 2021-2022</small>
         </div>
        
         <div class="d-flex text-center justify-content-center">
