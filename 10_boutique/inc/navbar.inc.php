@@ -37,6 +37,9 @@
                         <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="profil.php">Profil</a>
                     </li>
                     <li class="nav-item m-4">
+                        <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="admin/accueil_admin.php">Accueil Admin</a>
+                    </li>
+                    <li class="nav-item m-4">
                         <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="panier.php"><i class="bi bi-bag"></i></a>
                     </li>
                 </ul>
