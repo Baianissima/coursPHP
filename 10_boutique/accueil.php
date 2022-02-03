@@ -69,7 +69,7 @@ require_once 'inc/init.inc.php';
         <p>
           <a href="connexion.php" class="btn btn-secondary my-2">Connexion</a>
           <a href="inscription.php" class="btn btn-secondary my-2">Inscription</a>
-          <a href="inscription.php" class="btn btn-secondary my-2">Shopping</a>
+          <a href="accueil.php" class="btn btn-secondary my-2">Shopping</a>
         </p>
       </div>
     </div>
@@ -283,7 +283,8 @@ require_once 'inc/init.inc.php';
                 <!-- ouverture de la boucle while -->
                   <?php while ( $ligne = $requete->fetch( PDO::FETCH_ASSOC )) { ?>
                 <tr>
-                  <td><?php echo $ligne['titre']; ?></td>                   
+                  <td><?php echo $ligne['id_produit']; ?></td> 
+                  <td><?php echo $ligne['titre'] . ['categorie']; ?></td>                   
                   <td><?php echo $ligne['categorie']. ' ' .$ligne['stock']; ?></td>
                   <td><?php echo $ligne['taille']; ?></td>
                   <td><?php echo $ligne['stock']; ?></td>

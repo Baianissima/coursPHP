@@ -4,16 +4,25 @@
 
 // (CONNEXION AU FICHIER INIT dans le dossier INC)
 require_once 'inc/init.inc.php';
-
-// debug($_SESSION);
+debug($_SESSION);
 
 // 2 - DECONNEXION DU MEMBRE
-
+debug($_GET);
+$message = '';
+if (isset($_GET['action']) && $_GET['action'] == 'deconnexion') { // Si il existe action qui contient déconnexion dans l'URL
+    unset($_SESSION['membre']); // On supprime le membre de la session (le contenu du tableau indice ['membre'])
+    $message = '<div class="alert alert-success">Vous êtes bien déconnecté !</div>'; // Message de déconnexion cf echo plus bas
+    debug($_SESSION);
+}
 
 // 3 - REDIRECTION VERS LA PAGE PROFIL
+if (estConnecte()) { // si le membre est connecté on le renvoie vers le profil
+    header ('location:profil.php'); // header() est une fonction prédéfinie qui va rediriger vers la page souhaitée (ici profil.php)
+    exit();
+}
 
 
-// 1 - TRAITEMENT DU FORMULAIREDE CONNEXION
+// 1 - TRAITEMENT DU FORMULAIRE DE CONNEXION
 
 // debug($_POST);
 
@@ -41,7 +50,7 @@ if ( !empty($_POST) ) {
             $membre = $resultat->fetch( PDO::FETCH_ASSOC );
             debug($membre);
 
-            // ce IF pour la vérification du mdp 
+            // ce IF pour la vérification du mdp
             if ( password_verify($_POST['mdp'], $membre['mdp'])) { // si le hash du mdp de la bdd correspond au mdp tapé dans le formulaire, alors password_verify retourne TRUE
                 // echo 'Coucou, cher membre !';
                 $_SESSION['membre'] = $membre; // nous créons une session avec les infos du membre, dans un tableau multidimensionnel
@@ -117,6 +126,7 @@ if ( !empty($_POST) ) {
     <main class="container p-2">
         <section class="row justify-content-center p-4">
         <?php echo $contenu; ?>
+        <?php echo $message; ?>
             <form action="" method="POST" class="col-4 border alert-info p-4" style="color: rgba(132, 113, 122, 0.8);">
                 
                     <div class="mb-4">

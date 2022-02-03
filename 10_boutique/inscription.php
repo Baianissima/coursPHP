@@ -138,7 +138,7 @@ if (!empty($_POST) ) {
             <h1 class="display-4">Creez votre compte</h1>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
-                $positiva = "Tudo joia!";
+                $positiva = "Tudo joia?";
                 echo "<p class=\"text-dark\">$positiva</p>";
             ?>
         </div>
@@ -158,11 +158,11 @@ if (!empty($_POST) ) {
                     <label for="civilite" class="form-label">Civilité *</label> <br>
                     <div class="row">
                         <div class="col-2">
-                            <input type="radio" name="civilite" value="f" id="civilite" checked> Femme</input>
+                            <input type="radio" name="civilite" value="m" id="civilite" checked> Homme</input>
                         </div>
                         <div class="col-2">
-                            <input type="radio" name="civilite" value="m" id="civilite" checked> Homme</input>
-                        </div> 
+                            <input type="radio" name="civilite" value="f" id="civilite" checked> Femme</input>
+                        </div>
                     </div>            
                 </div>
                 <!-- fin row -->

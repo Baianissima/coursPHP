@@ -24,6 +24,10 @@ array(
 session_start();
 
 //3- CHEMIN DU SITE DANS UNE CONSTANTE
+// Ici on définit le chemin absolut dans une constante, on écrira tous les chemins src et href avec cette constante
+// chez l'hebergeur on écrira ce qui suit :
+// define('RACINE_SITE', '/');
+define('RACINE_SITE', '/coursPHP/10_boutique/');
 
 //4- UNE VARIABLE POUR LES MESSAGES, CETTE PAGE DOIT ETRE INITIALISEE VIDE, SANS ESPACES ENTRE LES QUOTES SIMPLES
 $contenu = '';
