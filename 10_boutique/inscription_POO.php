@@ -5,6 +5,7 @@
 //CONNEXION AU FICHIER INIT dans le dossier INC
 
 require_once 'inc/init.inc.php';
+
 // debug($_SESSION);
 // debug(strlen(' Mon chien très, très chou ! '));
 
@@ -65,7 +66,7 @@ if (!empty($_POST) ) {
         $membre = executeRequete( " SELECT * FROM membres WHERE pseudo = :pseudo ",
                                     array(':pseudo' => $_POST['pseudo'])); // on cherche s il y un membre ave le pseudo rentré dans $_POST
         // Ici on compte le contenu de $membre
-        if ($membre->rowCount() > 0) { // si au déompte de cette requête le résultat ne donne pas 0, c'est que le pseudo existe
+        if ($membre->rowCount() > 0) { // si au décompte de cette requête le résultat ne donne pas 0, c'est que le pseudo existe
             $contenu .='<div class="alert alert danger">Le pseudo est indispensable veuillez en choisir un autre ! </div>';
         } else { // sinon, on exécute la requête d'insertion
             $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT); // On hâche le mot de passe avec la fonction prédéfinie password_hash() ave un algorythme 'bcrypt', on passe cette information en variable
@@ -158,7 +159,7 @@ if (!empty($_POST) ) {
 
         <?php echo $contenu ?>
 
-            <form action="" method="POST" class="col-6 border alert-success p-4">
+            <form action="" method="POST" class="col-10 border alert-danger p-4">
                 <div class="mb-4">
                     <label for="civilite" class="form-label">Civilité *</label> <br>
                     <div class="row">
