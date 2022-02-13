@@ -39,7 +39,7 @@
     </header>
     <!-- fin container-fluid header -->
     <body>
-        <div class="container text-center alert alert-info w-25 p-4">
+        <div class="container text-center alert alert-warning w-25 p-4">
             <form action='cours_POO_formulaire.php' method='post' class="m-4">
                 <label for='nom' class="p-4">Nom d'utilisateur : </label>
                 <input type='text' name='nom' id='nom' class="p-2"><br>

@@ -159,7 +159,7 @@ if (!empty($_POST) ) {
 
         <?php echo $contenu ?>
 
-            <form action="" method="POST" class="col-10 border alert-danger p-4">
+            <form action="" method="POST" class="col-10 border alert-warning p-4">
                 <div class="mb-4">
                     <label for="civilite" class="form-label">Civilité *</label> <br>
                     <div class="row">
