@@ -6,7 +6,7 @@
  // 2 - CONNEXION à la BDD entreprise
  $pdoENT = new PDO('mysql:host=localhost;dbname=entreprise', // hôte et nom BDD
                         'root', // pseudo
-                        // '',  // mdp pour MAC avec XAMP
+                        // '',  // mdp pour PC avec XAMP
                         'root', // mdp pour MAC avec MAMP/
                         array(
                             PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
