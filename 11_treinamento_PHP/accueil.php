@@ -93,8 +93,8 @@ if ( !empty($_POST) ) {
     <!-- ====================================================== -->
     <main class="container p-2">
         <section class="row justify-content-center text-white p-4">
-            <div class="col-md-12 mx-auto m-4">
-                <h2 class="m-4 p-4 text-center text-white"></h2>                
+            <div class="col-md-12 mx-auto my-4 alert alert-dark">
+                <h2 class="m-4 p-4 text-center text-white">Suivre la navigation pour réviser PHP 1 ;-)</h2>                
             </div>
             <!-- fin col -->
         </section>

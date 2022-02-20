@@ -27,24 +27,24 @@
                     </li>
 
                     <li class="nav-item m-4">
-                        <a class="nav-link" href="affichage_insertion.php">Affichage/Insertion</a>
+                        <a class="nav-link" href="2_affichage_insertion.php">Affichage/Insertion</a>
                     </li>
 
                     <li class="nav-item m-4">
-                        <a class="nav-link" href="ajout.php">Ajout</a>
+                        <a class="nav-link" href="3_maj.php">Maj back office </a>
                     </li>
 
-                    <li class="nav-item m-4">
+                    <!-- <li class="nav-item m-4">
                         <a class="nav-link" href="update.php">Update</a>
-                    </li>
+                    </li> -->
 
-                    <li class="nav-item m-4">
+                    <!-- <li class="nav-item m-4">
                         <a class="nav-link" href="inscription.php">Inscription</a>
                     </li>
 
                     <li class="nav-item m-4">
                         <a class="nav-link" href="connexion.php">Connexion</a>
-                    </li>
+                    </li> -->
 
                     <!-- <li class="nav-item m-4">
                         <a class="nav-link" href="admin/accueil_admin.php">Admin</a>

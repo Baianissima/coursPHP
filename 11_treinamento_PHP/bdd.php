@@ -87,8 +87,9 @@ if ( !empty( $_POST )) {// est-ce que $_POST n'est pas vide
     <!-- ====================================================== -->
     <main class="container p-2">
         <section class="row justify-content-center p-4">
-            <div class="col-md-12 mx-auto my-4">
-                <h2 class="m-4 p-4 text-center text-white">Connexion à la BDD "universite" :</h2>
+            <div class="col-md-12 mx-auto my-4 alert alert-dark">
+                <h2 class="m-4 p-4 text-center text-white">Connexion à la BDD "universite" : option 1</h2>
+                <p class="lead text-center text-white">Sans variables pour la connexion</p>
                 <code> $pdoUNIV = new PDO( 'mysql:host=localhost;dbname=universite',// hôte nom BDD universite <br>
               'root',// pseudo  <br>
                 //   '',// mot de passe <br>
@@ -101,6 +102,26 @@ if ( !empty( $_POST )) {// est-ce que $_POST n'est pas vide
                 // debug(get_class_methods($pdoUNIV)); </code> <br>
             </div>
             <!-- fin col -->
+    
+            <div class="col-md-12 mx-auto my-4 alert alert-dark">
+                <h2 class="m-4 p-4 text-center text-white">Connexion à la BDD "universite" : option 2</h2>
+                <p class="lead text-center text-white">Avec des variables pour la connexion</p>
+
+                    <code>$host = 'localhost';//le chemin vers le serveur de données <br>
+                    $database = 'universite';//le nom de la BDD <br>
+                    $user = 'root';// le nom d'utilisateur pour se connecter <br>
+                    // $psw = '';// mdp pour PC sur XAMPP <br>
+                    $psw = 'root';// mdp pour MAC sur MAMPP <br>
+
+                    $pdoUNIV = new PDO('mysql:host='.$host.';dbname='.$database,$user,$psw, <br>
+                    array( <br>
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,// pour afficher les warnings SQL dans le navigateur <br>
+                    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',// pour définir le charset des échanges avec la BDD <br>
+                    )); <br>
+
+                    // var_dump(get_class_methods($pdoMAB));<code> <br>
+            </div>
+           
 
             <div class="col-md-12 mx-auto">
                 <h2 class="m-4 p-4 text-center text-white">Afficher les données d'abord avec ma var_dump perso (ma fonction "debug") :</h2>    

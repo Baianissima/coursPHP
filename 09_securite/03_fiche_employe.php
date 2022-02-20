@@ -1,7 +1,7 @@
 <?php
  // pour arriver à cette page 3 il faut arriver avec $_GET : cliquer sur le lien "fiche" de la page 2
  
- // 1 APPEL DES FONCTIONS
+ // 1 - APPEL DES FONCTIONS
  require_once '../inc/functions.php'; // appel des fonctions
 
  // 2 - CONNEXION BDD
@@ -17,7 +17,8 @@
                         // debug(get_class_methods($pdoENT));
                 
 
-// 3 - RECEPTION DES INFORMATIONS AVEC $_GET
+// 3 - RECEPTION DES INFORMATIONS D'UN EMPLOYE AVEC $_GET
+
 // debug($_GET);
 
 // Ouverture if isset
@@ -28,7 +29,9 @@ if ( isset($_GET['id_employes']) ) { // on demande le détail d'un employé
     $resultat->execute(array(
         ':id_employes' => $_GET['id_employes'] // On associe le marqueur vide à l'id_employes
     ));
+
     debug($resultat->rowCount());
+
         if ($resultat->rowCount() == 0) { // Si le rowCount est égal à 0 c'est qu'il n'y as pas d'employé
         header('location:02_employes.php'); // redirection vers la page de départ
             exit(); // arret du script
@@ -69,7 +72,7 @@ if (!empty($_POST)) {  // not empty
 
     header ('location:02_employes.php');
     exit();
- }
+}
 
 // NAVBAR EN REQUIRE
  require_once '../inc/navbar.inc.php';
@@ -125,8 +128,12 @@ if (!empty($_POST)) {  // not empty
 
                 <!-- pour limiter le nombre a afficher à 5 employés seulement : ajouter LIMIT 5 apres DESC -->
                 
-                <!-- Faire une card bootstrapavec toutes les infos d'un employé -->
-            <?php echo $fiche['nom']; ?>
+                <!-- Faire une card bootstrapavec toutes les infos d'un employé : -->
+                <!-- <?php echo '<p class="bg-cyan">' .$fiche['nom']. ' ' .$fiche['prenom']. ', ' .$fiche['service']. '. Date d\'embauche : ' .$fiche['date_embauche']. '</p>';?> -->
+
+                <!-- <?php echo $fiche['nom']; ?> -->
+            
+
             </div>
             <!-- fin col -->        
         </section>
@@ -137,7 +144,7 @@ if (!empty($_POST)) {  // not empty
             <form action="" method="POST" class="col-cmd-8">
 
                 <div class="mb-3 row">
-                    <div class="form-group  col-6">
+                    <div class="form-groupcol-6">
                         <label for="prenom" class="form-label">Prénom *</label>
                         <input type="text" name="prenom" id="prenom" class="form-control" value="<?php echo $fiche['prenom'];?>">
                     </div>
@@ -175,8 +182,6 @@ if (!empty($_POST)) {  // not empty
                     </div>                    
                 </div>
 
-                
-
                 <div class="mb-3 row">
                     <div class="mb-3 col-md-6">
                         <label for="date_embauche" class="form-label">Date d'embauche *</label>
@@ -189,17 +194,16 @@ if (!empty($_POST)) {  // not empty
                     </div>
                 </div>
 
-               
-
                 <div class="form-row justify-content-between">
                     <small class="col-lg-8  col-md-6 align-baseline ml-1 mr-1 p-1">Les champs suivis d'une * sont obligatoires</small>
-        </div>  
+                </div>  
 
                 <button type="submit" class="btn btn-primary">Mise à jour</button>       
             </form>
+            <!-- fin form -->
+        </section>
+        <!-- fin row -->
 
-        
-                                        
         <!-- gabarit pour une section -->
         <section class="row mb-4">
             <div class="col-md-6">
@@ -213,8 +217,8 @@ if (!empty($_POST)) {  // not empty
             <!-- fin col -->  
         </section>
         <!-- fin row -->
+        
     </div>
-
     <!-- fin div container -->
 
     <!-- ====================================================== -->

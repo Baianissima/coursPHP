@@ -1,6 +1,6 @@
 <?php 
 
-// 1 APPEL DES FONCTIONS
+// 1 - APPEL DES FONCTIONS
 require_once 'inc/functions.php';  
 
 // 2 CONNEXION BDD universite
@@ -16,8 +16,9 @@ $pdoUNIV = new PDO( 'mysql:host=localhost;dbname=universite',// hôte nom BDD un
             // debug(get_class_methods($pdoUNIV));
 
 
-// 3 TRAITEMENT DU FORMULAIRE SÉCURISÉ AVEC UNE REQUÊTE PRÉPARÉE
-if ( !empty( $_POST )) {// si $_POST n'est pas vide...
+// 3 - TRAITEMENT DU FORMULAIRE : ENVOI DES INFORMATIONS A SCTOKER AVEC $_POST, avec une resultat préparée
+
+if ( !empty($_POST)) {// "Si $_POST n'est pas vide...
 	$_POST['cursus'] = htmlspecialchars($_POST['cursus']);// pour se prémunir des failles et des injections SQL
 	$_POST['civilite'] = htmlspecialchars($_POST['civilite']);
     $_POST['prenom'] = htmlspecialchars($_POST['prenom']);
@@ -26,7 +27,11 @@ if ( !empty( $_POST )) {// si $_POST n'est pas vide...
 	$_POST['mdp'] = htmlspecialchars($_POST['mdp']);
     $_POST['message'] = htmlspecialchars($_POST['message']);
 
-	$insertion = $pdoUNIV->prepare( " INSERT INTO etudiants (cursus, civilite, prenom, nom, pseudo, mdp, message) VALUES (:cursus, :civilite, :prenom, :nom, :pseudo, :mdp, :message, NOW()) " );// requete préparée avec des marqueurs
+	$insertion = $pdoUNIV->prepare( " INSERT INTO etudiants (cursus, civilite, prenom, nom, pseudo, mdp, message) VALUES (:cursus, :civilite, :prenom, :nom, :pseudo, :mdp, :message) " );// resultat préparée avec des marqueurs
+
+    debug($insertion);
+
+    // Ici on exécute le tableau (array) sur la même page, pour vérifier, avec les données qui figurent sur la bdd :
 
 	$insertion->execute( array(
 		':cursus' => $_POST['cursus'],
@@ -65,7 +70,7 @@ if ( !empty( $_POST )) {// si $_POST n'est pas vide...
     <!-- Mes styles -->
     <link rel="stylesheet" href="css/styles.css" >
 
-    <title>Affichage et insertion d'informations</title>
+    <title>Affichage et ajout de données</title>
 </head>
 
 <body>
@@ -80,7 +85,7 @@ if ( !empty( $_POST )) {// si $_POST n'est pas vide...
 
     <header class="container-fluid f-header p-2 mb-4 bg-light">
         <div class="col-12 text-center">
-            <h1 class="display-4">Afichage de données et insertion de message</h1>
+            <h1 class="display-4">Affichage + ajout d'un étudiant + lien vers Maj back office</h1>
             <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
             <?php
                 $positiva = "Vas-y !";
@@ -93,16 +98,17 @@ if ( !empty( $_POST )) {// si $_POST n'est pas vide...
     <!-- ====================================================== -->
     <!--                CONTAINER : contenu principal           --> 
     <!-- ====================================================== -->
-    <main class="container p-2 text-light">
+    <main class="container p-2">
         <section class="row justify-content-center p-4 m-4">
-            <div class="col-md-12">
+            <div class="col-md-12 ">
                 <?php
-                    // Pour affichage de données ($requete peut être emplacée par $resultat):
-                    $requete = $pdoUNIV->query( " SELECT * FROM etudiants ");
-                    // debug($requete);
+                    // Pour affichage de données ($resultat peut être emplacée par $resultat) ajouter LIMIT 8, par exemple, apres DESC :
+
+                    $resultat = $pdoUNIV->query( " SELECT * FROM etudiants ORDER BY id_etudiant DESC ");
+                    // debug($resultat);
 
                     // Pour compter les données :
-                    $nbr_etudiants = $requete->rowCount();
+                    $nbr_etudiants = $resultat->rowCount();
                     // debug($nbr_etudiants);
                 ?>
             </div>
@@ -110,57 +116,10 @@ if ( !empty( $_POST )) {// si $_POST n'est pas vide...
         </section>
         <!-- fin row -->
 
-        <section class="row justify-content-center p-4 m-4"> 
-       
-            <div class="col-md-10 m-4">
-            <h2>Nouvel étudiant et insertion d'un message à la BDD et au tableau</h>
-                <!-- form avec action et method < action est vide car nous envoyons les données avec cette même page et POST va envoyer dans la superglobale $_POST -->
-
-                <form action="" method="POST" class="border border-light">
-                    <div class="mb-4">
-                        <label for="prenom" class="form-label">Votre prenom*</label>
-                        <input type="text" name="prenom" id="prenom" class="form-control" required></input>
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="nom" class="form-label">Votre nom*</label>
-                        <input type="text" name="nom" id="nom" class="form-control" required></input>
-                    </div>
-
-                    <div class="mb-4">
-                    <!-- https://getbootstrap.com/docs/5.1/forms/checks-radios/ -->
-                        <label for="civilite" class="form-label">Civilite*</label><br>
-                        <input type="radio" name="civilite" value="Mme" id="civilite" checked>  Madame  
-                        <input type="radio" name="civilite" value="M" id="civilite"> Monsieur
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="cursus" class="form-label">Cursus*</label> <br>
-                    
-                        <select name="cursus" id="cursus">
-                            <option value="">-------------------</option>
-                            <option value="lettres">Lettres</option>
-                            <option value="arts-plastiques">Arts plastiques</option>
-                            <option value="design">Design</option>
-                        </select>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label for="message" class="form-label">Votre message*</label>
-                        <textarea name="message" id="message" cols="30" rows="5" class="form-control" required></textarea>
-                    </div>
-                                    
-                    <button type="submit" class="btn btn-info">Envoyer</button>
-                </form>
-            </div>
-            <!-- fin col -->
-        </section>
-        <!-- fin row -->
-
         <section class="row justify-content-center p-4 m-4">
-            <div class="col-md-10">
-                <h2>Tableau avec une while dans le tbody : il y a <?php echo $nbr_etudiants; ?> étudiants </h2>
-                <table class="table table-striped border border-light">
+            <div class="col-md-12 mx-auto my-4 alert alert-dark text-light">
+                <h2>Afficher des donnees de la table etudiants sur ce tableau avec une while dans le tbody : il y a <?php echo $nbr_etudiants; ?> étudiants </h2>
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>Id</th>
@@ -168,19 +127,26 @@ if ( !empty( $_POST )) {// si $_POST n'est pas vide...
                             <th>Civilite</th>
                             <th>Prenom</th>
                             <th>Nom</th>
+                            <th>Pseudo</th>
+                            <th>Mdp</th>
                             <th>Message</th>
                         </tr>
                     </thead>
                     <tbody>
                         <!-- Ouverture de la boucle while avec l'accolade ouvrante ici :-->
-                        <?php while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)){?>
+                        <?php while ($ligne = $resultat->fetch(PDO::FETCH_ASSOC)){?>
                             <tr>
                                 <td><?php echo $ligne['id_etudiant']; ?></td>
                                 <td><?php echo $ligne['cursus']; ?></td>
                                 <td><?php echo $ligne['civilite']; ?></td>
                                 <td><?php echo $ligne['prenom']; ?></td>
                                 <td><?php echo $ligne['nom']; ?></td>
+                                <td><?php echo $ligne['pseudo']; ?></td>
+                                <td><?php echo $ligne['mdp']; ?></td>
                                 <td><?php echo $ligne['message']; ?></td>
+
+                                 <!-- Cette td renvoie à la page de mise à jour d'un étudiant depuis son id fiche étudiant ave l'id étudiant : page Maj Back office -->
+                                <td><a href="3_maj.php?id_etudiant=<?php echo $ligne['id_etudiant']; ?>">Mise à jour</a></td>
                             </tr>
                             <!-- Fermeture de la boucle while avec l'accolade fermante ici : -->
                         <?php } ?>
@@ -192,18 +158,71 @@ if ( !empty( $_POST )) {// si $_POST n'est pas vide...
         </section>
         <!-- fin row -->
 
-        <section class="row justify-content-center p-4 m-4">
-            <div>
-                            
-            </div>
-        </section>
-        <!-- fin row --> 
+        <section class="row justify-content-center p-4 m-4"> 
+       
+            <div class="col-md-8 mx-auto my-4 alert alert-dark text-light">
+            <h2>Formulaire d'insertion d'un nouvel étudiant à la BDD</h>
+                <!-- form avec action et method < action est vide car nous envoyons les données avec cette même page et POST va envoyer dans la superglobale $_POST -->
 
-        <section class="row">
-            <div>
+                <form action="" method="POST" class="">
+
+                    <div class="mb-4">
+                    <!-- https://getbootstrap.com/docs/5.1/forms/checks-radios/ -->
+                        <label for="civilite" class="form-label">Civilité :</label> <br>
+                        <input type="radio" name="civilite" value="Mme" id="civilite" checked>  Madame 
+                        <input type="radio" name="civilite" value="M" id="civilite"> Monsieur 
+                    </div>
+
+                    <!-- Un select pour les cursus -->
+                    <div class="mb-4">
+                        <label for="cursus" class="form-label">Cursus</label> <br>
+                    
+                        <select name="cursus" id="cursus">
+                            <option value="">-------------------</option>
+                            <option value="Lettres">Lettres</option>
+                            <option value="Arts plastiques">Arts plastiques</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="nom" class="form-label">Nom *</label>
+                        <input type="text" name="nom" id="nom" class="form-control" required></input>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="prenom" class="form-label">Prénom *</label>
+                        <input type="text" name="prenom" id="prenom" class="form-control" required></input>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="pseudo" class="form-label">Pseudo *</label>
+                        <input type="text" name="pseudo" id="pseudo" class="form-control" required></input>
+                    </div>
              
+                    <!-- <div class="mb-4">
+                        <label for="message" class="form-label">Votre message*</label>
+                        <textarea name="message" id="message" cols="30" rows="5" class="form-control" required></textarea>
+                    </div> -->
+                                    
+                    <button type="submit" class="btn btn-info">Ajouter</button>
+                </form>
             </div>
-        </section> 
+            <!-- fin col -->
+        </section>
+        <!-- fin row -->
+
+       <!-- gabarit pour une section -->
+       <section class="row mb-4">
+            <div class="col-md-6">
+                <h2></h2>
+                <?php
+                    // debug($GLOBALS);
+                ?>         
+            </div>
+            <!-- fin col --> 
+        </section>
+        <!-- fin row -->
+
     </main>
     <!-- fin container -->
 

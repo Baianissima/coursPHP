@@ -104,9 +104,9 @@ require_once '../inc/navbar.inc.php';
                 <!-- AFFICHAGE DE DONNEES -->
                 <?php
                     $resultat = $pdoENT->query( " SELECT * FROM employes ORDER BY id_employes DESC ");
-                    debug($resultat);
+                    // debug($resultat);
                     $nbr_employes = $resultat->rowCount();
-                    debug($nbr_commentaires);
+                    // debug($nbr_commentaires);
                 ?>
             </div>
             <!-- fin col -->        
@@ -118,7 +118,9 @@ require_once '../inc/navbar.inc.php';
         <section class="row mx-auto">
             <div class="col-md-6 bg-light m-5">
                 <h2>1 - Afficher des données de la table employés sur un tableau</h2>
-                    <h3>Il y a <?php echo $nbr_employes; ?> employés :</h3>
+
+                <h3>Il y a <?php echo $nbr_employes; ?> employés :</h3>
+                
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -130,6 +132,7 @@ require_once '../inc/navbar.inc.php';
                             <th>Salaire</th>
                             <th>Date d'embauche</th>
                             <th>Fiche employé</th>
+                            <th>Message</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -144,6 +147,7 @@ require_once '../inc/navbar.inc.php';
                             <td><?php echo $ligne['salaire']; ?></td>
                             <td><?php echo $ligne['date_embauche']; ?></td>
                             <td><a href="03_fiche_employe.php?id_employes=<?php echo $ligne['id_employes']; ?>">Mise à jour</a></td>
+                            <td><?php echo $ligne['message']; ?></td>
                         </tr>
                         <!-- Fermeture de la boucle while avec l'accolade fermante ici : -->
                         <?php } ?>
@@ -153,7 +157,7 @@ require_once '../inc/navbar.inc.php';
             <!-- fin col -->
 
             <div class="col-md-4 bg-light m-5">
-                <h2> 3 - Formulaire pour insertion d'un nouvel employé</h2>
+                <h2> 2 - Formulaire pour insertion d'un nouvel employé</h2>
                 <!-- form avec action et method < action est vide car nous envoyons les données avec cette même page et POST va envoyer dans la superglobale $_POST -->
 
                 <form action="" method="POST" class="border border-succes p-1">
@@ -200,13 +204,14 @@ require_once '../inc/navbar.inc.php';
                         <label for="salaire" class="form-label">Salaire</label>
                         <input type="salaire" name="salaire" id="salaire" class="form-control" required></input>
                     </div>
-
-                    <button type="submit" class="btn btn-success">Ajouter un employé</button>
                     
+                    <!-- Voir ce qu'il manque dans la div du message pour que le message soit envoyé !   :-(   -->
                     <!-- <div class="mb-3">
                         <label for="message" class="form-label">Votre message</label>
                         <textarea name="message" id="message" cols="30" rows="5" class="form-control" required></textarea>
                     </div> -->
+
+                    <button type="submit" class="btn btn-success">Ajouter un employé</button>
                 </form>
             </div>
             <!-- fin col -->
@@ -222,7 +227,7 @@ require_once '../inc/navbar.inc.php';
 
             <div class="col-md-6">
                 <?php
-                    debug($GLOBALS);
+                    // debug($GLOBALS);
                 ?>
             </div>
             <!-- fin col -->  
