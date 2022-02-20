@@ -1,0 +1,17 @@
+/* styles pour le rattrapage PHP 1 */
+
+header {
+    color: rgb(76, 80, 83);
+  
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    height: 100%;
+    font-size: 1.5em;
+    background-image: url(../img/triangles-3320452__480.webp);
+}   
+
+h1, h2, h3, h4 {
+    font-family: 'Montserrat bold', sans-serif;
+}   

@@ -13,10 +13,11 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
+            </div>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                
                 <ul class="navbar-nav">
-                     <li class="nav-item m-4">
+                    <li class="nav-item m-4">
                         <!-- <a class="nav-link" href="<?= URL ?>accueil.php"></a> -->
                         <p class="">Bonjour, <?php echo $_SESSION['membre'] ['prenom'];?></p>
                         <a class="nav-link" href=""></a>
@@ -26,9 +27,11 @@
                         <!-- <a class="nav-link" href="<?= URL ?>accueil.php"></a> -->
                         <a class="nav-link" href="accueil.php"></a>
                     </li>
+
                     <li class="nav-item m-4">
                         <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="inscription.php">Nouveau ici ? Inscrivez-vous !</a>
                     </li>
+
                     <li class="nav-item m-4">
                         <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="connexion.php">Connectez-vous</a>
                     </li>
@@ -36,15 +39,15 @@
                     <li class="nav-item m-4">
                         <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="profil.php">Profil</a>
                     </li>
+
                     <li class="nav-item m-4">
                         <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="admin/accueil_admin.php">Accueil Admin</a>
                     </li>
+                    
                     <li class="nav-item m-4">
                         <a class="nav-link" style="color: rgba(132, 113, 122, 0.8);" href="panier.php"><i class="bi bi-bag"></i></a>
                     </li>
                 </ul>
-            </div>
-            </div>
-            
+            </div>     
         </div>
     </nav>

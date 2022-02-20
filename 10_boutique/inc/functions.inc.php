@@ -2,13 +2,13 @@
 
 // 1- FONCTION VAR DUMP AVEC STYLES BOOTSTRAP : ma fonction var_dump est nomée "debug" :
 function debug($mavar) { // la fonction avec son paramètre, une variable
-    echo "<br><small class=\"bg-info text-dark\"> * * * * * * * * * * * var_dump de la BDD maboutique * * * * * * * * * * * </smal><pre class=\"alert alert-info w-25\">";
+    echo "<br><small class=\"bg-info text-white\"> * * * * * * * *  var_dump de la BDD maboutique * * * * * * * *  </smal><pre class=\"alert alert-info w-25\">";
     var_dump($mavar); // à cette variable on applique la fonction var_dump()
     echo "</pre>";
 
 }
 
-// 2 - FONCTIONS POUR EXECUTER LES REQUETES PREPAREES AVEV FOREACH (raccourci comme un require)
+// 2 - FONCTIONS POUR EXECUTER LES REQUETES PREPAREES AVEC FOREACH (raccourci comme un require)
 function executeRequete( $requete, $parametres = array ()) { // utile pour toutes les requetes 1) la requete  2) fabrication du tableau avec des marqueurs
     foreach ($parametres as $indice => $valeur) { // boucle foreach
         $parametres[$indice] = htmlspecialchars($valeur); // boucle foreach // pour eviter les inections ???
@@ -31,7 +31,7 @@ function estConnecte() {
     if (isset($_SESSION['membre'])) { // s'il y a un indice membre, le membre est passé par la page de connexion
         return true; // true = il est connecté
     } else {
-        return false;  // false = il n'est as connecté
+        return false;  // false = il n'est pas connecté
     }
 }
 
