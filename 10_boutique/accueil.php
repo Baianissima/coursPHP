@@ -1,4 +1,3 @@
-
 <?php 
 // POUR SE CONNECTER ET SE DECONNECTER :
 
@@ -12,7 +11,7 @@ require_once 'inc/init.inc.php';
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!--  meta tags -->
+    <!--  Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -63,13 +62,13 @@ require_once 'inc/init.inc.php';
 <main class="container">
   <section class="py-5 text-center">
     <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
+      <div class="col-lg-8 col-md-8 mx-auto">
         <h2 class="fw-light">Que souhaitez-vous faire ?</h2>
         <p class="lead text-muted"></p>
         <p>
-          <a href="connexion.php" class="btn btn-secondary my-2">Connexion</a>
-          <a href="inscription.php" class="btn btn-secondary my-2">Inscription</a>
-          <a href="accueil.php" class="btn btn-secondary my-2">Shopping</a>
+          <a href="connexion.php" class="btn btn-secondary my-2">Connexion à votre espace membre ?</a>
+          <a href="inscription.php" class="btn btn-secondary my-2">Creer votre compte client ?</a>
+          <a href="accueil.php" class="btn btn-secondary my-2">Faire du shopping ?</a>
         </p>
       </div>
     </div>
@@ -82,7 +81,7 @@ require_once 'inc/init.inc.php';
     <div class="galerie container">
 
     <!-- debut row-cols de BTS pour faire wrap : sm-2 pour 2 images par row, md-3 pour 3 images par row -->
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
       <!-- debut des col -->
         <div class="col">
@@ -269,26 +268,37 @@ require_once 'inc/init.inc.php';
       // debug($nbr_commentaires);
     ?>
     <h4>Il y a <?php echo $pdt; ?> produits dans la BDD de MyBoutique:</h4>
-          <table class="table table-striped">
-             <thead>
-               <tr>
-                 <th>titre</th>
-                 <th>categorie</th>
-                 <th>taille</th>
-                 <th>stock</th>
-                 <th>couleurs</th>
-               </tr>
+          <table class="table table-striped table-sm table-bordered table-hover table-inverse table-responsive">
+             <thead class="thead-inverse">
+             <tr>
+                   <th>Numéro</th>
+                   <th>Produit</th>
+                   <th>Description</th>
+                   <th>Couleur</th>
+                   <th>Prix</th>
+                   <th>Image</th>
+                   <th>Voir</th>
+                 </tr>
              </thead>
              <tbody>
-                <!-- ouverture de la boucle while -->
-                  <?php while ( $ligne = $requete->fetch( PDO::FETCH_ASSOC )) { ?>
+
+             <?php
+              $requete = $pdoMAB->query( " SELECT * FROM produits, categories WHERE produits.id_categorie = categories.id_categorie" );
+              // debug($requete);
+              // $nbr_produits = $requete->rowCount();
+              // debug($nbr_produits); 
+            
+          
+                while ( $ligne = $requete->fetch( PDO::FETCH_ASSOC )) { ?>
+
                 <tr>
-                  <td><?php echo $ligne['id_produit']; ?></td> 
-                  <td><?php echo $ligne['titre'] . ['categorie']; ?></td>                   
-                  <td><?php echo $ligne['categorie']. ' ' .$ligne['stock']; ?></td>
-                  <td><?php echo $ligne['taille']; ?></td>
-                  <td><?php echo $ligne['stock']; ?></td>
-                  <td><?php echo $ligne['couleur']; ?></td>
+                    <td scope="row">n° <?php echo $ligne['id_produit']; ?></td>                   
+                    <td><?php echo $ligne['titre']. 'coucou ' .$ligne['categorie']; ?></td>
+                    <td><?php echo html_entity_decode($ligne['description']); ?></td>
+                    <td><?php echo $ligne['couleur']; ?></td>
+                    <td> <img src="<?php echo $ligne['photo']; ?>" class="figure-img img-fluid rounded img-admin"></td>
+                    <td><?php echo $ligne['prix']; ?> €</td>
+                    <td><a href="produit.php?id_produit=<?php echo $ligne['id_produit']; ?>">Voir le produit</a></td>
                 </tr>
                 <!-- fermeture de la boucle -->
                 <?php } ?>
@@ -305,7 +315,7 @@ require_once 'inc/init.inc.php';
     <!-- ====================================================== -->
     <!--                  FOOTER : en require                   --> 
     <!-- ====================================================== -->  
-    <?php require_once 'inc/footer.inc.php';?> 
+    <?php require_once 'inc/footer.inc.php';?>
 
     <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 

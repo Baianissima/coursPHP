@@ -4,15 +4,15 @@
 
 // (CONNEXION AU FICHIER INIT dans le dossier INC)
 require_once 'inc/init.inc.php';
-debug($_SESSION);
+// debug($_SESSION);
 
 // 2 - DECONNEXION DU MEMBRE
-debug($_GET);
+// debug($_GET);
 $message = '';
 if (isset($_GET['action']) && $_GET['action'] == 'deconnexion') { // Si il existe action qui contient déconnexion dans l'URL
     unset($_SESSION['membre']); // On supprime le membre de la session (le contenu du tableau indice ['membre'])
-    $message = '<div class="alert alert-success">Vous êtes bien déconnecté !</div>'; // Message de déconnexion cf echo plus bas
-    debug($_SESSION);
+    $message = '<div class="alert alert-success text-center">Vous êtes bien déconnecté !</div>'; // Message de déconnexion cf echo plus bas
+    // debug($_SESSION);
 }
 
 // 3 - REDIRECTION VERS LA PAGE PROFIL

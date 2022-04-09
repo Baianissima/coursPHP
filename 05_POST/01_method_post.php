@@ -45,7 +45,7 @@ require_once '../inc/navbar.inc.php';
                 $varOla = "Olá !";
                 echo "<p class=\"text-white\">$varOla tudo bem?</p>";
         
-                whatDay();
+                // whatDay();
             ?>
         </div>
     </header>

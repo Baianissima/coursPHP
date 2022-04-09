@@ -20,7 +20,7 @@ body {
     /* color: rgb(97, 109, 109); */
 }   
 
-h1, h2, h3, h4 {
+/* h1, h2, h3, h4 { */
     /* font-family: 'Belgrano', serif ; */
     /* color: rgba(132, 113, 122, 0.8);
 
@@ -36,9 +36,9 @@ footer {
 
 
 /* pour supprimer les fleches du menu bootstrap */
-.dropdown-toggle::after {
+/* .dropdown-toggle::after {
     display: none;
-}
+} */
 
 /* class creee pour centrer la nav */
 /* .menu{

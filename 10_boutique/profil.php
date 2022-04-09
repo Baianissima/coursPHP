@@ -7,7 +7,6 @@ require_once 'inc/init.inc.php';
 // debug(estConnecte());
 // debug(estAdmin());
 // debug(RACINE_SITE);
-
 // debug($_POST);
 
 if (!estConnecte()) {  // Accès à la page autorisée quand on est connecté, si pas connecté, cet header renvoie à la page CONNEXION
@@ -52,194 +51,135 @@ if (!estConnecte()) {  // Accès à la page autorisée quand on est connecté, s
   
     <header class="container-fluid f-header p-2 mb-4 bg-light">
         <div class="col-12 text-center">
-            <h1 class="display-4">Votre Profil</h1>
+            <h1 class="display-4">Votre Profil : connexion Membre et connexion Admin</h1>
             <p class="lead">Ici on voit afficher le résultat du IF pour les variables <code>client(0)</code> et <code>administrateur(1)</code><br>
             Les echos apparaîssent ici si le pseudo et le mdp sont corrects !</p>
             <!-- ce p a été mis dans la navbar en inc <p class="alert alert-success w-25 text-center">Bonjour, <?php echo $_SESSION['membre'] ['prenom'];?></p> -->
 
                 <?php
                     if(estAdmin()) { // Si le membre est admin il n'a pas les mêmes accès qu'un 'client'
-                        echo '<p class="lead">Vous êtes administrateur</p>';
+                        echo '<p class="lead alert alert-success">VOUS ÊTES ADMINISTRATEUR !</p>';
                     } else { 
-                        echo '<p class="text-center">Vous êtes connecté.e, rendez-vous à la Boutique !</p>';
+                        echo '<p class="text-center alert alert-info">VOUS ETES CONNECTE.E, RDV AU CATALOGUE !</p>';
                     }
                 ?>
-        </div> 
+            <!-- sousnav pour les accès back office : nav-pills -->
+            <ul class="nav nav-pills nav-fill justify-content-ce">
+                    <?php 
+                        if(estAdmin()) { // si le membre est 'admin' il n'a pas les mêmes accès qu'un membre 'client'
+                            echo '<li class="nav-item"><a class="btn btn-secondary" href="' .RACINE_SITE. 'admin/accueil.php">ESPACE ADMIN</a></li>';
+                            echo '<li class="nav-item"><a class="btn btn-secondary" href="' .RACINE_SITE. 'accueil.php">ESPACE CATALOGUE</a></li>';
+                            // echo 'coucou';
+                        } else {
+                            echo '<li class="nav-item"><a class="btn btn-secondary" href="accueil.php">RETOUR A L\'ACCUEIL</a></li>';
+                        }
+                        if (estConnecte()) {
+                            //  echo 'Bienvenue !';
+                            echo '<li class="nav-item"><a class="btn btn-secondary" href="' .RACINE_SITE. 'connexion.php?action=deconnexion">SE DECONNECTER</a></li>';
+                        }
+                    ?>
+            </ul>
+        </div>
     </header>
     <!-- fin container-fluid header -->
-
 
     <!-- ====================================================== -->
     <!--                CONTAINER : contenu principal           --> 
     <!-- ====================================================== -->
+
+
+    <?php
+        //4 TRAITEMENT DE MISE À JOUR D'UN MEMBRE
+        if ( !empty($_POST) ) {//not empty
+            // debug($_POST);
+            $_POST['pseudo'] = htmlspecialchars($_POST['pseudo']);
+            $_POST['nom'] = htmlspecialchars($_POST['nom']);// pour se prémunir des failles et des injections SQL
+            $_POST['prenom'] = htmlspecialchars($_POST['prenom']);
+            $_POST['email'] = htmlspecialchars($_POST['email']);
+            $_POST['civilite'] = htmlspecialchars($_POST['civilite']);
+            $_POST['adresse'] = htmlspecialchars($_POST['adresse']);
+            $_POST['code_postal'] = htmlspecialchars($_POST['code_postal']);
+            $_POST['ville'] = htmlspecialchars($_POST['ville']);
+
+            $resultat = $pdoMAB->prepare( " UPDATE membres SET pseudo = :pseudo, nom = :nom, prenom = :prenom, email = :email, civilite = :civilite, adresse = :adresse, code_postal = :code_postal, ville = :ville, WHERE pseudo = :pseudo " );// requete préparée avec des marqueurs
+
+            $resultat->execute( array(
+                ':pseudo' => $_POST['pseudo'],
+                ':nom' => $_POST['nom'],
+                ':prenom' => $_POST['prenom'],
+                ':email' => $_POST['email'],
+                ':civilite' => $_POST['civilite'],
+                ':adresse' => $_POST['adresse'],
+                ':code_postal' => $_POST['code_postal'],    
+                ':ville' => $_POST['ville'],
+            ));
+            header('location:accueil.php');
+            exit();
+        }
+
+    ?>
+
     <main class="container p-2">
-        <section class="row justify-content-center p-4">
-                    <div>
-                        <ul class="nav justify-content-center">
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="#">Espace Admin</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Aller à la boutique</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Se déconnecter</a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link disabled">Ecrire une autre chose ?</a>
-                            </li> -->
-                        </ul>
-                    </div>
-            </section>
-            <!-- fin row -->
-
-        <section class="row justify-content-center p-4">
-            <div class="col-md-8">
-                <h2 class="m-4 p-4 text-center"></h2>
-                <?php
-                    if(estAdmin()) { // Si le membre est admin il n'a pas les mêmes accès qu'un 'client'
-                        echo '<a class="btn btn-primary text-center" href="' .RACINE_SITE. 'admin/accueil_admin.php">Espace Admin</a>';
-                        echo '<a class="btn btn-success text-center" href="' .RACINE_SITE. 'accueil.php">Aller à la boutique</a>';
-                    } else { 
-                        echo '<a class="btn btn-success text-center" href="accueil.php">Retour à la boutique</a>';
-                    }
-                    if (estConnecte()) {
-                        // echo 'OLA!';
-                        echo '<a class="btn btn-secondary text-center" href="connexion.php?action=deconnexion">Se déconnecter</a>';
-                }
-                ?>
-
-                <p class="lead">EXO :</p>
-                <ul>
-                    <li>Faire un form pour afficher en PHP...(utiliser le form de l'inscription)</li>
-                    <li>Utiliser $_SESSIONS</li>
-                    <li>Utiliser indice ['membre']</li>
-                    <li>UPDATE du membre</li>
-                </ul>      
-            </div>
-            <!-- fin col -->    
-        </section>
-        <!-- fin row -->
 
         <section class="row justify-content-center">
-                
-                <div class="col-6">
-                    <h2>Mise à jour d'un membre
-                <?php
-                    // if (!empty($_SESSION)) {  // not empty
-                    //     // debug($_SESSION);
-
-                    //     $_POST['membre'] = htmlspecialchars($_POST['membre']);
-                    //     // pour se prémunir des failles et des injections SQL
-                        
-                    //     $_POST['id_membre'] = htmlspecialchars($_POST['id_membre']);
-                    //     $_POST['pseudo'] = htmlspecialchars($_POST['pseudo']);
-                    //     $_POST['mdp'] = htmlspecialchars($_POST['mdp']);
-                    //     $_POST['prenom'] = htmlspecialchars($_POST['prenom']);
-                    //     $_POST['email'] = htmlspecialchars($_POST['email']);
-                    //     $_POST['civilite'] = htmlspecialchars($_POST['civilite']);
-                    //     $_POST['ville'] = htmlspecialchars($_POST['ville']);
-                    //     $_POST['code_postal'] = htmlspecialchars($_POST['code_postal']);
-                    //     $_POST['adresse'] = htmlspecialchars($_POST['adresse']);
-                    //     $_POST['statut'] = htmlspecialchars($_POST['statut']);
-
-                    //     $resultat = $pdoMAB->prepare( " UPDATE membre SET pseudo = :pseudo, mdp = :mdp, prenom = :prenom, email = :email, civilite = :civilite, ville = :ville, code_postal = :code_postal, adresse = :adresse, statut = :statut WHERE id_membre = :id_membre " ); 
-                    //     // requête préparée avec des marqueurs
-
-                    //     $resultat->execute( array(
-                    //         ':pseudo' => $_POST['pseudo'],
-                    //         ':mdp' => $_POST['mdp'],
-                    //         ':prenom' => $_POST['prenom'],
-                    //         ':email' => $_POST['email'],
-                    //         ':civilite' => $_POST['civilite'],
-                    //         ':ville' => $_POST['ville'],
-                    //         ':code_postal' => $_GET['code_postal'],
-                    //         ':adresse' => $_GET['adresse'],
-                    //         ':statut' => $_GET['statut'],
-                    //     ));
-
-                    //     header ('location:profil.php');
-                    //     exit();
-                    // }
-                    ?>
-                </div>
-
-                <div class="col-6">
-                <h2>Mise à jour des vos informations (membre)</h2>
-                    <form action="" method="POST" class="border border-secondary p-4">
-                        <div class="mb-4">
-                            <label for="civilite" class="form-label">Civilité *</label> <br>
+                <div class="col-8">
+                    <!-- maj d'infos / d'un membre / d'un membre directement sur la BDD -->
+                    <h2>Mise à jour des vos informations (membre) / UP DATE</h2>
+                        <form method="POST" action="" class="shadow p-3 mb-5 bg-body rounded">
                             <div class="row">
-                                <div class="col-2">
-                                    <input type="radio" name="civilite" value="m" id="civilite" checked> Homme</input>
+                                <div class="col-4 form-group mt-2">
+                                    <label for="pseudo">Votre pseudo *</label>
+                                    <input type="text" name="pseudo" id="pseudo" value="<?php echo $_SESSION['membre']['pseudo']; ?>" class="form-control"> 
                                 </div>
-                                <div class="col-2">
-                                    <input type="radio" name="civilite" value="f" id="civilite" checked> Femme</input>
+                            </div>
+                            <!-- <div class="form-group mt-2">
+                                <label for="mdp">Mot de passe *</label>
+                                <input type="password" name="mdp" id="mdp" value="" class="form-control">
+                                <small class="bg-warning">votre mot de passe doit contenir entre 4 et 20 caractères</small>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-4 form-group mt-2">
+                                    <label for="nom">Nom *</label>
+                                    <input type="text" name="nom" id="nom" value="<?php echo $_SESSION['membre']['nom']; ?>" class="form-control">
                                 </div>
-                            </div>            
-                        </div>
-                        <!-- fin row -->
-
-                        <div class="row mb-4">
-                            <div class="col-6">
-                                <label for="prenom" class="form-label">Prénom *</label>
-                                <input type="text" name="prenom" id="prenom" class="form-control" placeholder="Votre prénom" required></input>
+                            <div class="col-4 form-group mt-2">
+                                <label for="prenom">Prénom *</label>
+                                <input type="text" name="prenom" id="prenom" value="<?php echo $_SESSION['membre']['prenom']; ?>" class="form-control"> 
                             </div>
-
-                            <div class="col-6">
-                                <label for="nom" class="form-label">Nom *</label>
-                                <input type="text" name="nom" id="nom" class="form-control" placeholder="Votre nom" required></input>
+                                <div class="col-4 form-group mt-2">
+                                    <label for="email">Email *</label>
+                                    <input type="email" name="email" id="email" value="<?php echo $_SESSION['membre']['email']; ?>" class="form-control">
+                                </div>
                             </div>
-                        </div> 
-                        <!-- fin row -->
-
-                        <div class="mb-4">
-                            <label for="email" class="form-label">E-mail *</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="Votre e-mail" required></input>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="pseudo" class="form-label">Pseudo *</label>
-                            <input type="text" name="pseudo" id="pseudo" class="form-control" placeholder="Votre pseudo" required></input>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="password" class="form-label">Mot de passe *</label>
-                            <input type="password" name="mdp" id="mdp" class="form-control" placeholder="Votre mot de passe" required></input>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="adresse" class="form-label">Adresse *</label>
-                            <!-- <input type="text" name="adresse" id="adresse" class="form-control" ></input> -->
-                            <textarea name="adresse" id="adresse" cols="30" rows="5" class="form-control" placeholder="Votre adresse" required></textarea>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="code_postal" class="form-label">Code postal *</label>
-                            <input type="text" name="code_postal" id="code_postal" class="form-control" placeholder="Votre code postal" required></input>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="ville" class="form-label">Ville *</label>
-                            <input type="text" name="ville" id="ville" class="form-control" placeholder="Votre ville" required></input>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">Mis à jour</button>
-                    </form>
-            <!-- fin row form -->
-                </div>
+                            <!-- fin row  -->
+                            <div class="row">
+                                <div class="form-group mt-2">
+                                    <label for="civilite">Civilité *</label>
+                                    
+                                    <input type="radio" name="civilite" value="m" checked> Homme
+                                    <input type="radio" name="civilite" value="f"<?php if (isset($_SESSION['membre']['civilite']) && $_SESSION['membre']['civilite'] =='f') echo 'checked';?>> Femme            
+                                </div>
+                            <div class="col-4 form-group mt-2">
+                                <label for="adresse">Adresse</label>
+                                <textarea name="adresse" id="adresse" class="form-control"><?php echo $_SESSION['membre']['adresse']; ?></textarea>
+                            </div>
+                                <div class="col-4 form-group mt-2">
+                                    <label for="code_postal">Code postal</label>
+                                    <input type="text" name="code_postal" id="code_postal" value="<?php echo $_SESSION['membre']['code_postal']; ?>" class="form-control"> 
+                                </div>
+                            <div class="col-4 form-group mt-2">        
+                                <label for="ville">Ville</label>
+                                <input type="text" name="ville" id="ville" value="<?php echo $_SESSION['membre']['ville']; ?>" class="form-control"> 
+                            </div>
+                            <div class="form-group mt-2">
+                                <input type="submit" value="Mise à jour" class="btn btn-md btn-outline-success"> 
+                            </div>
+                        </form>
+                <!-- fin row form -->
+            </div>
+            <!-- fin col -->
         </section>
         <!-- fin row -->
-
-        <!-- <div class="col-md-4 mx-auto m-4">
-            <p class="alert alert-success border-success text-center"><a href="inscription.php">Aller sur la page INSCRIPTION</a>
-            </p>   
-        </div> -->
-
-        <!-- <div class="col-md-4 mx-auto m-4">
-            <p class="alert alert-success border-success text-center"><a href="connexion.php">Aller sur la page CONNEXION</a>
-            </p>         
-        </div> -->
     </main>
     <!-- fin container -->
     <!-- ====================================================== -->

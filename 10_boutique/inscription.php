@@ -15,7 +15,7 @@ if (!empty($_POST) ) {
     // 1) Les if qui suivent verifient si les valeurs passees dans $_POST correspondent a ce qui est atendu et autorisé en BDD
 
     if ( !isset($_POST['civilite']) || $_POST['civilite'] != 'm' && $_POST['civilite'] != 'f') { // && c'est "ET"
-        // !isset n'est pas isset, .=concatenation puis affeectation, || ou streln string length longueur chaine de caractère
+        // !isset n'est pas isset, .=concatenation puis affectation, || ou streln string length longueur chaine de caractère
         $contenu .= '<div class="alert alert-danger">Vérifier votre civilité !</div>'; // 2 Ex. si il n 'y a rien dans le $_POST ['civilite'] OU si il contient'm' ET 'f' (qui sont les valeurs autorisées) je ne remplis pas $contenu
     }
 
@@ -60,15 +60,15 @@ if (!empty($_POST) ) {
         
         require 'classes/membre.class.php';
 
-        $newMembre = new membre($_POST['civilite'], $_POST['prenom'], $_POST['nom'], $_POST['email'], $_POST['pseudo'], $_POST['adresse'], $_POST['code_postal'], $_POST['ville']);
+        $newMembre = new membre($_POST['civilite'], $_POST['prenom'], $_POST['nom'], $_POST['email'], $_POST['pseudo'], $_POST['mdp'], $_POST['adresse'], $_POST['code_postal'], $_POST['ville']);
 
         $membre = executeRequete( " SELECT * FROM membres WHERE pseudo = :pseudo ",
                                     array(':pseudo' => $_POST['pseudo'])); // on cherche s il y un membre ave le pseudo rentré dans $_POST
         // Ici on compte le contenu de $membre
-        if ($membre->rowCount() > 0) { // si au déompte de cette requête le résultat ne donne pas 0, c'est que le pseudo existe
-            $contenu .='<div class="alert alert danger">Le pseudo est indispensable veuillez en choisir un autre ! </div>';
+        if ($membre->rowCount() > 0) { // si au décompte de cette requête le résultat ne donne pas 0, c'est que le pseudo existe
+            $contenu .='<div class="alert alert danger">Le pseudo est indispensable, veuillez en choisir un autre ! </div>';
         } else { // sinon, on exécute la requête d'insertion
-            $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT); // On hâche le mot de passe avec la fonction prédéfinie password_hash() ave un algorythme 'bcrypt', on passe cette information en variable
+            $mdp = password_hash($_POST['mdp'], PASSWORD_DEFAULT); // On hâche le mot de passe avec la fonction prédéfinie password_hash() avec un algorythme 'bcrypt', on passe cette information en variable
 
             $succes = executeRequete( " INSERT INTO membres (civilite, prenom, nom, email, pseudo, mdp, adresse, code_postal, ville, statut) VALUES (:civilite, :prenom, :nom, :email, :pseudo, :mdp, :adresse, :code_postal, :ville, 0) ",
             array(
@@ -77,7 +77,7 @@ if (!empty($_POST) ) {
                 ':nom' => $_POST['nom'],
                 ':email' => $_POST['email'],
                 ':pseudo' => $_POST['pseudo'],
-                ':mdp' => $mdp, // on récupere le mdp de la variable qui continet le hash du mot de passe
+                ':mdp' => $mdp, // on récupere le mdp de la variable qui contient le hash du mot de passe
                 ':adresse' => $_POST['adresse'],
                 ':code_postal' => $_POST['code_postal'],
                 ':ville' => $_POST['ville'],
@@ -87,7 +87,7 @@ if (!empty($_POST) ) {
 
             // debug($succes);
 
-            // LIEN POUR CONNEXION D'UNE PAGE A l'AUTRE :
+            // LIEN POUR CONNEXION D'UNE PAGE A L'AUTRE :
             if ($succes) {
                 // In on ajoute le lien pour que le lien d acces a cette page INSCRIPTION qd on remplie le formulaire pour que le lien apparaisse sur la page CONNEXION
                 $contenu .='<div class="alert alert-success">Vous êtes bien inscrit à La Boutique !<br> <a href="connexion.php">Cliquez ici !</a></div>';

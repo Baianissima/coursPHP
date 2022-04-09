@@ -6,8 +6,8 @@
  // 2 - CONNEXION à la BDD entreprise
  $pdoENT = new PDO('mysql:host=localhost;dbname=entreprise', // hôte et nom BDD
                         'root', // pseudo
-                        // '',  // mdp pour PC avec XAMP
-                        'root', // mdp pour MAC avec MAMP/
+                        '',  // mdp pour PC avec XAMP
+                        // 'root', // mdp pour MAC avec MAMP/
                         array(
                             PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
                             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8', 
@@ -26,7 +26,7 @@
 // 3 - TRAITEMENT DU FORMULAIRE : ENVOI DES INFORMATIONS A SCTOKER AVEC $_POST
 
  if (!empty($_POST)) {  // Ici on lit : "Si $_POST n'est pas vide..."
-    debug($_POST);
+    // debug($_POST)
 
     $_POST['prenom'] = htmlspecialchars($_POST['prenom']); // pour se prémunir des failles et des injections SQL
     $_POST['nom'] = htmlspecialchars($_POST['nom']);
@@ -46,7 +46,33 @@
 		':date_embauche' => $_POST['date_embauche'],
 		':salaire' => $_POST['salaire'],
     ));
- }
+}
+
+
+// // 4 INITIALISATION DE LA VARIABLE $contenu
+//  debug($_GET);
+
+$contenu = '';
+
+//5 - SUPPRESSION D'UN EMPLOYE
+// debug($_GET);
+
+if(isset($_GET['action']) && $_GET['action'] == 'supprimer' && isset($_GET['id_employes'])){ 
+
+    $resultat = $pdoENT->prepare(" DELETE FROM employes WHERE id_employes = :id_employes ");
+
+    $resultat->execute(array(
+        ':id_employes' => $_GET['id_employes']
+    ));
+    if($resultat->rowCount() == 0) {
+        $contenu .= '<div class="alert alert-danger">erreur de suppression</div>';
+    }else{
+        $contenu .= '<div class="alert alert-success">Employé bien supprimé</div>'; 
+    }
+
+    debug($contenu);
+}
+
 
  // NAVBAR en require
 require_once '../inc/navbar.inc.php';
@@ -118,9 +144,15 @@ require_once '../inc/navbar.inc.php';
         <section class="row mx-auto">
             <div class="col-md-6 bg-light m-5">
                 <h2>1 - Afficher des données de la table employés sur un tableau</h2>
+<<<<<<< Updated upstream
 
                 <h3>Il y a <?php echo $nbr_employes; ?> employés :</h3>
                 
+=======
+                    <h3>Il y a <?php echo $nbr_employes; ?> employés :</h3> 
+                    <?php echo $contenu; ?>
+
+>>>>>>> Stashed changes
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -131,8 +163,13 @@ require_once '../inc/navbar.inc.php';
                             <th>Service</th>
                             <th>Salaire</th>
                             <th>Date d'embauche</th>
+<<<<<<< Updated upstream
                             <th>Fiche employé</th>
                             <th>Message</th>
+=======
+                            <th>Détail</th>
+                            <th>Suppression</th>
+>>>>>>> Stashed changes
                         </tr>
                     </thead>
                     <tbody>
@@ -147,7 +184,11 @@ require_once '../inc/navbar.inc.php';
                             <td><?php echo $ligne['salaire']; ?></td>
                             <td><?php echo $ligne['date_embauche']; ?></td>
                             <td><a href="03_fiche_employe.php?id_employes=<?php echo $ligne['id_employes']; ?>">Mise à jour</a></td>
+<<<<<<< Updated upstream
                             <td><?php echo $ligne['message']; ?></td>
+=======
+                            <td><a href="?action=supprimer&id_employes=<?php echo $ligne['id_employes']; ?>" onclick="return(confirm(' Voulez-vous supprimer cet employé ? '))">Suppression</a></td>
+>>>>>>> Stashed changes
                         </tr>
                         <!-- Fermeture de la boucle while avec l'accolade fermante ici : -->
                         <?php } ?>

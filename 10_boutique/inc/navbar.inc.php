@@ -19,7 +19,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item m-4">
                         <!-- <a class="nav-link" href="<?= URL ?>accueil.php"></a> -->
-                        <p class="">Bonjour, <?php echo $_SESSION['membre'] ['prenom'];?></p>
+                        <!-- <p class="">Bonjour, <?php echo $_SESSION['membre'] ['prenom'];?></p> -->
                         <a class="nav-link" href=""></a>
                     </li>
                 

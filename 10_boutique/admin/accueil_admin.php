@@ -11,10 +11,44 @@ if (!estAdmin()) {  // accès non autorisé si on est pas admin (et pas connect�
 if(!empty($_POST)) {  // not empty
 
     //Ici il faudrait faire 9 conditions pour vérifier que les champs du form sont bien remplis
+
+    if ( !isset($_POST['reference']) || strlen($_POST['reference']) < 5 || strlen($_POST['reference']) > 20) {
+        $contenu .='<div class="alert alert-warning">La référence : entre 5 et 20 caractères</div>';
+    }
+    
+    if ( !isset($_POST['id_categorie']) || strlen($_POST['id_categorie']) < 1 || strlen($_POST['id_categorie']) > 3) {
+        $contenu .='<div class="alert alert-warning">Choissisez la bonne catégorie</div>';
+    }
+
+    if ( !isset($_POST['titre']) || strlen($_POST['titre']) < 5 || strlen($_POST['titre']) > 100) {
+        $contenu .='<div class="alert alert-warning">Titre entre 5 et 100 caractères</div>';
+    }
+
+    if ( !isset($_POST['description']) || strlen($_POST['description']) < 4 || strlen($_POST['description']) > 200) {
+        $contenu .='<div class="alert alert-warning">Description incomplète !</div>';
+    }
+    if ( !isset($_POST['couleur']) || strlen($_POST['couleur']) < 4 || strlen($_POST['couleur']) > 20) {
+        $contenu .='<div class="alert alert-warning">Couleur : entre 4 et 20 caractères</div>';
+    }
+
+    if ( !isset($_POST['taille']) || strlen($_POST['taille']) < 1 || strlen($_POST['taille']) > 5) {
+        $contenu .='<div class="alert alert-warning">Taille : entre 1 et 5 caractères</div>';
+    }
+
+    if ( !isset($_POST['public']) || $_POST['public'] != 'm' && $_POST['public'] != 'f'  && $_POST['public'] != 'mixte' ) { // && ET
+        $contenu .='<div class="alert alert-warning">Public : non conforme !</div>';
+    }
+    if ( !isset($_POST['prix']) || strlen($_POST['prix']) < 1 || strlen($_POST['prix']) > 5 ) {
+        $contenu .='<div class="alert alert-warning">Prix : rentrez le prix de vente !</div>';
+    }
+
+    if ( !isset($_POST['stock']) ) {
+        $contenu .='<div class="alert alert-warning">Stock : rentrez la quantité !</div>';
+    }
   
     // pour se prémunir des failles et des injections SQL :
     $_POST['reference'] = htmlspecialchars($_POST['reference']);
-    $_POST['categorie'] = htmlspecialchars($_POST['categorie']);
+    $_POST['id_categorie'] = htmlspecialchars($_POST['id_categorie']);
     $_POST['titre'] = htmlspecialchars($_POST['titre']);
     $_POST['description'] = htmlspecialchars($_POST['description']);
     $_POST['couleur'] = htmlspecialchars($_POST['couleur']);
@@ -35,10 +69,10 @@ if(!empty($_POST)) {  // not empty
         copy($_FILES['photo']['tmp_name'], '../' .$photo_bdd);
     } // FIN TRAITEMENT PHOTO : ici on ajoute une photo produit
 
-    $requete = executeRequete( " INSERT INTO produits (reference, categorie, titre, description, couleur, taille, public, photo, prix, stock ) VALUES (:reference, :categorie, :titre, :description, :couleur, :taille, :public, :photo, :prix, :stock) ",
+    $requete = executeRequete( " INSERT INTO produits (reference, id_categorie, titre, description, couleur, taille, public, photo, prix, stock ) VALUES (:reference, :id_categorie, :titre, :description, :couleur, :taille, :public, :photo, :prix, :stock) ",
     array (
         ':reference' => $_POST['reference'],
-        ':categorie' => $_POST['categorie'],
+        ':id_categorie' => $_POST['id_categorie'],
         ':titre' => $_POST['titre'],
         ':description' => $_POST['description'],
         ':couleur' => $_POST['couleur'],
@@ -50,12 +84,29 @@ if(!empty($_POST)) {  // not empty
     ));
 
     if ($requete) {
-        $contenu .= '<div class="alert alert class-success">Le produit a été enregistré.</div>';
+        $contenu .= '<div class="alert alert class-success">Le produit a été enregistré !</div>';
     } else {
-        $contenu .= '<div class="alert alert class-danger">Erreur lors de l\'enregistrement...</div>';
+        $contenu .= '<div class="alert alert class-danger">Il y a eu une erreur lors de l\'enregistrement...</div>';
     }
 } // FIN INSERTION NOUVEAU PRODUIT
 
+
+// 2 - SUPPRESSION D'UN ARTICLE
+
+// debug($_GET);
+if (isset($_GET['action']) && $_GET['action'] == 'supprimer' && isset($_GET['id_produit'])) {
+  $resultat = $pdoMAB->prepare( " DELETE FROM produits WHERE id_produit = :id_produit " );
+
+  $resultat->execute(array(
+    ':id_produit' => $_GET['id_produit']
+  ));
+
+  if ($resultat->rowCount() == 0) {
+    $contenu .= '<div class="alert alert-danger"> Erreur de suppression</div>';
+  } else {
+    $contenu .= '<div class="alert alert-success"> Produit supprimé</div>';
+  }
+}
 ?>
 
 <!doctype html>
@@ -79,7 +130,7 @@ if(!empty($_POST)) {  // not empty
 
     <!-- <link rel="stylesheet" href="styles.css" > -->
 
-    <title>ACCUEIL ADMIN - dossier admin dans boutique</title>
+    <title>ACCUEIL ADMIN - 10_boutique</title>
   </head>
 
 <body>
@@ -93,11 +144,13 @@ if(!empty($_POST)) {  // not empty
     ?> 
 
     <header class="container-fluid f-header p-2 mb-4 bg-light">
-        <div class="col-12 text-center">
-            <h1 class="display-4">La Boutique - Admin</h1>
-            <p class="lead">Gestion des produits</p>
-            <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
-        </div>
+       <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4">Accueil Admin - La Boutique</h1>
+                <p class="lead">Gestion des produits</p>
+                <!-- passage PHP pour tester s'il fonctionne avant de poursuivre -->
+            </div>
+       </div>
     </header>
     <!-- fin container-fluid header -->
     
@@ -107,47 +160,58 @@ if(!empty($_POST)) {  // not empty
     <main class="container">
         <section class="row py-5 text-center">
             <div class="py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <h2 class="fw-light">Que souhaitez-vous faire ?</h2>
-                <p class="lead text-muted"></p>
-                <p>
-                <a href="connexion.php" class="btn btn-secondary my-2">Connexion</a>
-                <a href="inscription.php" class="btn btn-secondary my-2">Inscription</a>
-                <a href="accueil.php" class="btn btn-secondary my-2">Shopping</a>
-                </p>
-            </div>
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h2 class="fw-light">Que souhaitez-vous faire ?</h2>
+                    <p class="lead text-muted"></p>
+                    <p>
+                    <a href="connexion.php" class="btn btn-secondary my-2">Connexion</a>
+                    <a href="inscription.php" class="btn btn-secondary my-2">Inscription</a>
+                    <a href="accueil.php" class="btn btn-secondary my-2">Shopping</a>
+                    </p>
+                </div>
             </div>
         </section>
         <!--  fin section -->
 
-        <section>
+        <section class="row m-4 justify-content-center">
+
             <?php 
-                $requete = $pdoMAB->query( " SELECT * FROM produits ORDER BY id_produit" );
+                $requete = $pdoMAB->query( " SELECT * FROM produits, categories WHERE produits.id_categorie = categories.id_categorie " );
                 $nbr_produits = $requete->rowCount();
                 // debug($nbr_produits);
             ?>
-        <!-- ouverture de la boucle while -->
-            <?php while ($fiche = $requete->fetch(PDO::FETCH_ASSOC)) { ?>
-                <tr>
-                    <td><img src="../<?php echo $fiche['photo']; ?>" class="figure-img img-fluid rounded w-50 h-50 img-admin"></td>
-                    <td>ID<?php echo $fiche['id_produit']; ?></td>    
-                    <td>REF<?php echo $fiche['reference']; ?></td>
-                    <td>ID<?php echo $fiche['categorie']; ?></td>
-                    <td><?php echo $fiche['titre']; ?></td>
-                    <td><?php echo $fiche['taille']; ?></td>
-                    <td><?php echo $fiche['description']; ?></td>
-                    <td><?php echo $fiche['couleur']; ?></td>
-                    <td><?php echo $fiche['public']; ?></td>
-                    <td><?php echo $fiche['prix']; ?></td>
-                    <td><?php echo $fiche['stock']; ?></td>
-                    <td><a href="VOIR?id_produit=<?php echo $fiche['id_produit']; ?>">VOIR</a></td>
-                </tr>
-                <!-- fermeture de la boucle -->           
-            <?php } ?>
+
+            <h2>Total de produits : <?php echo $nbr_produits; ?></h2>           
+            <div class="col-md-8 p-2 bg-light border border-primary">
+                <table class=" table table-striped">
+                    <!-- ouverture de la boucle while -->
+                    <?php
+                        while ( $ligne = $requete->fetch(PDO::FETCH_ASSOC )) { ?>             
+                        <tr>
+                            <td><img src="../<?php echo $ligne['photo']; ?>" class="figure-img img-fluid rounded img-admin" width="80px" heigth="80px" ></td>
+                            <td>ID<?php echo $ligne['id_produit']; ?></td>    
+                            <td>REF<?php echo $ligne['reference']; ?></td>
+                            <!-- <td>ID<?php echo $ligne['id_categorie']; ?></td> -->
+                            <td><?php echo $ligne['titre']; ?></td>
+                            <td><?php echo html_entity_decode($ligne['description']); ?></td>
+                            <!-- <td><?php echo $ligne['taille']; ?></td> -->
+                            <td><?php echo $ligne['couleur']; ?></td>
+                            <td><?php echo $ligne['public']; ?></td>
+                            <td><?php echo $ligne['prix']; ?></td>
+                            <td><?php echo $ligne['stock']; ?></td>
+                            <td><a href="fiche_produit.php?id_produit=<?php echo $ligne['id_produit']; ?>">MIS A JOUR</a></td>
+                            <td><a href="?action=supprimer&id_produit=<?php echo $ligne['id_produit']; ?>" onclick="return(confirm('Voulez-vous supprimer cet article id  <?php echo $ligne['id_produit']; ?> ? '))">SUPPRIMER</a></td>
+                        </tr>
+                        <!-- fermeture de la boucle -->           
+                    <?php } ?>
+                </table>
+            </div>
+            <!-- fin col -->
         </section>
+        <!-- fin row -->
 
         <section class="row m-4 justify-content-center">
-            <h2 class="text-center">Insertion d'un nouveau produit</h2>
+            <h2 class="border border-warning text-center">Insertion d'un nouveau produit</h2>
             <div class="col-md-8 p-2 bg-light border border-success">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <!-- l'attribut enctype spécifie que le formulaire envoie des fichiers en plus des données texte; il va nous permettre de télécharger un fichier ici une photo -->
@@ -155,8 +219,13 @@ if(!empty($_POST)) {  // not empty
                     <label for="reference" class="form-label mb-4">Référence *</label>
                     <input type="text" name="reference" id="reference" class="form-control">
 
-                    <label for="categorie" class="form-label mb-4">Catégorie *</label>
-                    <input type="text" name="categorie" id="categorie" class="form-control">
+                    <label for="id_categorie" class="form-label mb-4">Catégorie *</label>
+                        <select name="id_categorie" id="id_categorie" class="form-select">
+                            <?php
+                                foreach ( $pdoMAB->query ( " SELECT * FROM categories ORDER BY categorie ASC ") AS $ligne_categorie){
+                                echo'<option value="' .$ligne_categorie ['id_categorie']. '">' .$ligne_categorie['categorie'].'</option>';}
+                            ?>
+                        </select>
 
                     <label for="titre" class="form-label mb-4">Titre *</label>
                     <input type="text" name="titre" id="titre" class="form-control">
@@ -216,7 +285,7 @@ if(!empty($_POST)) {  // not empty
                     <thead>
                         <tr>
                             <th>reference</th>
-                            <th>categorie</th>
+                            <th>id_categorie</th>
                             <th>titre</th>
                             <th>couleur</th>
                             <th>taille</th>
@@ -230,11 +299,13 @@ if(!empty($_POST)) {  // not empty
                     <?php while ( $ligne = $requete->fetch( PDO::FETCH_ASSOC )) { ?>
                     <tr>
                         <td><?php echo $ligne['id_produit']; ?></td> 
-                        <td><?php echo $ligne['titre'] . ['categorie']; ?></td>                   
-                        <td><?php echo $ligne['categorie']. ' ' .$ligne['stock']; ?></td>
+                        <td><?php echo $ligne['id_categorie']; ?></td>                   
+                        <td><?php echo $ligne['titre']; ?></td>
+                        <td><?php echo $ligne['couleur']; ?></td> 
                         <td><?php echo $ligne['taille']; ?></td>
+                        <td><?php echo $ligne['public']; ?></td>
+                        <td><?php echo $ligne['prix']; ?></td>
                         <td><?php echo $ligne['stock']; ?></td>
-                        <td><?php echo $ligne['couleur']; ?></td>
                     </tr>
                     <!-- fermeture de la boucle -->
                     <?php } ?>
